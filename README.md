@@ -7,20 +7,31 @@ Given 2 stacks A and B, implement a sorting algorithm that sorts the numbers in 
 ### Available Operations
 | Operation   | Description                                                          |
 | :---------- | :------------------------------------------------------------------- |
-| sa (swap a) | Swap the first 2 elements at the top of stack A                      |
-| sb (swap b) | Swap the first 2 elements at the top of stack B                      |
-| ss          | Execute sa and sb simultaneously                                     |
-| pa (push a) | Take the first element from stack B and put it at the top of stack A |
-| pb (push b) | Take the first element from stack A and put it at the top of stack B |
-| ra (rotate a) | Shift all elements of stack A up by 1 (first element becomes last) |
-| rb (rotate b) | Shift all elements of stack B up by 1 (first element becomes last) |
-| rr | Execute ra and rb simultaneously |
-| rra (reverse rotate a) | Shift all elements of stack A down by 1 (last element becomes first) |
-| rrb (reverse rotate b) | Shift all elements of stack B down by 1 (last element becomes first) |
-| rrr | Execute rra and rrb simultaneously |
+| `sa` (swap a) | Swap the first 2 elements at the top of stack A                      |
+| `sb` (swap b) | Swap the first 2 elements at the top of stack B                      |
+| `ss`          | Execute sa and sb simultaneously                                     |
+| `pa` (push a) | Take the first element from stack B and put it at the top of stack A |
+| `pb` (push b) | Take the first element from stack A and put it at the top of stack B |
+| `ra` (rotate a) | Shift all elements of stack A up by 1 (first element becomes last) |
+| `rb` (rotate b) | Shift all elements of stack B up by 1 (first element becomes last) |
+| `rr` | Execute ra and rb simultaneously |
+| `rra` (reverse rotate a) | Shift all elements of stack A down by 1 (last element becomes first) |
+| `rrb` (reverse rotate b) | Shift all elements of stack B down by 1 (last element becomes first) |
+| `rrr` | Execute rra and rrb simultaneously |
 
 ## Chunk Algorithm
 The **Chunk Algorithm** (also known as the **Segmented Sorting approach**) is an efficient method for sorting larger datasets by dividing the problem into manageable segments.
+
+### How It Works
+1. **Divide into Chunks.** The algorithm divides the input into multiple chunks based on their relative value ranges. For example, with 100 numbers, you might create 5 chunks of 20 numbers each.
+
+2. **Push to Stack B.** Elements are pushed from stack A to stack B in chunks, starting with the smallest values. As each chunk is identified, its elements are moved to stack B while maintaining a rough ordering.
+
+3. **Strategic Positioning.** While pushing elements to stack B, the algorithm decides whether to use `pb` (leaving element at top) or `pb + rb` (rotating element down) based on the element's value relative to what remains. This creates a semi-sorted stack B.
+
+4. **Push Back Optimally.** Once all elements are in stack B, the algorithm finds the largest remaining element in stack B and calculates the most efficient way to bring it to the top (using either `rb` or `rrb`, whichever requires fewer operations).
+  
+5. **Final Push.** The largest elements are pushed back to stack A one by one, resulting in a fully sorted stack. 
 
 ## Resources
 - [Sorting Algorithms - GeeksforGeeks](https://www.geeksforgeeks.org/dsa/sorting-algorithms/)
