@@ -6,7 +6,7 @@
 #    By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/01 13:30:48 by spacotto          #+#    #+#              #
-#    Updated: 2026/01/07 16:22:25 by spacotto         ###   ########.fr        #
+#    Updated: 2026/01/08 16:24:09 by spacotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -150,7 +150,7 @@ OBJS	:= $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 # RULES
 # ============================================================================
 
-all:			banner $(NAME)
+all:			$(NAME)
 
 banner:			
 				$(ECHO) "$(CYAN)"
@@ -166,7 +166,7 @@ banner:
 
 $(NAME):		$(OBJS)
 				$(AR) $(NAME) $(OBJS)
-				$(ECHO) "$(GREEN)✨ Archive is ready ✨$(RESET)"
+				$(ECHO) "$(GREEN)✨ libft is ready ✨$(RESET)"
 
 $(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
 				$(MKDIR) -p $(dir $@)
