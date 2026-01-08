@@ -6,62 +6,67 @@
 #    By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/08 15:55:57 by spacotto          #+#    #+#              #
-#    Updated: 2026/01/08 16:21:51 by spacotto         ###   ########.fr        #
+#    Updated: 2026/01/08 17:59:37 by spacotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:= push_swap 
-LIBFT		:= libft/libft.a
-FLAGS		:= -c -Wall -Wextra -Werror
+NAME		:=	push_swap 
+LIBFT		:=	libft/libft.a
+FLAGS		:=	-c -Wall -Wextra -Werror
 
 # ============================================================================
 # COLORS
 # ============================================================================
 
-RESET		:= \033[0m
-GRAY		:= \033[0;90m
-RED			:= \033[0;91m
-GREEN		:= \033[0;92m
-YELLOW		:= \033[0;93m
-BLUE		:= \033[0;94m
-MAGENTA		:= \033[0;95m
-CYAN		:= \033[0;96m
-WHITE		:= \033[0;97m
+RESET		:=	\033[0m
+GRAY		:=	\033[0;90m
+RED			:= 	\033[0;91m
+GREEN		:=	\033[0;92m
+YELLOW		:=	\033[0;93m
+BLUE		:=	\033[0;94m
+MAGENTA		:=	\033[0;95m
+CYAN		:=	\033[0;96m
+WHITE		:=	\033[0;97m
 
 # ============================================================================
 # COMMANDS
 # ============================================================================
 
-CC			:= @cc
-CP			:= @/bin/cp
-ECHO		:= @echo
-MAKE		:= @make -C libft
-MKDIR		:= @/bin/mkdir
-RM			:= @/bin/rm -rf
+CC			:=	@cc
+CP			:=	@/bin/cp
+ECHO		:=	@echo
+MAKE		:=	@make -C libft
+MKDIR		:=	@/bin/mkdir
+RM			:=	@/bin/rm -rf
 
 # ============================================================================
 # INCLUDES
 # ============================================================================
 
-INC			:= -I ./inc/
+INC			:=	-I ./inc/
 
 # ============================================================================
 # SOURCES
 # ============================================================================
 
-SRCS_DIR	:= srcs/
+SRCS_DIR	:=	srcs/
 
-OP			:= op_swap.c op_push.c op_rotate.c op_reverse_rotate.c 
+OP			:=	op_swap.c \
+				op_push.c \
+				op_rotate.c \
+				op_reverse_rotate.c 
 
-SRCS		:= $(OP) 
+PUSH_SWAP	:=	push_swap.c
+
+SRCS		:=	$(OP) 
 
 # ============================================================================
 # OBJECTS
 # ============================================================================
 
-OBJS_DIR	:= objs/
+OBJS_DIR	:=	objs/
 
-OBJS		:= $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
+OBJS		:=	$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 
 # ============================================================================
 # RULES
