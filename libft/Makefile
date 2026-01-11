@@ -6,7 +6,7 @@
 #    By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/01 13:30:48 by spacotto          #+#    #+#              #
-#    Updated: 2026/01/08 16:24:09 by spacotto         ###   ########.fr        #
+#    Updated: 2026/01/08 23:06:28 by spacotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ WHITE		:= \033[0;97m
 
 CC			:= @cc
 AR			:= @/bin/ar rcs
-ECHO		:= @echo #-e
+ECHO		:= @echo -e
 MKDIR		:= @/bin/mkdir
 RM			:= @/bin/rm -rf
 
@@ -175,7 +175,7 @@ $(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
 
 clean:
 				$(RM) $(OBJS_DIR)
-				$(ECHO) "$(RED)🧹Objects removed!$(RESET)"
+				$(ECHO) "$(RED)🧹libft objects removed!$(RESET)"
 
 fclean:			clean
 				$(RM) $(NAME)

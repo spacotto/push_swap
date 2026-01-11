@@ -6,7 +6,7 @@
 #    By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/08 15:55:57 by spacotto          #+#    #+#              #
-#    Updated: 2026/01/08 17:59:37 by spacotto         ###   ########.fr        #
+#    Updated: 2026/01/08 23:06:50 by spacotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ WHITE		:=	\033[0;97m
 
 CC			:=	@cc
 CP			:=	@/bin/cp
-ECHO		:=	@echo
+ECHO		:=	@echo -e
 MAKE		:=	@make -C libft
 MKDIR		:=	@/bin/mkdir
 RM			:=	@/bin/rm -rf
@@ -98,7 +98,7 @@ $(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
 clean:
 				$(RM) $(OBJS_DIR)
 				make clean -C libft
-				$(ECHO) "$(RED)🧹Objects removed!$(RESET)"
+				$(ECHO) "$(RED)🧹push_swap objects removed!$(RESET)"
 
 fclean: 		clean
 				$(RM) $(NAME)
