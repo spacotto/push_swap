@@ -6,13 +6,13 @@
 #    By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/08 15:55:57 by spacotto          #+#    #+#              #
-#    Updated: 2026/01/08 23:06:50 by spacotto         ###   ########.fr        #
+#    Updated: 2026/01/11 19:41:01 by spacotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	push_swap 
 LIBFT		:=	libft/libft.a
-FLAGS		:=	-c -Wall -Wextra -Werror
+FLAGS		:=	-c -Wall -Wextra -Werror -g
 
 # ============================================================================
 # COLORS
@@ -58,7 +58,7 @@ OP			:=	op_swap.c \
 
 PUSH_SWAP	:=	push_swap.c
 
-SRCS		:=	$(OP) 
+SRCS		:=	$(OP) $(PUSH_SWAP) 
 
 # ============================================================================
 # OBJECTS
@@ -89,6 +89,7 @@ banner:
 $(NAME):		$(OBJS)
 				$(MAKE) 
 				$(CP) $(LIBFT) $(NAME)
+				$(CC) $(OBJS) ./libft/libft.a -o $(NAME)
 				$(ECHO) "$(GREEN)✨ push_swap is ready ✨$(RESET)"
 
 $(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
