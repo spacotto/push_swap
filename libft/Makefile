@@ -6,7 +6,7 @@
 #    By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/01 13:30:48 by spacotto          #+#    #+#              #
-#    Updated: 2026/01/08 23:06:28 by spacotto         ###   ########.fr        #
+#    Updated: 2026/01/11 18:45:42 by spacotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -123,7 +123,8 @@ SRC_LST		:=	ft_lstnew_bonus.c \
 				ft_lstdelone_bonus.c \
 				ft_lstclear_bonus.c \
 				ft_lstiter_bonus.c \
-				ft_lstmap_bonus.c
+				ft_lstmap_bonus.c \
+				ft_lstcat.c
 
 SRC_PRINTF	:=	ft_printf.c \
 				ft_printchar.c \
