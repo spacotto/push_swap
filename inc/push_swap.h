@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/11 19:37:47 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:05:17 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ typedef struct s_stacks
 // PROTOTYPES
 // ============================================================================
 
+// Core functions
 int main(int ac, char **av);
+
+// Operations
+void	ft_sa(t_stacks *stacks);
+void	ft_sb(t_stacks *stacks);
+void	ft_ss(t_stacks *stacks);
 
 #endif

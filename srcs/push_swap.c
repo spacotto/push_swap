@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 16:46:26 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/12 15:25:40 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:14:36 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static void push_swap(t_stacks *stacks)
 	int		*number;
 
 	current = stacks->stack_a;
-
 	while (current)
 	{
 		number = current->content;
@@ -66,6 +65,7 @@ int	main(int ac, char **av)
 			get_tokens(&stacks, av[i]);
 			i++;
 		}
+		ft_sa(&stacks);
 		push_swap(&stacks);
 	}
 	return (0);
