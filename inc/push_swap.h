@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/12 16:05:17 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:54:06 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,8 @@ int main(int ac, char **av);
 void	ft_sa(t_stacks *stacks);
 void	ft_sb(t_stacks *stacks);
 void	ft_ss(t_stacks *stacks);
+
+void	ft_pa(t_stacks *stacks);
+void	ft_pb(t_stacks *stacks);
 
 #endif

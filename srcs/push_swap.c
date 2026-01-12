@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 16:46:26 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/12 16:14:36 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/12 16:55:21 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,23 @@ static void	get_tokens(t_stacks *stacks, char *s)
 
 static void push_swap(t_stacks *stacks)
 {
-	t_list	*current;
+	t_list	*current_a = stacks->stack_a;
+	t_list	*current_b = stacks->stack_b;
 	int		*number;
 
-	current = stacks->stack_a;
-	while (current)
+	ft_printf("STACK A\n");
+	while (current_a)
 	{
-		number = current->content;
+		number = current_a->content;
 		ft_printf("%i\n", *number);
-		current = current->next;
+		current_a = current_a->next;
+	}
+	ft_printf("\nSTACK B\n");
+	while (current_b)
+	{
+		number = current_b->content;
+		ft_printf("%i\n", *number);
+		current_b = current_b->next;
 	}
 }
 
@@ -66,6 +74,7 @@ int	main(int ac, char **av)
 			i++;
 		}
 		ft_sa(&stacks);
+		ft_pb(&stacks);
 		push_swap(&stacks);
 	}
 	return (0);
