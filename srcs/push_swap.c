@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 16:46:26 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/11 19:55:18 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/12 15:08:10 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,10 @@ static void	get_tokens(t_stacks *stacks, char *s)
 
 static void push_swap(t_stacks *stacks)
 {
-		int *fuck_you = stacks->stack_a->content;
-	// if unsure create tmp pointers to access list to avoid pushing your pointer
-	// like a dumbass and losing your first member
+	int *number = stacks->stack_a->content;
 	while (stacks->stack_a)
 	{
-		ft_printf("%i ", *fuck_you);
+		ft_printf("%i ", *number);
 		stacks->stack_a = stacks->stack_a->next;
 	}
 }
