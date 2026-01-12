@@ -6,41 +6,39 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:46:06 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/12 17:21:39 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/12 17:37:46 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	nodeswap(t_list **stack)
+static void	swap(t_list **stack)
 {
-	t_list	*node1;
-	t_list	*node2;
+	t_list	*first_node;
+	t_list	*second_node;
 
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
-	node1 = *stack;
-	node2 = node1->next;
-	node1->next = node2->next;
-	node2->next = node1;
-	*stack = node2;
+	first_node = *stack;
+	second_node = first_node->next;
+	ft_swap((int *)first_node->content, (int *)second_node->content);
 }
 
 void	ft_sa(t_stacks *stacks)
 {
-	nodeswap(&stacks->stack_a);
+	swap(&stacks->stack_a);
 	ft_putstr_fd("sa\n", 1);
 }
 
 void	ft_sb(t_stacks *stacks)
 {
-	nodeswap(&stacks->stack_b);
+	swap(&stacks->stack_b);
 	ft_putstr_fd("sb\n", 1);
 }
 
 void	ft_ss(t_stacks *stacks)
 {
-	nodeswap(&stacks->stack_a);
-	nodeswap(&stacks->stack_b);
+	swap(&stacks->stack_a);
+	swap(&stacks->stack_b);
 	ft_putstr_fd("ss\n", 1);
 }

@@ -6,13 +6,13 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:46:18 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/12 17:18:44 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/12 17:39:31 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	nodepush(t_list **dst, t_list **src)
+static void	push(t_list **dst, t_list **src)
 {
 	t_list	*node_to_push;
 
@@ -26,12 +26,12 @@ static void	nodepush(t_list **dst, t_list **src)
 
 void	ft_pa(t_stacks *stacks)
 {
-	nodepush(&stacks->stack_a, &stacks->stack_b);
+	push(&stacks->stack_a, &stacks->stack_b);
 	ft_putstr_fd("pa\n", 1);
 }
 
 void	ft_pb(t_stacks *stacks)
 {
-	nodepush(&stacks->stack_b, &stacks->stack_a);
+	push(&stacks->stack_b, &stacks->stack_a);
 	ft_putstr_fd("pb\n", 1);
 }
