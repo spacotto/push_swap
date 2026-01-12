@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 16:46:26 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/12 17:44:46 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/12 17:46:57 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,9 @@ int	main(int ac, char **av)
 		ft_pb(&stacks);
 		ft_pb(&stacks);
 		ft_pb(&stacks);
-		ft_rr(&stacks);
+		ft_pb(&stacks);
+		ft_pb(&stacks);
+		ft_pb(&stacks);
 		push_swap(&stacks);
 	}
 	return (0);
