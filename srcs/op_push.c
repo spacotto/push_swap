@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:46:18 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/12 16:53:16 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/12 17:18:44 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ static void	nodepush(t_list **dst, t_list **src)
 void	ft_pa(t_stacks *stacks)
 {
 	nodepush(&stacks->stack_a, &stacks->stack_b);
-	ft_printf("pa\n");
+	ft_putstr_fd("pa\n", 1);
 }
 
 void	ft_pb(t_stacks *stacks)
 {
 	nodepush(&stacks->stack_b, &stacks->stack_a);
-	ft_printf("pb\n");
+	ft_putstr_fd("pb\n", 1);
 }
