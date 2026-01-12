@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:46:39 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/12 17:35:21 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/12 17:59:57 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ static void	rotate(t_list **stack)
 		return ;
 	first_node = *stack;
 	last_node = ft_lstlast(*stack);
-	ft_swap((int *)first_node->content, (int *)last_node->content);
+	*stack = first_node->next;
+	first_node->next = NULL;
+	last_node->next = first_node;
 }
 
 void	ft_ra(t_stacks *stacks)
