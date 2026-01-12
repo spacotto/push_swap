@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/12 16:54:06 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/12 17:43:31 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,13 @@ void	ft_ss(t_stacks *stacks);
 
 void	ft_pa(t_stacks *stacks);
 void	ft_pb(t_stacks *stacks);
+
+void	ft_ra(t_stacks *stacks);
+void	ft_rb(t_stacks *stacks);
+void	ft_rr(t_stacks *stacks);
+
+void	ft_rra(t_stacks *stacks);
+void	ft_rrb(t_stacks *stacks);
+void	ft_rrr(t_stacks *stacks);
 
 #endif
