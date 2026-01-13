@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 16:46:26 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/13 17:44:52 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/13 18:01:20 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,20 @@ static void	get_tokens(t_stacks *stacks, char *s)
 
 void	push_swap(t_stacks *stacks)
 {
-	if (sort_check(stacks) == 1)
+	if (sort_check(stacks) == 0)
+	{
+		if (ft_lstsize(stacks->stack_a) == 2)
+			ft_sa(stacks);
+		else if (ft_lstsize(stacks->stack_a) == 3)
+			sort_three(stacks);
+		else if (ft_lstsize(stacks->stack_a) <= 5)
+			sort_five(stacks);
+		else if (ft_lstsize(stacks->stack_a) > 5)
+			chunk_sort(stacks);
 		return ;
-	if (ft_lstsize(stacks->stack_a) == 2)
-		ft_sa(stacks);
-	if (ft_lstsize(stacks->stack_a) == 3)
-		sort_three(stacks);
-	if (ft_lstsize(stacks->stack_a) <= 5)
-		sort_five(stacks);
-	if (ft_lstsize(stacks->stack_a) > 5)
-		chunk_sort(stacks);
-	return ;
+	}
+	else
+		return ;
 }
 
 int	main(int ac, char **av)
