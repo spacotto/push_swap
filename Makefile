@@ -6,7 +6,7 @@
 #    By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/08 15:55:57 by spacotto          #+#    #+#              #
-#    Updated: 2026/01/13 15:52:25 by spacotto         ###   ########.fr        #
+#    Updated: 2026/01/13 17:48:11 by spacotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,8 @@ OP			:=	op_swap.c \
 				op_reverse_rotate.c 
 
 SORT		:=	sort_check.c \
-				sort_simple.c
+				sort_simple.c \
+				chunk_sort.c
 
 PUSH_SWAP	:=	push_swap.c
 
