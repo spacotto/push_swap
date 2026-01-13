@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 16:46:26 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/13 17:02:21 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/13 17:28:56 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,16 @@ static void	get_tokens(t_stacks *stacks, char *s)
 
 void	push_swap(t_stacks *stacks)
 {
-	sort_check(&stacks);
+	if (sort_check(&stacks) == 1);
+		return ;
+	if (ft_lstsize(stacks->stack_a) == 2)
+		sort_two(&stacks);
+	if (ft_lstsize(stacks->stack_a) == 3)
+		sort_three(&stacks);
+	if (ft_lstsize(stacks->stack_a) <= 5)
+		sort_five(&stacks);
+	if (ft_lstsize(stacks->stack_a) > 5)
+		chunk_sort(&stacks);
 	return ;
 }
 
