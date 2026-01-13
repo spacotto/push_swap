@@ -6,10 +6,24 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 15:37:40 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/13 15:42:06 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/13 17:32:52 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	sort_two(t_stacks *stacks)
+{
+	return ;
+}
+
+void	sort_three(t_stacks *stacks)
+{
+	return ;
+}
+
+void	sort_five(t_stacks *stacks)
+{
+	return ;
+}
 

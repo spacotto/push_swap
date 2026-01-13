@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/13 17:07:39 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/13 17:30:45 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,9 @@ void	ft_rrr(t_stacks *stacks);
 
 // Sorting
 int		sort_check(t_stacks *stacks);
+void	sort_two(t_stacks *stacks);
+void	sort_three(t_stacks *stacks);
+void	sort_five(t_stacks *stacks);
+void	chunk_sort(t_stacks *stacks);
 
 #endif
