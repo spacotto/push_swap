@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 16:46:26 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/12 18:02:09 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/13 17:02:21 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,39 +23,23 @@ static void	get_tokens(t_stacks *stacks, char *s)
 	{
 		number = malloc(1 * sizeof(int));
 		if (!number)
-			return;
+			return ;
 		*number = ft_atoi(token);
 		node = ft_lstnew(number);
 		if (!node)
 		{
 			free(number);
-			return;
+			return ;
 		}
 		ft_lstadd_back(&stacks->stack_a, node);
 		token = ft_strtok(NULL, " ");
 	}
 }
 
-static void push_swap(t_stacks *stacks)
+void	push_swap(t_stacks *stacks)
 {
-	t_list	*current_a = stacks->stack_a;
-	t_list	*current_b = stacks->stack_b;
-	int		*number;
-
-	ft_printf("\nSTACK A\n");
-	while (current_a)
-	{
-		number = current_a->content;
-		ft_printf("%i\n", *number);
-		current_a = current_a->next;
-	}
-	ft_printf("\nSTACK B\n");
-	while (current_b)
-	{
-		number = current_b->content;
-		ft_printf("%i\n", *number);
-		current_b = current_b->next;
-	}
+	sort_check(&stacks);
+	return ;
 }
 
 int	main(int ac, char **av)
@@ -73,7 +57,6 @@ int	main(int ac, char **av)
 			get_tokens(&stacks, av[i]);
 			i++;
 		}
-		ft_rra(&stacks);
 		push_swap(&stacks);
 	}
 	return (0);

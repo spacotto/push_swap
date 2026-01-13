@@ -6,7 +6,7 @@
 #    By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/08 15:55:57 by spacotto          #+#    #+#              #
-#    Updated: 2026/01/11 19:41:01 by spacotto         ###   ########.fr        #
+#    Updated: 2026/01/13 15:52:25 by spacotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ WHITE		:=	\033[0;97m
 
 CC			:=	@cc
 CP			:=	@/bin/cp
-ECHO		:=	@echo -e
+ECHO		:=	@echo #-e
 MAKE		:=	@make -C libft
 MKDIR		:=	@/bin/mkdir
 RM			:=	@/bin/rm -rf
@@ -56,9 +56,12 @@ OP			:=	op_swap.c \
 				op_rotate.c \
 				op_reverse_rotate.c 
 
+SORT		:=	sort_check.c \
+				sort_simple.c
+
 PUSH_SWAP	:=	push_swap.c
 
-SRCS		:=	$(OP) $(PUSH_SWAP) 
+SRCS		:=	$(OP) $(SORT) $(PUSH_SWAP)
 
 # ============================================================================
 # OBJECTS
