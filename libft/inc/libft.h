@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:35:14 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/14 12:02:55 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/14 12:06:39 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ typedef struct s_trim
 typedef struct s_list
 {
 	void			*content;
-	struct s_list	*next;
 	int				index;
+	struct s_list	*next;
 }	t_list;
 
 typedef struct s_arena
