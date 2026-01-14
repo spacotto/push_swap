@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:42:36 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/14 16:00:39 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/14 16:27:54 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_list	*find_smallest(t_list *stack)
 
 	target = NULL;
 	current = stack;
+	index_init(stack);
 	while (current)
 	{
 		if (current->index == -1)
@@ -49,7 +50,6 @@ void	assign_index(t_list *stack)
 	t_list	*smallest;
 
 	loop = 0;
-	index_init(stack);
 	while (loop < ft_lstsize(stack))
 	{
 		smallest = find_smallest(stack);
