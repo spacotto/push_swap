@@ -6,30 +6,50 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:42:36 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/13 18:47:50 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/14 14:27:44 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	assign_index(t_stacks *stacks)
+static void	index_init(t_list *stack)
 {
 	t_list	*current;
-	t_list	*cmp;
-	int		index;
 
-	current = stacks->stack_a;
+	current = stack;
 	while (current)
 	{
-		index = 0;
-		cmp = stacks->stack_a;
-		while (cmp)
-		{
-			if (*(int *)cmp->content < *(int *)current->content)
-				index++;
-			cmp = cmp->next;
-		}
-		current->index = index;
+		*(int *)(current->content) = -1;
 		current = current->next;
+	}
+}
+
+static t_list	*find_smallest(t_list *stack)
+{
+	t_list	*target;
+	t_list	*current;
+
+	target = stack;
+	current = stack;
+	while (current)
+	{
+		if (stack->index == 0 && (*(int *)(current->content) < *(int *)(target->content)))
+			target = current;
+		current = current->next;
+	}
+	return (target);
+}
+
+void	assign_index(t_stacks *stacks)
+{
+	int		loop;
+	
+	loop = 0;
+	index_init(stacks->stack_a);
+	while (loop < ft_lstsize(stacks->stack_a))
+	{
+		find_smallest(stacks->stack_a);
+		stacks->stack_a->index = loop;
+		loop++;
 	}
 }

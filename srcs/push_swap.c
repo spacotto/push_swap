@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 16:46:26 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/13 18:01:20 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/14 14:28:53 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,7 @@ void	push_swap(t_stacks *stacks)
 			sort_five(stacks);
 		else if (ft_lstsize(stacks->stack_a) > 5)
 			chunk_sort(stacks);
-		return ;
 	}
-	else
-		return ;
 }
 
 int	main(int ac, char **av)
