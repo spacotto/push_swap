@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 15:37:40 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/13 18:15:37 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/14 11:58:07 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,3 @@ void	sort_five(t_stacks *stacks)
 	if (ft_lstsize(stacks->stack_a) == 2)
 		return ;
 }
-

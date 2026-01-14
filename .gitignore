@@ -4,3 +4,4 @@ libft/objs/*
 objs/*
 push_swap
 visualizer/*
+checker_linux
