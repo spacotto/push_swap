@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:42:36 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/14 16:27:54 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/14 18:00:48 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ t_list	*find_smallest(t_list *stack)
 	{
 		if (current->index == -1)
 		{
-			if (!target || *(int *)(current->content) < *(int *)(target->content))
+			if (!target
+				|| *(int *)(current->content) < *(int *)(target->content))
 				target = current;
 		}
 		current = current->next;

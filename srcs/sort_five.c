@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 14:49:42 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/14 16:40:08 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/14 18:02:21 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ void	sort_five(t_stacks *stacks)
 	ft_pb(stacks);
 	sort_three(stacks);
 	ft_pa(stacks);
-	ft_pa(stacks);	
+	ft_pa(stacks);
 }
