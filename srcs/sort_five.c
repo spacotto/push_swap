@@ -6,8 +6,13 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 14:49:42 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/14 14:49:54 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/14 15:05:34 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	sort_five(t_stacks *stacks)
+{
+	
+}

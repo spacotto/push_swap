@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:42:36 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/14 15:03:10 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/14 15:23:29 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,16 @@ static t_list	*find_smallest(t_list *stack)
 	return (target);
 }
 
-void	assign_index(t_stacks *stacks)
+void	assign_index(t_list *stack)
 {
 	int		loop;
 
 	loop = 0;
-	index_init(stacks->stack_a);
-	while (loop < ft_lstsize(stacks->stack_a))
+	index_init(stack);
+	while (loop < ft_lstsize(stack))
 	{
-		find_smallest(stacks->stack_a);
-		stacks->stack_a->index = loop;
+		find_smallest(stack);
+		stack->index = loop;
 		loop++;
 	}
-}
-
-t_list	*find_index(t_list *stack)
-{
-	return (target);
 }
