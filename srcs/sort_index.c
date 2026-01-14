@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:42:36 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/14 15:23:29 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/14 16:00:39 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,25 @@ static void	index_init(t_list *stack)
 	current = stack;
 	while (current)
 	{
-		*(int *)(current->content) = -1;
+		current->index = -1;
 		current = current->next;
 	}
 }
 
-static t_list	*find_smallest(t_list *stack)
+t_list	*find_smallest(t_list *stack)
 {
 	t_list	*target;
 	t_list	*current;
-	int		current_content;
-	int		target_content;
 
-	target = stack;
+	target = NULL;
 	current = stack;
-	current_content = *(int *)(current->content);
-	target_content = *(int *)(target->content);
 	while (current)
 	{
-		if (stack->index == 0 && (current_content < target_content))
-			target = current;
+		if (current->index == -1)
+		{
+			if (!target || *(int *)(current->content) < *(int *)(target->content))
+				target = current;
+		}
 		current = current->next;
 	}
 	return (target);
@@ -47,13 +46,14 @@ static t_list	*find_smallest(t_list *stack)
 void	assign_index(t_list *stack)
 {
 	int		loop;
+	t_list	*smallest;
 
 	loop = 0;
 	index_init(stack);
 	while (loop < ft_lstsize(stack))
 	{
-		find_smallest(stack);
-		stack->index = loop;
+		smallest = find_smallest(stack);
+		smallest->index = loop;
 		loop++;
 	}
 }
