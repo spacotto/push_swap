@@ -6,13 +6,13 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 18:24:09 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/15 18:35:21 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/15 22:48:48 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	chunk_size(int stack_size)
+static int	choose_chunk_size(int stack_size)
 {
 	int	chunk_size;
 	
@@ -25,24 +25,56 @@ static int	chunk_size(int stack_size)
 	return (chunk_size);
 }
 
-static void	push_or_rotate(t_stacks *stacks)
-{}
+static int	ischunk(int index, int chunk_min, int chunk_max)
+{
+	if (index >= chunk_min && index <= chunk_max)
+		return (1);
+	else
+		return (0);
+}
+
+static void	build_chunk(t_stacks *stacks, int chunk_min, int chunk_max)
+{
+	int	pushed;
+
+	pushed = 0;
+	while (stacks->stack_a)
+	{
+		pushed = 0;
+		while (pushed < chunk_max && stacks->stack_a)
+		{
+			if (ischunk(stacks->stack_a->index, chunk_min, chunk_max) == 1)
+			{
+				ft_pb(stacks);
+				pushed++;
+			}
+			else
+				ft_ra(stacks);
+		}
+	}
+}
 
 void	chunk_presort(t_stacks *stacks)
 {
 	int	stack_size;
 	int	chunk_size;
+	int	chunk_min;
+	int	chunk_max;
 	int	chunks;
 
 	stack_size = ft_lstsize(stacks->stack_a);
-	chunk_size = chunk_size(stack_size);
-	chunks = stack_size / chunk_size;
+	chunk_size = choose_chunk_size(stack_size);
+	chunk_min = 0; 
+	chunk_max = chunk_size;
+	chunks = stack_size / chunk_max;
 	while (chunks--)
 	{
 		while (stack_size > 3)
 		{
-			push_or_rotate(stacks, chunk_size);
+			build_chunk(stacks, chunk_min, chunk_max);
 			stack_size = ft_lstsize(stacks->stack_a);
+			chunk_min += chunk_size;
+			chunk_max += chunk_size;
 		}
 	}
 }
