@@ -12,26 +12,13 @@
 
 #include "push_swap.h"
 
-static void	index_init(t_list *stack)
-{
-	t_list	*current;
-
-	current = stack;
-	while (current)
-	{
-		current->index = -1;
-		current = current->next;
-	}
-}
-
-static t_list	*find_index(t_list *stack)
+static t_list	*find_smallest_unindexed(t_list *stack)
 {
 	t_list	*target;
 	t_list	*current;
 
 	target = NULL;
 	current = stack;
-	index_init(stack);
 	while (current)
 	{
 		if (current->index == -1)
@@ -49,11 +36,18 @@ void	assign_index(t_list *stack)
 {
 	int		loop;
 	t_list	*smallest;
+	t_list	*current;
 
+	current = stack;
+	while (current)
+	{
+		current->index = -1;
+		current = current->next;
+	}
 	loop = 0;
 	while (loop < ft_lstsize(stack))
 	{
-		smallest = find_index(stack);
+		smallest = find_smallest_unindexed(stack);
 		smallest->index = loop;
 		loop++;
 	}
