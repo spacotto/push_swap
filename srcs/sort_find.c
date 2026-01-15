@@ -41,7 +41,7 @@ t_list	*find_biggest(t_list *stack)
     current = stack->next;
     while (current)
     {
-        if (current->index < biggest->index)
+        if (current->index > biggest->index)
             biggest = current;
         current = current->next;
     }   
