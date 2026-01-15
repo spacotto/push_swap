@@ -6,7 +6,7 @@
 #    By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/01 13:30:48 by spacotto          #+#    #+#              #
-#    Updated: 2026/01/14 15:27:01 by spacotto         ###   ########.fr        #
+#    Updated: 2026/01/15 13:50:35 by spacotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,17 +115,17 @@ SRC_FD		:=	ft_putchar_fd.c \
 				ft_putnbr_fd.c \
 				ft_putnbr_base_fd.c 
 
-SRC_LST		:=	ft_lstnew_bonus.c \
-				ft_lstadd_front_bonus.c \
-				ft_lstsize_bonus.c \
-				ft_lstlast_bonus.c \
-				ft_lstadd_back_bonus.c \
-				ft_lstdelone_bonus.c \
-				ft_lstclear_bonus.c \
-				ft_lstiter_bonus.c \
-				ft_lstmap_bonus.c \
+SRC_LST		:=	ft_lstnew.c \
+				ft_lstadd_front.c \
+				ft_lstsize.c \
+				ft_lstlast.c \
+				ft_lstadd_back.c \
+				ft_lstdelone.c \
+				ft_lstclear.c \
+				ft_lstiter.c \
+				ft_lstmap.c \
 				ft_lstcat.c \
-				ft_lstchr.c
+				ft_lstpos.c
 
 SRC_PRINTF	:=	ft_printf.c \
 				ft_printchar.c \

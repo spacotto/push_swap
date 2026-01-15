@@ -1,4 +1,5 @@
 *.swp
+*.swo
 libft/libft.a
 libft/objs/*
 objs/*
