@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:31:36 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/15 19:00:55 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/15 20:27:03 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ void	cost_to_top_a(t_stacks *stacks, t_list *target)
 	{
 		rotation = size - position;
 		while (rotation--)
-			ft_rra(stack);
+			ft_rra(stacks);
 	}
 	else
 	{
 		rotation = position;
 		while (rotation--)
-			ft_ra(stack);
+			ft_ra(stacks);
 	}
 }
 
@@ -40,18 +40,18 @@ void	cost_to_top_b(t_stacks *stacks, t_list *target)
 	int	position;
 	int	rotation;
 
-	size = ft_lstsize(stack);
-	position = ft_lstpos(stack, target);
+	size = ft_lstsize(stacks->stack_b);
+	position = ft_lstpos(stacks->stack_b, target);
 	if (position > size / 2)
 	{
 		rotation = size - position;
 		while (rotation--)
-			ft_rrb(stack);
+			ft_rrb(stacks);
 	}
 	else
 	{
 		rotation = position;
 		while (rotation--)
-			ft_rb(stack);
+			ft_rb(stacks);
 	}
 }

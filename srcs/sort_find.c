@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:26:13 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/15 16:48:44 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/15 21:50:36 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_list  *find_smallest(t_list *stack)
     current = stack->next;
     while (current)
     {
-        if (*(int *)(current->content) < *(int *)(smallest->content))
+        if (current->index < smallest->index)
             smallest = current;
         current = current->next;
     }   
@@ -41,7 +41,7 @@ t_list	*find_biggest(t_list *stack)
     current = stack->next;
     while (current)
     {
-        if (*(int *)(current->content) < *(int *)(biggest->content))
+        if (current->index < biggest->index)
             biggest = current;
         current = current->next;
     }   

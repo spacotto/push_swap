@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/15 18:53:18 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/15 20:25:10 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void	ft_rrr(t_stacks *stacks);
 int		sort_check(t_stacks *stacks);
 t_list	*find_smallest(t_list *stack);
 t_list	*find_biggest(t_list *stack);
-void    cost_to_top_a(t_list *stack, t_list *target);
-void    cost_to_top_b(t_list *stack, t_list *target);
+void    cost_to_top_a(t_stacks *stacks, t_list *target);
+void    cost_to_top_b(t_stacks *stacks, t_list *target);
 
 void	sort_two(t_stacks *stacks);
 void	sort_three(t_stacks *stacks);
