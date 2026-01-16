@@ -61,6 +61,7 @@ void	assign_index(t_list *stack);
 
 t_list	*find_smallest(t_list *stack);
 t_list	*find_biggest(t_list *stack);
+t_list	*find_second_biggest(t_list *stack);
 
 void	move_to_top_a(t_stacks *stacks, t_list *target);
 void	move_to_top_b(t_stacks *stacks, t_list *target);
