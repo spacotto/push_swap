@@ -35,10 +35,10 @@ t_list	*find_biggest(t_list *stack)
 	t_list	*biggest;
 	t_list	*current;
 
-	if (!stack)
+	if (!stack || !stack->next)
 		return (NULL);
-	biggest = stack;
-	current = stack->next;
+	biggest = NULL;
+	current = stack;
 	while (current)
 	{
 		if (current->index > biggest->index)
@@ -46,4 +46,27 @@ t_list	*find_biggest(t_list *stack)
 		current = current->next;
 	}
 	return (biggest);
+}
+
+t_list	*find_second_biggest(t_list *stack)
+{
+	t_list	*biggest;
+	t_list	*second;
+	t_list	*current;
+
+	if (!stack || !stack->next)
+		return (NULL);
+	biggest = find_biggest(stack);
+	second = NULL;
+	current = stack;
+	while (current)
+	{
+		if (current != biggest)
+		{
+			if (!second || current->index > second->index)
+				second = current;
+		}
+		current = current->next;
+	}
+	return (second);
 }
