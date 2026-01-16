@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 17:46:50 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/16 14:21:32 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/16 15:04:18 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,47 +35,46 @@ static int	ischunk(int index, int chunk_min, int chunk_max)
 
 static void	build_chunk(t_stacks *stacks, int chunk_min, int chunk_max)
 {
-	int	pushed;
+	int	stack_size;
+	int	rotations;
 
-	pushed = 0;
-	while (stacks->stack_a)
+	stack_size = ft_lstsize(stacks->stack_a);
+	rotations = 0;
+	while (rotations < stack_size && stacks->stack_a)
 	{
-		pushed = 0;
-		while (pushed < chunk_max && stacks->stack_a)
+		if (ischunk(stacks->stack_a->index, chunk_min, chunk_max) == 1)
 		{
-			if (ischunk(stacks->stack_a->index, chunk_min, chunk_max) == 1)
-			{
-				ft_pb(stacks);
-				pushed++;
-			}
-			else
-				ft_ra(stacks);
+			ft_pb(stacks);
+	//		if (stacks->stack_b->index < chunk_min + (chunk_max - chunk_min) / 2)
+	//			ft_rb(stacks);
+			rotations = 0;
+			stack_size = ft_lstsize(stacks->stack_a);
+		}
+		else
+		{
+			ft_ra(stacks);
+			rotations++;
 		}
 	}
 }
 
 static void	chunk_presort(t_stacks *stacks)
 {
-	int	stack_size;
 	int	chunk_size;
 	int	chunk_min;
 	int	chunk_max;
-	int	chunks;
+	int	total_size;
 
-	stack_size = ft_lstsize(stacks->stack_a);
-	chunk_size = choose_chunk_size(stack_size);
+	total_size = ft_lstsize(stacks->stack_a);
+	chunk_size = choose_chunk_size(total_size);
 	chunk_min = 0;
-	chunk_max = chunk_size;
-	chunks = stack_size / chunk_max;
-	while (chunks--)
+	chunk_max = chunk_size - 1;
+	while (stacks->stack_a && total_size > 3)
 	{
-		while (stack_size > 3)
-		{
-			build_chunk(stacks, chunk_min, chunk_max);
-			stack_size = ft_lstsize(stacks->stack_a);
-			chunk_min += chunk_size;
-			chunk_max += chunk_size;
-		}
+		build_chunk(stacks, chunk_min, chunk_max);
+		chunk_min += chunk_size;
+		chunk_max += chunk_size;
+		total_size = ft_lstsize(stacks->stack_a);
 	}
 }
 
@@ -85,9 +84,10 @@ void	chunk_sort(t_stacks *stacks)
 
 	assign_index(stacks->stack_a);
 	chunk_presort(stacks);
+	simple_sort(stacks);
 	while (stacks->stack_b)
 	{
-		biggest = find_biggest(stacks->stack_a);
+		biggest = find_biggest(stacks->stack_b);
 		move_to_top_b(stacks, biggest);
 		ft_pa(stacks);
 	}
