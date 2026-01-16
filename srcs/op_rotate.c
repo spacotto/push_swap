@@ -29,18 +29,18 @@ static void	rotate(t_list **stack)
 void	ft_ra(t_stacks *stacks)
 {
 	rotate(&stacks->stack_a);
-	ft_putstr_fd("ra\n", 1);
+	add_operation(stacks, "ra\n");
 }
 
 void	ft_rb(t_stacks *stacks)
 {
 	rotate(&stacks->stack_b);
-	ft_putstr_fd("rb\n", 1);
+	add_operation(stacks, "rb\n");
 }
 
 void	ft_rr(t_stacks *stacks)
 {
 	rotate(&stacks->stack_a);
 	rotate(&stacks->stack_b);
-	ft_putstr_fd("rr\n", 1);
+	add_operation(stacks, "rr\n");
 }
