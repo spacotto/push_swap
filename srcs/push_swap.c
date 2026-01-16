@@ -76,7 +76,8 @@ int	main(int ac, char **av)
 			i++;
 		}
 		push_swap(&stacks);
-		optimize_operations(&stacks);
+		optimize_rr(&stacks);
+		optimize_rrr(&stacks);
 		print_operations(&stacks);
 	}
 	return (0);
