@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 17:46:50 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/16 14:15:24 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/16 14:21:32 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	chunk_sort(t_stacks *stacks)
 	while (stacks->stack_b)
 	{
 		biggest = find_biggest(stacks->stack_a);
-		cost_to_top_b(stacks, biggest);
+		move_to_top_b(stacks, biggest);
 		ft_pa(stacks);
 	}
 }

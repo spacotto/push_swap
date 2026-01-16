@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 19:39:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/16 14:17:51 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/16 14:20:59 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,13 @@ void	sort_three(t_stacks *stacks)
 void	sort_four(t_stacks *stacks)
 {
 	t_list	*smallest;
-	int		rotation;
 
 	assign_index(stacks->stack_a);
 	smallest = find_smallest(stacks->stack_a);
-	ft_pb(stacks);
-	smallest = find_smallest(stacks->stack_a);
 	if (stacks->stack_a != smallest)
 		move_to_top_a(stacks, smallest);
+	ft_pb(stacks);
+	smallest = find_smallest(stacks->stack_a);
 	if (stacks->stack_a != smallest)
 		move_to_top_a(stacks, smallest);
 	ft_pb(stacks);
