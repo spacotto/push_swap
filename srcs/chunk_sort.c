@@ -74,14 +74,34 @@ static void	chunk_presort(t_stacks *stacks)
 void	chunk_sort(t_stacks *stacks)
 {
 	t_list	*biggest;
+	t_list	*second_biggest;
 
 	assign_index(stacks->stack_a);
 	chunk_presort(stacks);
-	simple_sort(stacks);
+	simple_sort(stacks); // Sorts the 3 left in A
+
 	while (stacks->stack_b)
 	{
 		biggest = find_biggest(stacks->stack_b);
-		move_to_top_b(stacks, biggest);
-		ft_pa(stacks);
+		second_biggest = find_second_biggest(stacks->stack_b); // You'll need this helper
+
+		// Optimization: If second_max is closer to the top than max
+		// and it exists, we push it first.
+		if (second_biggest && (dist_to_top(stacks->stack_b, second_biggest) < 
+			dist_to_top(stacks->stack_b, biggest)))
+		{
+			move_to_top_b(stacks, second_biggest);
+			ft_pa(stacks);
+			// Now that second_max is in A, find the max (which is still in B)
+			biggest = find_biggest(stacks->stack_b);
+			move_to_top_b(stacks, biggest);
+			ft_pa(stacks);
+			ft_sa(stacks); // Swap them in A to fix the order
+		}
+		else
+		{
+			move_to_top_b(stacks, biggest);
+			ft_pa(stacks);
+		}
 	}
 }
