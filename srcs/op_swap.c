@@ -27,18 +27,18 @@ static void	swap(t_list **stack)
 void	ft_sa(t_stacks *stacks)
 {
 	swap(&stacks->stack_a);
-	ft_putstr_fd("sa\n", 1);
+	add_operation(stacks, "sa\n");
 }
 
 void	ft_sb(t_stacks *stacks)
 {
 	swap(&stacks->stack_b);
-	ft_putstr_fd("sb\n", 1);
+	add_operation(stacks, "sb\n");
 }
 
 void	ft_ss(t_stacks *stacks)
 {
 	swap(&stacks->stack_a);
 	swap(&stacks->stack_b);
-	ft_putstr_fd("ss\n", 1);
+	add_operation(stacks, "ss\n");
 }
