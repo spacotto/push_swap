@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 16:46:26 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/16 16:21:15 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/16 18:08:42 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	main(int ac, char **av)
 		optimize_rr(&stacks);
 		optimize_rrr(&stacks);
 		print_operations(&stacks);
-//		ft_lstclear(&stacks.operations, del);
+//		ft_lstclear(&stacks.operations, del); // fix free
 		ft_lstclear(&stacks.stack_a, del);
 	}
 	return (0);

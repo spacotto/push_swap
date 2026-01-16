@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 17:46:50 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/16 17:07:21 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:56:08 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,53 +71,17 @@ static void	chunk_presort(t_stacks *stacks)
 	}
 }
 
-static int	dist_to_top(t_list *stack, t_list *target)
-{
-	int	pos;
-	int	size;
-
-	pos = ft_lstpos(stack, target);
-	size = ft_lstsize(stack);
-	if (pos <= size / 2)
-		return (pos);
-	return (size - pos);
-}
-
-static t_list	*find_second_biggest(t_list *stack)
-{
-	t_list	*max;
-	t_list	*second;
-
-	if (!stack || !stack->next)
-		return (NULL);
-	max = find_biggest(stack);
-	second = NULL;
-	while (stack)
-	{
-		if (stack != max)
-		{
-			if (!second || stack->index > second->index)
-				second = stack;
-		}
-		stack = stack->next;
-	}
-	return (second);
-}
-
-void	chunk_sort(t_stacks *stacks)
+static void	chunk_finalsort(t_stacks *stacks)
 {
 	t_list	*biggest;
 	t_list	*second_biggest;
 
-	assign_index(stacks->stack_a);
-	chunk_presort(stacks);
-	simple_sort(stacks);
 	while (stacks->stack_b)
 	{
 		biggest = find_biggest(stacks->stack_b);
 		second_biggest = find_second_biggest(stacks->stack_b);
-		if (second_biggest && (dist_to_top(stacks->stack_b, second_biggest) < 
-			dist_to_top(stacks->stack_b, biggest)))
+		if (second_biggest && (find_distance(stacks->stack_b, second_biggest) < 
+			find_distance(stacks->stack_b, biggest)))
 		{
 			move_to_top_b(stacks, second_biggest);
 			ft_pa(stacks);
@@ -132,4 +96,12 @@ void	chunk_sort(t_stacks *stacks)
 			ft_pa(stacks);
 		}
 	}
+}
+
+void	chunk_sort(t_stacks *stacks)
+{
+	assign_index(stacks->stack_a);
+	chunk_presort(stacks);
+//	simple_sort(stacks);
+	chunk_finalsort(stacks);
 }

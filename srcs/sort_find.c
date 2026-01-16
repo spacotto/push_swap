@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:26:13 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/16 14:14:53 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/16 18:08:05 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,17 @@ t_list	*find_second_biggest(t_list *stack)
 		current = current->next;
 	}
 	return (second);
+}
+
+int	find_distance(t_list *stack, t_list *target)
+{
+	int	size;
+	int	position;
+
+	size = ft_lstsize(stack);
+	position = ft_lstpos(stack, target);
+	if (position <= size / 2)
+		return (position);
+	else
+		return (size - position);
 }

@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/16 16:13:41 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:46:13 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	assign_index(t_list *stack);
 t_list	*find_smallest(t_list *stack);
 t_list	*find_biggest(t_list *stack);
 t_list	*find_second_biggest(t_list *stack);
+int		find_distance(t_list *stack, t_list *target);
 
 void	move_to_top_a(t_stacks *stacks, t_list *target);
 void	move_to_top_b(t_stacks *stacks, t_list *target);
