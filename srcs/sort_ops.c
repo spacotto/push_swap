@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:31:36 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/16 14:10:15 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/16 15:48:05 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,63 @@ void	add_operation(t_stacks *stacks, char *op)
 		while (current->next)
 			current = current->next;
 		current->next = new_node;
+	}
+}
+
+void	optimize_rr(t_stacks *stacks)
+{
+	t_ops	*current;
+	t_ops	*next;
+
+	current = stacks->operations;
+	while (current && current->next)
+	{
+		next = current->next;
+		if (ft_strcmp(current->operation, "ra\n") == 0
+			&& ft_strcmp(next->operation, "rb\n") == 0)
+		{
+			current->operation = "rr\n";
+			current->next = next->next;
+			free(next);
+			continue;
+		}
+		if (ft_strcmp(current->operation, "rb\n") == 0
+			&& ft_strcmp(next->operation, "ra\n") == 0)
+		{
+			current->operation = "rr\n";
+			current->next = next->next;
+			free(next);
+			continue;
+		}
+		current = current->next;
+	}
+}
+
+void	optimize_rrr(t_stacks *stacks)
+{
+	t_ops	*current;
+	t_ops	*next;
+
+	current = stacks->operations;
+	while (current && current->next)
+	{
+		next = current->next;
+		if (ft_strcmp(current->operation, "rra\n") == 0
+			&& ft_strcmp(next->operation, "rrb\n") == 0)
+		{
+			current->operation = "rrr\n";
+			current->next = next->next;
+			free(next);
+			continue;
+		}
+		if (ft_strcmp(current->operation, "rrb\n") == 0
+			&& ft_strcmp(next->operation, "rra\n") == 0)
+		{
+			current->operation = "rrr\n";
+			current->next = next->next;
+			free(next);
+			continue;
+		}
+		current = current->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 16:46:26 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/16 14:56:00 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/16 16:04:06 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,24 @@ static void	print_operations(t_stacks *stacks)
 	}
 }
 
+static void	free_operations(t_ops *ops)
+{
+	t_ops	*target;
+	t_ops	*next_target;
+
+	if (!ops)
+		return ;
+	target = ops;
+	while (ops)
+	{
+		next_target = target->next;
+		if (ops->operation)
+			free(ops->operation);
+		free(target);
+		target = target->next;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_stacks	stacks;
@@ -79,6 +97,8 @@ int	main(int ac, char **av)
 		optimize_rr(&stacks);
 		optimize_rrr(&stacks);
 		print_operations(&stacks);
+		free_operations(stacks.operations);
+		ft_lstclear(&stacks.stack_a, del);
 	}
 	return (0);
 }
