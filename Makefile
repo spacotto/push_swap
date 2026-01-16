@@ -59,7 +59,7 @@ OP			:=	op_swap.c \
 SORT		:=	sort_check.c \
 				sort_index.c \
 				sort_find.c \
-				sort_cost.c \
+				sort_ops.c \
 				simple_sort.c \
 				chunk_sort.c
 
