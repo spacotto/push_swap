@@ -71,6 +71,39 @@ static void	chunk_presort(t_stacks *stacks)
 	}
 }
 
+static int	dist_to_top(t_list *stack, t_list *target)
+{
+	int	pos;
+	int	size;
+
+	pos = ft_lstpos(stack, target);
+	size = ft_lstsize(stack);
+	if (pos <= size / 2)
+		return (pos);
+	return (size - pos);
+}
+
+static t_list	*find_second_biggest(t_list *stack)
+{
+	t_list	*max;
+	t_list	*second;
+
+	if (!stack || !stack->next)
+		return (NULL);
+	max = find_biggest(stack);
+	second = NULL;
+	while (stack)
+	{
+		if (stack != max)
+		{
+			if (!second || stack->index > second->index)
+				second = stack;
+		}
+		stack = stack->next;
+	}
+	return (second);
+}
+
 void	chunk_sort(t_stacks *stacks)
 {
 	t_list	*biggest;
@@ -78,25 +111,20 @@ void	chunk_sort(t_stacks *stacks)
 
 	assign_index(stacks->stack_a);
 	chunk_presort(stacks);
-	simple_sort(stacks); // Sorts the 3 left in A
-
+	simple_sort(stacks);
 	while (stacks->stack_b)
 	{
 		biggest = find_biggest(stacks->stack_b);
-		second_biggest = find_second_biggest(stacks->stack_b); // You'll need this helper
-
-		// Optimization: If second_max is closer to the top than max
-		// and it exists, we push it first.
+		second_biggest = find_second_biggest(stacks->stack_b);
 		if (second_biggest && (dist_to_top(stacks->stack_b, second_biggest) < 
 			dist_to_top(stacks->stack_b, biggest)))
 		{
 			move_to_top_b(stacks, second_biggest);
 			ft_pa(stacks);
-			// Now that second_max is in A, find the max (which is still in B)
 			biggest = find_biggest(stacks->stack_b);
 			move_to_top_b(stacks, biggest);
 			ft_pa(stacks);
-			ft_sa(stacks); // Swap them in A to fix the order
+			ft_sa(stacks);
 		}
 		else
 		{
