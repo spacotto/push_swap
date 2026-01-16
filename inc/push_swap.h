@@ -70,6 +70,7 @@ t_list	*find_biggest(t_list *stack);
 
 void	move_to_top_a(t_stacks *stacks, t_list *target);
 void	move_to_top_b(t_stacks *stacks, t_list *target);
+void	add_operation(t_stacks *stacks, char *op);
 
 void	sort_two(t_stacks *stacks);
 void	sort_three(t_stacks *stacks);
