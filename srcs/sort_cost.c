@@ -55,3 +55,24 @@ void	move_to_top_b(t_stacks *stacks, t_list *target)
 			ft_rb(stacks);
 	}
 }
+
+void	add_operation(t_stacks *stacks, char *op)
+{
+	t_ops	*new_node;
+	t_ops	*current;
+
+	new_node = malloc(sizeof(t_ops));
+	if (!new_node)
+		return;
+	new_node->operation = op;
+	new_node->next = NULL;
+	if (!stacks->operations)
+		stacks->operations = new_node;
+	else
+	{
+		current = stacks->operations;
+		while (current->next)
+			current = current->next;
+		current->next = new_node;
+	}
+}
