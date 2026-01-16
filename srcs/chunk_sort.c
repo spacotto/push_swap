@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 17:46:50 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/16 16:53:12 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:07:21 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,6 @@ static int	choose_chunk_size(int stack_size)
 	return (chunk_size);
 }
 
-static int	ischunk(int index, int chunk_min, int chunk_max)
-{
-	if (index >= chunk_min && index <= chunk_max)
-		return (1);
-	else
-		return (0);
-}
-
 static void	build_chunk(t_stacks *stacks, int chunk_min, int chunk_max)
 {
 	int	stack_size;
@@ -42,7 +34,8 @@ static void	build_chunk(t_stacks *stacks, int chunk_min, int chunk_max)
 	rotations = 0;
 	while (rotations < stack_size && stacks->stack_a)
 	{
-		if (ischunk(stacks->stack_a->index, chunk_min, chunk_max) == 1)
+		if (stacks->stack_a->index >= chunk_min 
+			&& stacks->stack_a->index <= chunk_max)
 		{
 			ft_pb(stacks);
 			if (stacks->stack_b->index < chunk_min + (chunk_max - chunk_min) / 2)
