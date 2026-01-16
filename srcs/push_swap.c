@@ -55,6 +55,7 @@ int	main(int ac, char **av)
 	i = 1;
 	stacks.stack_a = NULL;
 	stacks.stack_b = NULL;
+	stacks.operations = NULL;
 	if (ac > 1)
 	{
 		while (i < ac)
