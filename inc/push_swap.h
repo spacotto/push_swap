@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/16 14:53:39 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/16 16:13:41 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,11 @@
 // STRUCTURES
 // ============================================================================
 
-typedef struct s_ops
-{
-	char			*operation;
-	struct s_ops	*next;
-}	t_ops;
-
 typedef struct s_stacks
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	t_ops	*operations;
+	t_list	*operations;
 }	t_stacks;
 
 // ============================================================================

@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:31:36 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/16 15:48:05 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/16 16:18:41 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ void	move_to_top_b(t_stacks *stacks, t_list *target)
 
 void	add_operation(t_stacks *stacks, char *op)
 {
-	t_ops	*new_node;
-	t_ops	*current;
+	t_list	*new_node;
+	t_list	*current;
 
-	new_node = malloc(sizeof(t_ops));
+	new_node = malloc(sizeof(t_list));
 	if (!new_node)
 		return;
-	new_node->operation = op;
+	new_node->content = op;
 	new_node->next = NULL;
 	if (!stacks->operations)
 		stacks->operations = new_node;
@@ -79,25 +79,25 @@ void	add_operation(t_stacks *stacks, char *op)
 
 void	optimize_rr(t_stacks *stacks)
 {
-	t_ops	*current;
-	t_ops	*next;
+	t_list	*current;
+	t_list	*next;
 
 	current = stacks->operations;
 	while (current && current->next)
 	{
 		next = current->next;
-		if (ft_strcmp(current->operation, "ra\n") == 0
-			&& ft_strcmp(next->operation, "rb\n") == 0)
+		if (ft_strcmp(current->content, "ra\n") == 0
+			&& ft_strcmp(next->content, "rb\n") == 0)
 		{
-			current->operation = "rr\n";
+			current->content = "rr\n";
 			current->next = next->next;
 			free(next);
 			continue;
 		}
-		if (ft_strcmp(current->operation, "rb\n") == 0
-			&& ft_strcmp(next->operation, "ra\n") == 0)
+		if (ft_strcmp(current->content, "rb\n") == 0
+			&& ft_strcmp(next->content, "ra\n") == 0)
 		{
-			current->operation = "rr\n";
+			current->content = "rr\n";
 			current->next = next->next;
 			free(next);
 			continue;
@@ -108,25 +108,25 @@ void	optimize_rr(t_stacks *stacks)
 
 void	optimize_rrr(t_stacks *stacks)
 {
-	t_ops	*current;
-	t_ops	*next;
+	t_list	*current;
+	t_list	*next;
 
 	current = stacks->operations;
 	while (current && current->next)
 	{
 		next = current->next;
-		if (ft_strcmp(current->operation, "rra\n") == 0
-			&& ft_strcmp(next->operation, "rrb\n") == 0)
+		if (ft_strcmp(current->content, "rra\n") == 0
+			&& ft_strcmp(next->content, "rrb\n") == 0)
 		{
-			current->operation = "rrr\n";
+			current->content = "rrr\n";
 			current->next = next->next;
 			free(next);
 			continue;
 		}
-		if (ft_strcmp(current->operation, "rrb\n") == 0
-			&& ft_strcmp(next->operation, "rra\n") == 0)
+		if (ft_strcmp(current->content, "rrb\n") == 0
+			&& ft_strcmp(next->content, "rra\n") == 0)
 		{
-			current->operation = "rrr\n";
+			current->content = "rrr\n";
 			current->next = next->next;
 			free(next);
 			continue;
