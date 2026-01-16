@@ -24,10 +24,17 @@
 // STRUCTURES
 // ============================================================================
 
+typedef struct s_ops
+{
+	char			*operation;
+	struct s_ops	*next;
+}	t_ops;
+
 typedef struct s_stacks
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+	t_ops	*operations;
 }	t_stacks;
 
 // ============================================================================
