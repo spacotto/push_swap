@@ -47,6 +47,18 @@ void	push_swap(t_stacks *stacks)
 	}
 }
 
+static void	print_operations(t_stacks *stacks)
+{
+	t_ops	*current;
+
+	current = stacks->operations;
+	while (current)
+	{
+		ft_putstr_fd(current->operation, 1);
+		current = current->next;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_stacks	stacks;
@@ -64,6 +76,8 @@ int	main(int ac, char **av)
 			i++;
 		}
 		push_swap(&stacks);
+		optimize_operations(&stacks);
+		print_operations(&stacks);
 	}
 	return (0);
 }
