@@ -6,13 +6,13 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:31:36 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/15 20:27:03 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/16 14:10:15 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	cost_to_top_a(t_stacks *stacks, t_list *target)
+void	move_to_top_a(t_stacks *stacks, t_list *target)
 {
 	int	size;
 	int	position;
@@ -34,7 +34,7 @@ void	cost_to_top_a(t_stacks *stacks, t_list *target)
 	}
 }
 
-void	cost_to_top_b(t_stacks *stacks, t_list *target)
+void	move_to_top_b(t_stacks *stacks, t_list *target)
 {
 	int	size;
 	int	position;

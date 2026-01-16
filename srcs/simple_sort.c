@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 19:39:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/15 21:44:17 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/16 14:17:51 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,16 @@ void	sort_three(t_stacks *stacks)
 void	sort_four(t_stacks *stacks)
 {
 	t_list	*smallest;
+	int		rotation;
 
 	assign_index(stacks->stack_a);
 	smallest = find_smallest(stacks->stack_a);
-	if (stacks->stack_a != smallest)
-		cost_to_top_a(stacks, smallest);
 	ft_pb(stacks);
 	smallest = find_smallest(stacks->stack_a);
 	if (stacks->stack_a != smallest)
-		cost_to_top_a(stacks, smallest);
+		move_to_top_a(stacks, smallest);
+	if (stacks->stack_a != smallest)
+		move_to_top_a(stacks, smallest);
 	ft_pb(stacks);
 	if (sort_check(stacks) == 0)
 		ft_sa(stacks);
@@ -73,11 +74,11 @@ void	sort_five(t_stacks *stacks)
 	assign_index(stacks->stack_a);
 	smallest = find_smallest(stacks->stack_a);
 	if (stacks->stack_a != smallest)
-		cost_to_top_a(stacks, smallest);
+		move_to_top_a(stacks, smallest);
 	ft_pb(stacks);
 	smallest = find_smallest(stacks->stack_a);
 	if (stacks->stack_a != smallest)
-		cost_to_top_a(stacks, smallest);
+		move_to_top_a(stacks, smallest);
 	ft_pb(stacks);
 	sort_three(stacks);
 	ft_pa(stacks);
