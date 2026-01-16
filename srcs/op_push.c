@@ -27,11 +27,11 @@ static void	push(t_list **dst, t_list **src)
 void	ft_pa(t_stacks *stacks)
 {
 	push(&stacks->stack_a, &stacks->stack_b);
-	ft_putstr_fd("pa\n", 1);
+	add_operation(stacks, "pa\n");
 }
 
 void	ft_pb(t_stacks *stacks)
 {
 	push(&stacks->stack_b, &stacks->stack_a);
-	ft_putstr_fd("pb\n", 1);
+	add_operation(stacks, "pb\n");
 }
