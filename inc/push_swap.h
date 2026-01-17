@@ -40,6 +40,7 @@ void	push_swap(t_stacks *stacks);
 int		main(int ac, char **av);
 
 // Parsing
+int		sort_check(t_stacks *stacks);
 void	get_tokens(t_stacks *stacks, char *s);
 
 // Operations
@@ -59,12 +60,12 @@ void	ft_rrb(t_stacks *stacks);
 void	ft_rrr(t_stacks *stacks);
 
 // Sorting
-int		sort_check(t_stacks *stacks);
 void	assign_index(t_list *stack);
 
 t_list	*find_smallest(t_list *stack);
 t_list	*find_biggest(t_list *stack);
 t_list	*find_second_biggest(t_list *stack);
+t_list	*find_third_biggest(t_list *stack);
 int		find_distance(t_list *stack, t_list *target);
 
 void	move_to_top_a(t_stacks *stacks, t_list *target);
