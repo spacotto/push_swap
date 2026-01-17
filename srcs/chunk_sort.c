@@ -19,7 +19,7 @@ static int	choose_chunk_size(int stack_size)
 	if (stack_size <= 16)
 		chunk_size = 4;
 	else if (stack_size <= 100)
-		chunk_size = 35;
+		chunk_size = 25;
 	else
 		chunk_size = 50;
 	return (chunk_size);
@@ -27,28 +27,22 @@ static int	choose_chunk_size(int stack_size)
 
 static void	build_chunk(t_stacks *stacks, int chunk_min, int chunk_max)
 {
-	int	stack_size;
-	int	rotations;
+	t_list	*target;
+	int		mid;
 
-	stack_size = ft_lstsize(stacks->stack_a);
-	rotations = 0;
-	while (rotations < stack_size && stacks->stack_a)
-	{
-		if (stacks->stack_a->index >= chunk_min 
-			&& stacks->stack_a->index <= chunk_max)
+	mid = chunk_min + (chunk_max - chunk_min) / 2;
+	while (1)
 		{
+			target = best_target(stacks->stack_a, chunk_min, chunk_max);
+			if (!target)
+				break;
+			move_to_top_a(stacks, target);
 			ft_pb(stacks);
-			if (stacks->stack_b->index < chunk_min + (chunk_max - chunk_min) / 2)
-				ft_rb(stacks);
-			rotations = 0;
-			stack_size = ft_lstsize(stacks->stack_a);
+			if (stacks->stack_b && stacks->stack_b->index < mid)
+				{
+					ft_rb(stacks);
+				}
 		}
-		else
-		{
-			ft_ra(stacks);
-			rotations++;
-		}
-	}
 }
 
 static void	chunk_presort(t_stacks *stacks)
@@ -102,6 +96,5 @@ void	chunk_sort(t_stacks *stacks)
 {
 	assign_index(stacks->stack_a);
 	chunk_presort(stacks);
-//	simple_sort(stacks);
 	chunk_finalsort(stacks);
 }
