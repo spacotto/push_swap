@@ -75,7 +75,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     # 1. Run 20 loops with 100 numbers (Limit 700)
-    run_test(num_count=100, max_ops=700, iterations=20, log_errors=False)
+    run_test(num_count=100, max_ops=700, iterations=100, log_errors=False)
 
     # 2. Run 100 loops with 500 numbers (Limit 5500) -> Logs to file
     run_test(num_count=500, max_ops=5500, iterations=100, log_errors=True)
