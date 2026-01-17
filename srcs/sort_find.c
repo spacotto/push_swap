@@ -83,3 +83,31 @@ int	find_distance(t_list *stack, t_list *target)
 	else
 		return (size - position);
 }
+
+t_list	*find_best_target(t_list *stack, int chunk_min, int chunk_max)
+{
+	t_list	*current;
+	t_list	*best;
+	int		min_distance;
+	int		distance;
+
+	if (!stack)
+		return (NULL);
+	current = stack;
+	best = NULL;
+	min_distance = ft_lstsize(stack) + 1;  // Start with impossible value
+	while (current)
+	{
+		if (current->index >= chunk_min && current->index <= chunk_max)
+		{
+			distance = find_distance(stack, current);
+			if (distance < min_distance)
+			{
+				min_distance = distance;
+				best = current;
+			}
+		}
+		current = current->next;
+	}
+	return (best);
+}
