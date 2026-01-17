@@ -11,7 +11,7 @@ ERROR_LOG_FILE = "error_log.txt"
 
 def generate_random_numbers(count):
     """Generates a list of unique random integers."""
-    return random.sample(range(-10000, 10000), count)
+    return random.sample(range(-2147483648, 2147483647), count)
 
 def run_test(num_count, max_ops, iterations, log_errors=False):
     print(f"\n--- Running {iterations} tests with {num_count} numbers (Max Ops: {max_ops}) ---")
@@ -75,7 +75,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     # 1. Run 20 loops with 100 numbers (Limit 700)
-    run_test(num_count=100, max_ops=700, iterations=100, log_errors=False)
+    run_test(num_count=100, max_ops=699, iterations=100, log_errors=False)
 
     # 2. Run 100 loops with 500 numbers (Limit 5500) -> Logs to file
-    run_test(num_count=500, max_ops=5500, iterations=100, log_errors=True)
+    run_test(num_count=500, max_ops=5499, iterations=100, log_errors=True)
