@@ -6,34 +6,13 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 15:34:14 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/17 15:34:25 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/17 21:34:43 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	add_operation(t_stacks *stacks, char *op)
-{
-	t_list	*new_node;
-	t_list	*current;
-
-	new_node = malloc(sizeof(t_list));
-	if (!new_node)
-		return;
-	new_node->content = op;
-	new_node->next = NULL;
-	if (!stacks->operations)
-		stacks->operations = new_node;
-	else
-	{
-		current = stacks->operations;
-		while (current->next)
-			current = current->next;
-		current->next = new_node;
-	}
-}
-
-void	optimize_rr(t_stacks *stacks)
+void	merge_rr(t_stacks *stacks)
 {
 	t_list	*current;
 	t_list	*next;
@@ -62,7 +41,7 @@ void	optimize_rr(t_stacks *stacks)
 	}
 }
 
-void	optimize_rrr(t_stacks *stacks)
+void	merge_rrr(t_stacks *stacks)
 {
 	t_list	*current;
 	t_list	*next;
@@ -90,3 +69,58 @@ void	optimize_rrr(t_stacks *stacks)
 		current = current->next;
 	}
 }
+
+void	rm_ra_rra(t_stacks *stacks)
+{
+	t_list	*current;
+	t_list	*next;
+	t_list	*tmp;
+	
+	current = stacks->operations;
+	while (current && current->next)
+	{
+		next = current->next;
+		if ((ft_strcmp(current->content, "ra\n") == 0 &&
+			ft_strcmp(next->content, "rra\n") == 0) ||
+			(ft_strcmp(current->content, "rra\n") == 0 && 
+			ft_strcmp(next->content, "ra\n") == 0))
+		{
+			current->next = next->next;
+			free(next);
+			tmp = current;
+			current = stacks->operations;
+			if (current == tmp)
+				current = current->next;
+			continue;
+		}
+		current = current->next;
+	}
+}
+
+void	rm_rb_rrb(t_stacks *stacks)
+{
+	t_list	*current;
+	t_list	*next;
+	t_list	*tmp;
+
+	current = stacks->operations;
+	while (current && current->next)
+	{
+		next = current->next;
+		if ((ft_strcmp(current->content, "rb\n") == 0 &&
+			ft_strcmp(next->content, "rrb\n") == 0) ||
+			(ft_strcmp(current->content, "rrb\n") == 0 && 
+			ft_strcmp(next->content, "rb\n") == 0))
+		{
+			current->next = next->next;
+			free(next);
+			tmp = current;
+			current = stacks->operations;
+			if (current == tmp)
+				current = current->next;
+			continue;
+		}
+		current = current->next;
+	}
+}
+

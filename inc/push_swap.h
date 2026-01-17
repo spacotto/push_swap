@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/16 17:46:13 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/17 21:29:19 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,10 @@ t_list	*find_best_target(t_list *stack, int chunk_min, int chunk_max);
 void	move_to_top_a(t_stacks *stacks, t_list *target);
 void	move_to_top_b(t_stacks *stacks, t_list *target);
 void	add_operation(t_stacks *stacks, char *op);
-void	optimize_rr(t_stacks *stacks);
-void	optimize_rrr(t_stacks *stacks);
+void	merge_rr(t_stacks *stacks);
+void	merge_rrr(t_stacks *stacks);
+void	rm_ra_rra(t_stacks *stacks);
+void	rm_rb_rrb(t_stacks *stacks);
 
 void	sort_two(t_stacks *stacks);
 void	sort_three(t_stacks *stacks);
