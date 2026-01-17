@@ -57,6 +57,7 @@ OP			:=	op_swap.c \
 				op_reverse_rotate.c 
 
 BEST		:=	best_move_to_top.c \
+				best_move_to_chunk.c \
 				best_op.c
 
 SORT		:=	sort_parsing.c \
