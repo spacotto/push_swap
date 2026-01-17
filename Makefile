@@ -56,17 +56,18 @@ OP			:=	op_swap.c \
 				op_rotate.c \
 				op_reverse_rotate.c 
 
+BEST		:=	best_move_to_top.c
+
 SORT		:=	sort_parsing.c \
 				sort_check.c \
 				sort_index.c \
 				sort_find.c \
-				sort_ops.c \
 				simple_sort.c \
 				chunk_sort.c
 
 PUSH_SWAP	:=	push_swap.c
 
-SRCS		:=	$(OP) $(SORT) $(PUSH_SWAP)
+SRCS		:=	$(OP) $(BEST) $(SORT) $(PUSH_SWAP)
 
 # ============================================================================
 # OBJECTS
