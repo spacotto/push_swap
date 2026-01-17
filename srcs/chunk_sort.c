@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 17:46:50 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/17 22:08:58 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/17 23:37:19 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	build_chunk(t_stacks *stacks, int chunk_min, int chunk_max)
 				break;
 			move_to_top_a(stacks, target);
 			ft_pb(stacks);
-			if (stacks->stack_b && stacks->stack_b->index < mid)
+			if (stacks->stack_b && stacks->stack_b->index < mid - 2)
 				{
 					ft_rb(stacks);
 				}
@@ -75,7 +75,7 @@ static void	chunk_finalsort(t_stacks *stacks)
 		biggest = find_biggest(stacks->stack_b);
 		second_biggest = find_second_biggest(stacks->stack_b);
 		if (second_biggest && (find_distance(stacks->stack_b, second_biggest) < 
-			find_distance(stacks->stack_b, biggest)))
+			find_distance(stacks->stack_b, biggest) - 1))
 		{
 			move_to_top_b(stacks, second_biggest);
 			ft_pa(stacks);
