@@ -66,10 +66,10 @@ t_list	*find_smallest(t_list *stack);
 t_list	*find_biggest(t_list *stack);
 t_list	*find_second_biggest(t_list *stack);
 int		find_distance(t_list *stack, t_list *target);
+t_list	*find_best_target(t_list *stack, int chunk_min, int chunk_max);
 
 void	move_to_top_a(t_stacks *stacks, t_list *target);
 void	move_to_top_b(t_stacks *stacks, t_list *target);
-t_list *best_target(t_list *stack, int min, int max);
 void	add_operation(t_stacks *stacks, char *op);
 void	optimize_rr(t_stacks *stacks);
 void	optimize_rrr(t_stacks *stacks);
