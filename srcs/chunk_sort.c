@@ -21,7 +21,7 @@ static int	choose_chunk_size(int stack_size)
 	else if (stack_size <= 100)
 		chunk_size = 25;
 	else
-		chunk_size = 50;
+		chunk_size = 65;
 	return (chunk_size);
 }
 
