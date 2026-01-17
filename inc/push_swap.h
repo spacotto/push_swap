@@ -65,7 +65,6 @@ void	assign_index(t_list *stack);
 t_list	*find_smallest(t_list *stack);
 t_list	*find_biggest(t_list *stack);
 t_list	*find_second_biggest(t_list *stack);
-t_list	*find_third_biggest(t_list *stack);
 int		find_distance(t_list *stack, t_list *target);
 
 void	move_to_top_a(t_stacks *stacks, t_list *target);
