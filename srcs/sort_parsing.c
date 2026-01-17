@@ -11,3 +11,27 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	get_tokens(t_stacks *stacks, char *s)
+{
+	char	*token;
+	int		*number;
+	t_list	*node;
+
+	token = ft_strtok(s, " ");
+	while (token != NULL)
+	{
+		number = malloc(1 * sizeof(int));
+		if (!number)
+			return ;
+		*number = ft_atoi(token);
+		node = ft_lstnew(number);
+		if (!node)
+		{
+			free(number);
+			return ;
+		}
+		ft_lstadd_back(&stacks->stack_a, node);
+		token = ft_strtok(NULL, " ");
+	}
+}
