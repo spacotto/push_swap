@@ -14,13 +14,13 @@
 
 t_list *cheapest_move_to_chunk(t_list *stack, int min, int max)
 {
-	t_list	*best_node;
+	t_list	*best_target;
 	int		best_cost;
 	int		cost;
 	int		index;
 	int		size;
 
-	best_node = NULL;
+	best_target = NULL;
 	best_cost = INT_MAX;
 	cost = 0;
 	index = 0;
@@ -37,13 +37,13 @@ t_list *cheapest_move_to_chunk(t_list *stack, int min, int max)
 					if (cost < best_cost)
 						{
 							best_cost = cost;
-							best_node = stack;
+							best_target = stack;
 							if (cost <= 1) // at 0 and 1 we can't get better
-								return (best_node);
+								return (best_target);
 						}
 				}
 			stack = stack->next;
 			index++;
 		}
-	return (best_node);
+	return (best_target);
 }
