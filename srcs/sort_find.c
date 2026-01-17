@@ -71,31 +71,6 @@ t_list	*find_second_biggest(t_list *stack)
 	return (second);
 }
 
-t_list	*find_third_biggest(t_list *stack)
-{
-	t_list	*biggest;
-	t_list	*second;
-	t_list	*third;
-	t_list	*current;
-
-	if (!stack || !stack->next || !stack->next->next)
-		return (NULL);
-	biggest = find_biggest(stack);
-	second = find_second_biggest(stack);
-	third = NULL;
-	current = stack;
-	while (current)
-	{
-		if (current != biggest && current != second)
-		{
-			if (!third || current->index > third->index)
-				third = current;
-		}
-		current = current->next;
-	}
-	return (third);
-}
-
 int	find_distance(t_list *stack, t_list *target)
 {
 	int	size;
