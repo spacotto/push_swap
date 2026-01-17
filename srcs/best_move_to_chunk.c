@@ -11,39 +11,3 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_list *best_target(t_list *stack, int min, int max)
-{
-	t_list	*best_target;
-	int		best_cost;
-	int		cost;
-	int		index;
-	int		size;
-
-	best_target = NULL;
-	best_cost = INT_MAX;
-	cost = 0;
-	index = 0;
-	size = ft_lstsize(stack);
-
-	while (stack)
-		{
-			if (stack->index >= min && stack->index <= max)
-				{
-					if (index <= size / 2)
-						cost = index; // ra
-					else
-						cost = size - index; // rra
-					if (cost < best_cost)
-						{
-							best_cost = cost;
-							best_target = stack;
-							if (cost <= 1) // at 0 and 1 we can't get better
-								return (best_target);
-						}
-				}
-			stack = stack->next;
-			index++;
-		}
-	return (best_target);
-}
