@@ -33,7 +33,7 @@ static void	build_chunk(t_stacks *stacks, int chunk_min, int chunk_max)
 	mid = chunk_min + (chunk_max - chunk_min) / 2;
 	while (1)
 		{
-			target = best_target(stacks->stack_a, chunk_min, chunk_max);
+			target = t_list	*find_best_target(stacks->stack_a, chunk_min, chunk_max);
 			if (!target)
 				break;
 			move_to_top_a(stacks, target);
