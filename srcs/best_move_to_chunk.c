@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_list *cheapest_move_to_chunk(t_list *stack, int min, int max)
+t_list *best_target(t_list *stack, int min, int max)
 {
 	t_list	*best_target;
 	int		best_cost;
