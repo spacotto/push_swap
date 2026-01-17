@@ -39,6 +39,9 @@ typedef struct s_stacks
 void	push_swap(t_stacks *stacks);
 int		main(int ac, char **av);
 
+// Parsing
+void	get_tokens(t_stacks *stacks, char *s);
+
 // Operations
 void	ft_sa(t_stacks *stacks);
 void	ft_sb(t_stacks *stacks);
