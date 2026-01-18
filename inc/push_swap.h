@@ -76,6 +76,8 @@ int		merge_rr(t_list  *cmp1, t_list  *cmp2);
 int		merge_rrr(t_list  *cmp1, t_list  *cmp2);
 int		rm_ra_rra(t_list  *cmp1, t_list  *cmp2);
 int		rm_rb_rrb(t_list  *cmp1, t_list  *cmp2);
+void	optimise_ops(t_stacks *stacks);
+void	print_ops(t_stacks *stacks);
 
 void	sort_two(t_stacks *stacks);
 void	sort_three(t_stacks *stacks);
