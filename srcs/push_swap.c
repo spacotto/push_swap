@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 16:46:26 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/18 15:29:27 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/18 17:24:59 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,43 @@ void	add_operation(t_stacks *stacks, char *op)
 	}
 }
 
+static void	check_ops(t_list  *cmp1, t_list  *cmp2)
+{
+	if (merge_rr(cmp1, cmp2) == 1)
+		return ;
+	else if (merge_rrr(cmp1, cmp2) == 1)
+		return ;
+	else if (rm_ra_rra(cmp1, cmp2) == 1)
+		return ;
+	else if (rm_rb_rrb(cmp1, cmp2) == 1)
+		return ;
+	else
+		return ;
+}
+
 static void	optimise_ops(t_stacks *stacks)
 {
-	merge_rr(stacks);
-	merge_rrr(stacks);
-	rm_ra_rra(stacks);
-	rm_rb_rrb(stacks);
+	t_list  *cmp1;
+	t_list  *cmp2;
+
+	cmp1 = stacks->operations;
+	cmp2 = cmp1->next;
+	while (cmp1 && cmp2)
+	{	
+		if (cmp1->content && cmp2->content)
+		{
+			check_ops(cmp1, cmp2);
+			cmp1 = cmp2->next;
+			cmp2 = cmp1->next;
+		}
+		else if (!cmp1->content)
+		{
+			cmp1 = cmp2;
+			cmp2 = cmp1->next;
+		}
+		else if (!cmp2->content)
+			cmp2 = cmp2->next;
+	}
 }
 
 static void	print_ops(t_stacks *stacks)
@@ -59,7 +90,8 @@ static void	print_ops(t_stacks *stacks)
 	current = stacks->operations;
 	while (current)
 	{
-		ft_putstr_fd(current->content, 1);
+		if (current->content)
+			ft_putstr_fd(current->content, 1);
 		current = current->next;
 	}
 }
@@ -83,7 +115,7 @@ int	main(int ac, char **av)
 		push_swap(&stacks);
 		optimise_ops(&stacks);
 		print_ops(&stacks);
-//		ft_lstclear(&stacks.operations, del); // fix free
+		ft_lstclear(&stacks.operations, del);
 		ft_lstclear(&stacks.stack_a, del);
 	}
 	return (0);

@@ -6,121 +6,69 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 15:34:14 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/18 15:48:33 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/18 17:24:03 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	merge_rr(t_stacks *stacks)
+int	merge_rr(t_list  *cmp1, t_list  *cmp2)
 {
-	t_list	*current;
-	t_list	*next;
-
-	current = stacks->operations;
-	while (current && current->next)
-	{
-		next = current->next;
-		if (ft_strcmp(current->content, "ra\n") == 0
-			&& ft_strcmp(next->content, "rb\n") == 0)
+	if ((ft_strcmp(cmp1->content, "ra\n") == 0 && 
+		ft_strcmp(cmp2->content, "rb\n") == 0) ||
+		(ft_strcmp(cmp1->content, "rb\n") == 0 &&
+		ft_strcmp(cmp2->content, "ra\n") == 0))
 		{
-			current->content = "rr\n";
-			current->next = next->next;
-			free(next);
-			continue;
+			cmp1->content = "rr\n";
+			free(cmp2->content);
+			return (1);
 		}
-		if (ft_strcmp(current->content, "rb\n") == 0
-			&& ft_strcmp(next->content, "ra\n") == 0)
-		{
-			current->content = "rr\n";
-			current->next = next->next;
-			free(next);
-			continue;
-		}
-		current = current->next;
-	}
+	else
+		return (0);
 }
 
-void	merge_rrr(t_stacks *stacks)
+int	merge_rrr(t_list  *cmp1, t_list  *cmp2)
 {
-	t_list	*current;
-	t_list	*next;
-
-	current = stacks->operations;
-	while (current && current->next)
-	{
-		next = current->next;
-		if (ft_strcmp(current->content, "rra\n") == 0
-			&& ft_strcmp(next->content, "rrb\n") == 0)
+	if ((ft_strcmp(cmp1->content, "rra\n") == 0 && 
+		ft_strcmp(cmp2->content, "rrb\n") == 0) ||
+		(ft_strcmp(cmp1->content, "rrb\n") == 0 &&
+		ft_strcmp(cmp2->content, "rra\n") == 0))
 		{
-			current->content = "rrr\n";
-			current->next = next->next;
-			free(next);
-			continue;
+			cmp1->content = "rrr\n";
+			free(cmp2->content);
+			return (1);
 		}
-		if (ft_strcmp(current->content, "rrb\n") == 0
-			&& ft_strcmp(next->content, "rra\n") == 0)
-		{
-			current->content = "rrr\n";
-			current->next = next->next;
-			free(next);
-			continue;
-		}
-		current = current->next;
-	}
+	else
+		return (0);
 }
 
-void	rm_ra_rra(t_stacks *stacks)
+int	rm_ra_rra(t_list  *cmp1, t_list  *cmp2)
 {
-	t_list	*current;
-	t_list	*next;
-	t_list	*tmp;
-	
-	current = stacks->operations;
-	while (current && current->next)
-	{
-		next = current->next;
-		if ((ft_strcmp(current->content, "ra\n") == 0 &&
-			ft_strcmp(next->content, "rra\n") == 0) ||
-			(ft_strcmp(current->content, "rra\n") == 0 && 
-			ft_strcmp(next->content, "ra\n") == 0))
+	if ((ft_strcmp(cmp1->content, "ra\n") == 0 &&
+		ft_strcmp(cmp2->content, "rra\n") == 0) ||
+		(ft_strcmp(cmp1->content, "rra\n") == 0 && 
+		ft_strcmp(cmp2->content, "ra\n") == 0))
 		{
-			current->next = next->next;
-			free(next);
-			tmp = current;
-			current = stacks->operations;
-			if (current == tmp)
-				current = current->next;
-			continue;
+			free(cmp1->content);
+			free(cmp2->content);
+			return (1);
 		}
-		current = current->next;
-	}
+	else
+		return (0);
 }
 
-void	rm_rb_rrb(t_stacks *stacks)
+int	rm_rb_rrb(t_list  *cmp1, t_list  *cmp2)
 {
-	t_list	*current;
-	t_list	*next;
-	t_list	*tmp;
-
-	current = stacks->operations;
-	while (current && current->next)
-	{
-		next = current->next;
-		if ((ft_strcmp(current->content, "rb\n") == 0 &&
-			ft_strcmp(next->content, "rrb\n") == 0) ||
-			(ft_strcmp(current->content, "rrb\n") == 0 && 
-			ft_strcmp(next->content, "rb\n") == 0))
+	if ((ft_strcmp(cmp1->content, "ra\n") == 0 &&
+		ft_strcmp(cmp2->content, "rra\n") == 0) ||
+		(ft_strcmp(cmp1->content, "rra\n") == 0 && 
+		ft_strcmp(cmp2->content, "ra\n") == 0))
 		{
-			current->next = next->next;
-			free(next);
-			tmp = current;
-			current = stacks->operations;
-			if (current == tmp)
-				current = current->next;
-			continue;
+			free(cmp1->content);
+			free(cmp2->content);
+			return (1);
 		}
-		current = current->next;
-	}
+	else
+		return (0);
 }
 
