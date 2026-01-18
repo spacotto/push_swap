@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 16:46:26 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/18 17:24:59 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/18 17:51:07 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,10 @@ static void	optimise_ops(t_stacks *stacks)
 		{
 			check_ops(cmp1, cmp2);
 			cmp1 = cmp2->next;
-			cmp2 = cmp1->next;
+			if (cmp1->next)
+				cmp2 = cmp1->next;
+			else
+				break ;
 		}
 		else if (!cmp1->content)
 		{
