@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 20:04:16 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/18 20:05:50 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/18 22:41:17 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,46 +33,9 @@ void	add_operation(t_stacks *stacks, char *op)
 	}
 }
 
-static void	check_ops(t_list  *cmp1, t_list  *cmp2)
-{
-	if (merge_rr(cmp1, cmp2) == 1)
-		return ;
-	else if (merge_rrr(cmp1, cmp2) == 1)
-		return ;
-	else if (rm_ra_rra(cmp1, cmp2) == 1)
-		return ;
-	else if (rm_rb_rrb(cmp1, cmp2) == 1)
-		return ;
-	else
-		return ;
-}
-
 void	optimise_ops(t_stacks *stacks)
 {
-	t_list  *cmp1;
-	t_list  *cmp2;
-
-	cmp1 = stacks->operations;
-	cmp2 = cmp1->next;
-	while (cmp1 && cmp2)
-	{
-		if (cmp1->content && cmp2->content)
-		{
-			check_ops(cmp1, cmp2);
-			cmp1 = cmp2->next;
-			if (cmp1->next)
-				cmp2 = cmp1->next;
-			else
-				break ;
-		}
-		else if (!cmp1->content)
-		{
-			cmp1 = cmp2;
-			cmp2 = cmp1->next;
-		}
-		else if (!cmp2->content)
-			cmp2 = cmp2->next;
-	}
+	merge_rr(stacks->operations);
 }
 
 void	print_ops(t_stacks *stacks)
