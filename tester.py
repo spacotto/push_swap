@@ -141,8 +141,8 @@ if __name__ == "__main__":
 ```
 --- Running 100 tests with 100 numbers (Max Ops: 699) ---
 Test 100/100
-checker_linux 100/100  ← Green if all OK
-my_checker 100/100     ← Green if all OK
+checker_linux 100/100  # Green if all OK
+my_checker 100/100     # Green if all OK
 
 Results for 100 numbers:
 Average: 599.4 ops
