@@ -7,19 +7,20 @@ import sys
 # --- CONFIGURATION ---
 PUSH_SWAP_PATH = "./push_swap"
 CHECKER_LINUX_PATH = "./checker_linux"
-MY_CHECKER_PATH = "./checker"  # Your own checker
+MY_CHECKER_PATH = "./checker"
 ERROR_LOG_FILE = "error_log.txt"
 
 def generate_random_numbers(count):
     """Generates a list of unique random integers."""
     return random.sample(range(-2147483648, 2147483647), count)
 
-def run_checker(checker_path, args, operations):
+def run_checker(checker_path, args_str, operations):
     """Runs a checker program and returns True if output is 'OK'."""
     try:
+        # Run: echo "operations" | ./checker args
         process = subprocess.run(
-            [checker_path] + args,
-            input=operations,
+            f'echo "{operations}" | {checker_path} {args_str}',
+            shell=True,
             capture_output=True,
             text=True
         )
@@ -31,14 +32,10 @@ def run_test(num_count, max_ops, iterations, log_errors=False):
     # Color codes
     GREEN = "\033[92m"
     RED = "\033[91m"
+    CYAN = "\033[0;96m"
     RESET = "\033[0m"
     
-    # Check if limit is respected for coloring
-    limit_color = GREEN if max_ops >= 699 else RED
-    if num_count == 500:
-        limit_color = GREEN if max_ops >= 5499 else RED
-    
-    print(f"\n--- Running {iterations} tests with {num_count} numbers (Max Ops: {limit_color}{max_ops}{RESET}) ---")
+    print(f"\n--- Running {iterations} tests with {num_count} numbers (Ops limit: {CYAN}<{max_ops + 1}{RESET}) ---")
 
     failures = 0
     total_ops = 0
@@ -53,6 +50,7 @@ def run_test(num_count, max_ops, iterations, log_errors=False):
     for i in range(1, iterations + 1):
         numbers = generate_random_numbers(num_count)
         args = [str(n) for n in numbers]
+        args_str = ' '.join(args)
 
         try:
             # Run push_swap
@@ -68,11 +66,11 @@ def run_test(num_count, max_ops, iterations, log_errors=False):
             total_ops += ops_count
 
             # Run checker_linux
-            if run_checker(CHECKER_LINUX_PATH, args, output):
+            if run_checker(CHECKER_LINUX_PATH, args_str, output):
                 checker_linux_ok += 1
 
             # Run my_checker
-            if run_checker(MY_CHECKER_PATH, args, output):
+            if run_checker(MY_CHECKER_PATH, args_str, output):
                 my_checker_ok += 1
 
             # Check if too many ops
@@ -80,7 +78,7 @@ def run_test(num_count, max_ops, iterations, log_errors=False):
                 failures += 1
                 if log_errors:
                     with open(ERROR_LOG_FILE, "a") as f:
-                        f.write(f"Test {i}: {ops_count} moves. Numbers: {' '.join(args)}\n")
+                        f.write(f"Test {i}: {ops_count} moves. Numbers: {args_str}\n")
 
             # Visual progress
             print(f"\rTest {i}/{iterations}", end="")
@@ -105,8 +103,11 @@ def run_test(num_count, max_ops, iterations, log_errors=False):
     print(f"\nResults for {num_count} numbers:")
     print(f"Average: {avg:.1f} ops")
     print(f"Failures: {failures}")
+    
+    # Error log section
     if log_errors and failures > 0:
-        print(f"Errors logged to {ERROR_LOG_FILE}")
+        print(f"\n--- Errors logged to ---")
+        print(f"{ERROR_LOG_FILE}")
 
 if __name__ == "__main__":
     # Check if push_swap exists
@@ -116,8 +117,8 @@ if __name__ == "__main__":
         print("Error: ./push_swap not found. Compile it first!")
         sys.exit(1)
 
-    # 1. Run 100 loops with 100 numbers (Limit 700)
+    # 1. Run 100 loops with 100 numbers (Limit <700)
     run_test(num_count=100, max_ops=699, iterations=100, log_errors=False)
 
-    # 2. Run 100 loops with 500 numbers (Limit 5500)
+    # 2. Run 100 loops with 500 numbers (Limit <5500)
     run_test(num_count=500, max_ops=5499, iterations=100, log_errors=True)
