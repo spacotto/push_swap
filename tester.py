@@ -28,17 +28,18 @@ def run_checker(checker_path, args_str, operations):
     except:
         return False
 
-def run_test(num_count, max_ops, iterations, log_errors=False):
+def run_test(num_count, ops_limit, iterations, log_errors=False):
     # Color codes
     GREEN = "\033[92m"
     RED = "\033[91m"
     CYAN = "\033[0;96m"
     RESET = "\033[0m"
     
-    print(f"\n--- Running {iterations} tests with {num_count} numbers (Ops limit: {CYAN}<{max_ops + 1}{RESET}) ---")
+    print(f"\n--- Running {iterations} tests with {num_count} numbers (Ops limit: {CYAN}<{ops_limit + 1}{RESET}, Max ops: ", end="")
 
     failures = 0
     total_ops = 0
+    max_ops_seen = 0
     checker_linux_ok = 0
     my_checker_ok = 0
 
@@ -64,6 +65,7 @@ def run_test(num_count, max_ops, iterations, log_errors=False):
                 ops_count = len(output.split('\n'))
 
             total_ops += ops_count
+            max_ops_seen = max(max_ops_seen, ops_count)
 
             # Run checker_linux
             if run_checker(CHECKER_LINUX_PATH, args_str, output):
@@ -74,13 +76,16 @@ def run_test(num_count, max_ops, iterations, log_errors=False):
                 my_checker_ok += 1
 
             # Check if too many ops
-            if ops_count > max_ops:
+            if ops_count > ops_limit:
                 failures += 1
                 if log_errors:
                     with open(ERROR_LOG_FILE, "a") as f:
                         f.write(f"Test {i}: {ops_count} moves. Numbers: {args_str}\n")
 
-            # Visual progress
+            # Visual progress (overwrite previous line)
+            print(f"\r--- Running {iterations} tests with {num_count} numbers (Ops limit: {CYAN}<{ops_limit + 1}{RESET}, Max ops: ", end="")
+            max_ops_color = GREEN if max_ops_seen <= ops_limit else RED
+            print(f"{max_ops_color}{max_ops_seen}{RESET}) ---", end="")
             print(f"\rTest {i}/{iterations}", end="")
             sys.stdout.flush()
 
@@ -88,8 +93,10 @@ def run_test(num_count, max_ops, iterations, log_errors=False):
             print(f"\nError running test {i}: {e}")
             return
 
-    # Final results
-    print()  # New line after progress
+    # Print final header with max ops
+    max_ops_color = GREEN if max_ops_seen <= ops_limit else RED
+    print(f"\r--- Running {iterations} tests with {num_count} numbers (Ops limit: {CYAN}<{ops_limit + 1}{RESET}, Max ops: {max_ops_color}{max_ops_seen}{RESET}) ---")
+    print(f"Test {iterations}/{iterations}")
     
     # checker_linux results
     checker_linux_color = GREEN if checker_linux_ok == iterations else RED
@@ -118,7 +125,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     # 1. Run 100 loops with 100 numbers (Limit <700)
-    run_test(num_count=100, max_ops=699, iterations=100, log_errors=False)
+    run_test(num_count=100, ops_limit=699, iterations=100, log_errors=False)
 
     # 2. Run 100 loops with 500 numbers (Limit <5500)
-    run_test(num_count=500, max_ops=5499, iterations=100, log_errors=True)
+    run_test(num_count=500, ops_limit=5499, iterations=100, log_errors=True)
