@@ -121,29 +121,3 @@ if __name__ == "__main__":
 
     # 2. Run 100 loops with 500 numbers (Limit 5500)
     run_test(num_count=500, max_ops=5499, iterations=100, log_errors=True)
-```
-
-**Key changes:**
-
-1. **Added `run_checker` function** - Runs any checker program and returns True if result is "OK"
-
-2. **Track checker results** - Counts how many tests pass for each checker
-
-3. **Color-coded max_ops** - Green if within limit, red if not
-
-4. **Removed per-test ops count** - Only shows "Test X/Y" progress
-
-5. **Added checker output lines**:
-   - `checker_linux X/Y` (green if all OK, red if any KO)
-   - `my_checker X/Y` (same logic)
-
-**Output will look like:**
-```
---- Running 100 tests with 100 numbers (Max Ops: 699) ---
-Test 100/100
-checker_linux 100/100  # Green if all OK
-my_checker 100/100     # Green if all OK
-
-Results for 100 numbers:
-Average: 599.4 ops
-Failures: 0
