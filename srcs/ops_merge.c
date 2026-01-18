@@ -41,34 +41,3 @@ int	merge_rrr(t_list  *cmp1, t_list  *cmp2)
 	else
 		return (0);
 }
-
-int	rm_ra_rra(t_list  *cmp1, t_list  *cmp2)
-{
-	if ((ft_strcmp(cmp1->content, "ra\n") == 0 &&
-		ft_strcmp(cmp2->content, "rra\n") == 0) ||
-		(ft_strcmp(cmp1->content, "rra\n") == 0 && 
-		ft_strcmp(cmp2->content, "ra\n") == 0))
-		{
-			free(cmp1->content);
-			free(cmp2->content);
-			return (1);
-		}
-	else
-		return (0);
-}
-
-int	rm_rb_rrb(t_list  *cmp1, t_list  *cmp2)
-{
-	if ((ft_strcmp(cmp1->content, "ra\n") == 0 &&
-		ft_strcmp(cmp2->content, "rra\n") == 0) ||
-		(ft_strcmp(cmp1->content, "rra\n") == 0 && 
-		ft_strcmp(cmp2->content, "ra\n") == 0))
-		{
-			free(cmp1->content);
-			free(cmp2->content);
-			return (1);
-		}
-	else
-		return (0);
-}
-
