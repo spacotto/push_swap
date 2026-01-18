@@ -104,11 +104,13 @@ def run_test(num_count, ops_limit, iterations, log_errors=False):
     # Results section
     avg = total_ops / iterations
     max_ops_color = GREEN if max_ops_seen <= ops_limit else RED
+    avg_color = GREEN if avg <= ops_limit else RED
+    failures_color = GREEN if failures == 0 else RED
     
     print(f"\nResults for {num_count} numbers:")
     print(f"Max ops: {max_ops_color}{max_ops_seen}{RESET} ops")
-    print(f"Average: {avg:.1f} ops")
-    print(f"Failures: {failures}")
+    print(f"Average: {avg_color}{avg:.1f}{RESET} ops")
+    print(f"Failures: {failures_color}{failures}{RESET}/{iterations}")
     
     # Error log section
     if log_errors and failures > 0:
