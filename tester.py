@@ -35,7 +35,7 @@ def run_test(num_count, ops_limit, iterations, log_errors=False):
     CYAN = "\033[0;96m"
     RESET = "\033[0m"
     
-    print(f"\n--- Running {iterations} tests with {num_count} numbers (Ops limit: {CYAN}<{ops_limit + 1}{RESET}, Max ops: ", end="")
+    print(f"\n--- Running {iterations} tests with {num_count} numbers (Ops limit: {CYAN}<{ops_limit + 1}{RESET}) ---")
 
     failures = 0
     total_ops = 0
@@ -82,10 +82,7 @@ def run_test(num_count, ops_limit, iterations, log_errors=False):
                     with open(ERROR_LOG_FILE, "a") as f:
                         f.write(f"Test {i}: {ops_count} moves. Numbers: {args_str}\n")
 
-            # Visual progress (overwrite previous line)
-            print(f"\r--- Running {iterations} tests with {num_count} numbers (Ops limit: {CYAN}<{ops_limit + 1}{RESET}, Max ops: ", end="")
-            max_ops_color = GREEN if max_ops_seen <= ops_limit else RED
-            print(f"{max_ops_color}{max_ops_seen}{RESET}) ---", end="")
+            # Visual progress
             print(f"\rTest {i}/{iterations}", end="")
             sys.stdout.flush()
 
@@ -93,10 +90,8 @@ def run_test(num_count, ops_limit, iterations, log_errors=False):
             print(f"\nError running test {i}: {e}")
             return
 
-    # Print final header with max ops
-    max_ops_color = GREEN if max_ops_seen <= ops_limit else RED
-    print(f"\r--- Running {iterations} tests with {num_count} numbers (Ops limit: {CYAN}<{ops_limit + 1}{RESET}, Max ops: {max_ops_color}{max_ops_seen}{RESET}) ---")
-    print(f"Test {iterations}/{iterations}")
+    # Final results
+    print()  # New line after progress
     
     # checker_linux results
     checker_linux_color = GREEN if checker_linux_ok == iterations else RED
@@ -106,8 +101,12 @@ def run_test(num_count, ops_limit, iterations, log_errors=False):
     my_checker_color = GREEN if my_checker_ok == iterations else RED
     print(f"my_checker {my_checker_color}{my_checker_ok}/{iterations}{RESET}")
 
+    # Results section
     avg = total_ops / iterations
+    max_ops_color = GREEN if max_ops_seen <= ops_limit else RED
+    
     print(f"\nResults for {num_count} numbers:")
+    print(f"Max ops: {max_ops_color}{max_ops_seen}{RESET} ops")
     print(f"Average: {avg:.1f} ops")
     print(f"Failures: {failures}")
     
