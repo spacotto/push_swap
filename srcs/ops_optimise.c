@@ -34,8 +34,7 @@ void	optimise_ops(t_stacks *stacks)
 {
 	merge_rr(stacks->operations);
 	merge_rrr(stacks->operations);
-	rm_ra_rra(stacks->operations);
-	rm_rb_rrb(stacks->operations);
+	rm_redundancy(&stacks->operations);
 }
 
 void	print_ops(t_stacks *stacks)
