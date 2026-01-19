@@ -26,12 +26,16 @@ static int	choose_chunk_size(int stack_size)
 static void	build_chunk(t_stacks *stacks, int chunk_min, int chunk_max)
 {
 	t_list	*target;
+	t_biggest	b;
 	int		mid;
 
-	mid = min + (max - min) / 2;
+	b.p1 = find_biggest(stacks->stack_a);
+	b.p2 = find_second_biggest(stacks->stack_a);
+	b.p3 = find_third_biggest(stacks->stack_a);
+	mid = chunk_min + (chunk_max - chunk_min) / 2;
 	while (1)
 	{
-		target = find_best_target(stacks->stack_a, chunk_min, chunk_max);
+		target = find_best_target(stacks->stack_a, chunk_min, chunk_max, &b);
 		if (!target)
 			break;
 		move_to_top_a(stacks, target);
