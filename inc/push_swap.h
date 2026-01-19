@@ -74,8 +74,7 @@ void	move_to_top_b(t_stacks *stacks, t_list *target);
 void	add_operation(t_stacks *stacks, char *op);
 void	merge_rr(t_list  *ops);
 void	merge_rrr(t_list  *ops);
-void	rm_ra_rra(t_list  *ops);
-void	rm_rb_rrb(t_list  *ops);
+void	rm_redundancy(t_list **ops);
 void	optimise_ops(t_stacks *stacks);
 void	print_ops(t_stacks *stacks);
 
