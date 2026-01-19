@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 20:04:16 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/18 22:41:17 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/19 11:29:31 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	add_operation(t_stacks *stacks, char *op)
 {
 	t_list	*new_node;
-	t_list	*current;
 
 	new_node = malloc(sizeof(t_list));
 	if (!new_node)
@@ -27,7 +26,7 @@ void	add_operation(t_stacks *stacks, char *op)
 			return ;
 		}
 	new_node->next = NULL;
-	ft_lstadd_back(&stacks, new_node)
+	ft_lstadd_back(&stacks->operations, new_node);
 }
 
 void	optimise_ops(t_stacks *stacks)

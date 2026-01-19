@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 19:54:56 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/18 23:06:09 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/19 11:27:42 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	is_ra_rra(char *s1, char *s2)
 		return (1);
 	if (ft_strcmp(s1, "rra\n") == 0 && ft_strcmp(s2, "ra\n") == 0)
 		return (1);
-	return (0)
+	return (0);
 }
 
 static int	is_rb_rrb(char *s1, char *s2)
