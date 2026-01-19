@@ -20,22 +20,22 @@ void	add_operation(t_stacks *stacks, char *op)
 	new_node = malloc(sizeof(t_list));
 	if (!new_node)
 		return;
-	new_node->content = op;
+	new_node->content = ft_strdup(op);
+	if (!new_node->content)
+		{
+			free(new_node);
+			return ;
+		}
 	new_node->next = NULL;
-	if (!stacks->operations)
-		stacks->operations = new_node;
-	else
-	{
-		current = stacks->operations;
-		while (current->next)
-			current = current->next;
-		current->next = new_node;
-	}
+	ft_lstadd_back(&stacks, new_node)
 }
 
 void	optimise_ops(t_stacks *stacks)
 {
 	merge_rr(stacks->operations);
+	merge_rrr(stacks->operations);
+	rm_ra_rra(stacks->operations);
+	rm_rb_rrb(stacks->operations);
 }
 
 void	print_ops(t_stacks *stacks)
