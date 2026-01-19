@@ -31,7 +31,7 @@ static void	build_chunk(t_stacks *stacks, int chunk_min, int chunk_max)
 	mid = min + (max - min) / 2;
 	while (1)
 	{
-		target = find_best_target(stacks->stack_a, min, max);
+		target = find_best_target(stacks->stack_a, chunk_min, chunk_max);
 		if (!target)
 			break;
 		move_to_top_a(stacks, target);
