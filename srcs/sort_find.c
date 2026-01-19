@@ -105,7 +105,7 @@ static int	istarget(t_list *node, int min, int max, t_biggest *b)
 	return (1);
 }
 
-static int	find_distance(t_list *stack, t_list *target)
+int	find_distance(t_list *stack, t_list *target)
 {
 	int	size;
 	int	position;
