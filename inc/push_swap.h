@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/18 23:06:18 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/19 17:00:41 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ typedef struct s_stacks
 	t_list	*stack_b;
 	t_list	*operations;
 }	t_stacks;
+
+typedef struct s_biggest
+{
+	t_list  *p1;
+	t_list  *p2;
+	t_list  *p3;
+	int		d1;
+	int		d2;
+	int		d3;
+}	t_biggest;
 
 // ============================================================================
 // PROTOTYPES
@@ -65,8 +75,9 @@ void	assign_index(t_list *stack);
 t_list	*find_smallest(t_list *stack);
 t_list	*find_biggest(t_list *stack);
 t_list	*find_second_biggest(t_list *stack);
+t_list	*find_third_biggest(t_list *stack);
 int		find_distance(t_list *stack, t_list *target);
-t_list	*find_best_target(t_list *stack, int chunk_min, int chunk_max);
+t_list  *find_best_target(t_list *stack, int min, int max, t_biggest *b);
 
 void	move_to_top_a(t_stacks *stacks, t_list *target);
 void	move_to_top_b(t_stacks *stacks, t_list *target);
