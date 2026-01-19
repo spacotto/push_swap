@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:08:08 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/19 23:48:50 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/19 23:54:12 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ static int	choose_chunk_size(int stack_size)
 {
 	int	chunk_size;
 
-	if (stack_size <= 100)
+	if (stack_size <= 5)
+		chunk_size = 1;
+	else if (stack_size <= 100)
 		chunk_size = 33;
 	else
 		chunk_size = 66;

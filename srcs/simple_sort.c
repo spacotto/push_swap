@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 19:39:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/16 14:53:17 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/19 23:52:13 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,4 @@ void	sort_five(t_stacks *stacks)
 	sort_three(stacks);
 	ft_pa(stacks);
 	ft_pa(stacks);
-}
-
-void	simple_sort(t_stacks *stacks)
-{
-	if (ft_lstsize(stacks->stack_a) == 2)
-		sort_two(stacks);
-	else if (ft_lstsize(stacks->stack_a) == 3)
-		sort_three(stacks);
-	else if (ft_lstsize(stacks->stack_a) == 4)
-		sort_four(stacks);
-	else if (ft_lstsize(stacks->stack_a) == 5)
-		sort_five(stacks);
 }
