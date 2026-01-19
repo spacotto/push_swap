@@ -31,7 +31,7 @@ void	chunk_sort(t_stacks *stacks)
 	t_biggest	b;
 
 	assign_index(stacks->stack_a);
-	chunk_presort(stacks, &b);
+	chunk_presort(stacks;
 //	sort_three(stacks);
 	while (stacks->stack_b)
 	{
