@@ -16,26 +16,24 @@ void	merge_rr(t_list  *ops)
 {
 	t_list	*cmp1;
 	t_list	*cmp2;
-	t_list	*to_delete;
 
 	if (!ops || !ops->next)
 		return ;
 	cmp1 = ops;
-	cmp2 = ops->next;
-	while (ops && ops->next)
+	while (cmp1 && cmp1->next)
 	{
+		cmp2 = cmp1->next;
 		if ((ft_strcmp(cmp1->content, "ra\n") == 0 && 
 			ft_strcmp(cmp2->content, "rb\n") == 0) ||
 			(ft_strcmp(cmp1->content, "rb\n") == 0 &&
 			ft_strcmp(cmp2->content, "ra\n") == 0))
-			{
-				cmp1->content = "rr\n";
-				to_delete = cmp2;
-				cmp2 = cmp2->next;
-				ft_lstdelone(to_delete, del);
-			}
-		cmp1 = cmp2;
-		cmp2 = cmp2->next;
+		{
+			cmp1->content = "rr\n";
+			cmp1->next = cmp2->next;
+			ft_lstdelone(cmp2, del);
+		}
+		else
+			cmp1 = cmp1->next;
 	}
 }
 
@@ -43,25 +41,23 @@ void	merge_rrr(t_list  *ops)
 {
 	t_list	*cmp1;
 	t_list	*cmp2;
-	t_list	*to_delete;
 
 	if (!ops || !ops->next)
 		return ;
 	cmp1 = ops;
-	cmp2 = ops->next;
-	while (ops && ops->next)
+	while (cmp1 && cmp1->next)
 	{
+		cmp2 = cmp1->next;
 		if ((ft_strcmp(cmp1->content, "rra\n") == 0 && 
 			ft_strcmp(cmp2->content, "rrb\n") == 0) ||
 			(ft_strcmp(cmp1->content, "rrb\n") == 0 &&
 			ft_strcmp(cmp2->content, "rra\n") == 0))
-			{
-				cmp1->content = "rrr\n";
-				to_delete = cmp2;
-				cmp2 = cmp2->next;
-				ft_lstdelone(to_delete, del);
-			}
-		cmp1 = cmp2;
-		cmp2 = cmp2->next;
+		{
+			cmp1->content = "rrr\n";
+			cmp1->next = cmp2->next;
+			ft_lstdelone(cmp2, del);
+		}
+		else
+			cmp1 = cmp1->next;
 	}
 }
