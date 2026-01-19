@@ -80,7 +80,6 @@ void	ft_rrr(t_stacks *stacks);
 // Sorting
 void	assign_index(t_list *stack);
 
-t_list	*find_smallest(t_list *stack);
 t_list	*find_biggest(t_list *stack);
 t_list	*find_second_biggest(t_list *stack);
 t_list	*find_third_biggest(t_list *stack);
@@ -100,10 +99,6 @@ void	print_ops(t_stacks *stacks);
 
 void	sort_two(t_stacks *stacks);
 void	sort_three(t_stacks *stacks);
-void	sort_four(t_stacks *stacks);
-void	sort_five(t_stacks *stacks);
-
-void	simple_sort(t_stacks *stacks);
 void	chunk_presort(t_stacks *stacks);
 void	chunk_sort(t_stacks *stacks);
 
