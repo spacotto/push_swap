@@ -41,6 +41,13 @@ typedef struct s_biggest
 	int		d3;
 }	t_biggest;
 
+typedef struct s_chunk
+{
+	int	size;
+	int	min;
+	int	max;
+}	t_chunk;
+
 // ============================================================================
 // PROTOTYPES
 // ============================================================================
