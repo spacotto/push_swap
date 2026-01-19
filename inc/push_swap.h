@@ -95,6 +95,7 @@ void	sort_four(t_stacks *stacks);
 void	sort_five(t_stacks *stacks);
 
 void	simple_sort(t_stacks *stacks);
+void	chunk_presort(t_stacks *stacks, t_biggest *biggest);
 void	chunk_sort(t_stacks *stacks);
 
 #endif
