@@ -40,6 +40,7 @@ def run_test(num_count, ops_limit, iterations, log_errors=False):
     failures = 0
     total_ops = 0
     max_ops_seen = 0
+    min_ops_seen = float('inf') # Initialize with infinity
     checker_linux_ok = 0
     my_checker_ok = 0
 
@@ -66,6 +67,7 @@ def run_test(num_count, ops_limit, iterations, log_errors=False):
 
             total_ops += ops_count
             max_ops_seen = max(max_ops_seen, ops_count)
+            min_ops_seen = min(min_ops_seen, ops_count) # Update minimum
 
             # Run checker_linux
             if run_checker(CHECKER_LINUX_PATH, args_str, output):
@@ -91,7 +93,7 @@ def run_test(num_count, ops_limit, iterations, log_errors=False):
             return
 
     # Final results
-    print()  # New line after progress
+    print() # New line after progress
     
     # checker_linux results
     checker_linux_color = GREEN if checker_linux_ok == iterations else RED
@@ -103,19 +105,21 @@ def run_test(num_count, ops_limit, iterations, log_errors=False):
 
     # Results section
     avg = total_ops / iterations
+    # --- Logic for colors
+    min_ops_color = GREEN if min_ops_seen <= ops_limit else RED
     max_ops_color = GREEN if max_ops_seen <= ops_limit else RED
     avg_color = GREEN if avg <= ops_limit else RED
     failures_color = GREEN if failures == 0 else RED
     
     print(f"\nResults for {num_count} numbers:")
+    print(f"Min ops: {min_ops_color}{min_ops_seen if min_ops_seen != float('inf') else 0}{RESET} ops")
     print(f"Max ops: {max_ops_color}{max_ops_seen}{RESET} ops")
     print(f"Average: {avg_color}{avg:.1f}{RESET} ops")
     print(f"Failures: {failures_color}{failures}{RESET}/{iterations}")
-    
+   
     # Error log section
     if log_errors and failures > 0:
-        print(f"\n--- Errors logged to ---")
-        print(f"{ERROR_LOG_FILE}")
+        print(f"\n--- Errors logged to {ERROR_LOG_FILE} ---")
 
 if __name__ == "__main__":
     # Check if push_swap exists
