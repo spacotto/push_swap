@@ -66,6 +66,7 @@ SORT		:=	sort_parsing.c \
 				sort_index.c \
 				sort_find.c \
 				simple_sort.c \
+				chunk_presort.c \
 				chunk_sort.c
 
 PUSH_SWAP	:=	push_swap.c
