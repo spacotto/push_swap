@@ -109,13 +109,17 @@ int	find_distance(t_list *stack, t_list *target)
 		return (size - position);
 }
 
-t_list	*find_best_target(t_list *stack, int min, int max, t_biggest *b)
+t_list	*find_best_target(t_list *stack, int chunk_min, int chunk_max)
 {
-	t_list	*current;
-	t_list	*best;
-	int		min_distance;
-	int		distance;
+	t_list		*current;
+	t_list		*best;
+	t_biggest	b;
+	int			min_distance;
+	int			distance;
 
+	b.p1 = find_biggest(stacks->stack_a);
+	b.p2 = find_second_biggest(stacks->stack_a);
+	b.p3 = find_third_biggest(stacks->stack_a);
 	if (!stack)
 		return (NULL);
 	current = stack;
@@ -123,8 +127,8 @@ t_list	*find_best_target(t_list *stack, int min, int max, t_biggest *b)
 	min_distance = ft_lstsize(stack) + 1;  // Start with impossible value
 	while (current)
 	{
-		if (current->index >= min && current->index <= max 
-		&& (current != b->p1 || current != b->p2 || current != b->p3))
+		if (current->index >= chunk_min && current->index <= chunk_max 
+		&& (current != b.p1 || current != b.p2 || current != b.p3))
 		{
 			distance = find_distance(stack, current);
 			if (distance < min_distance)
