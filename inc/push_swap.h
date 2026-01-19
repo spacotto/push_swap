@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/19 17:00:41 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/19 18:29:42 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ t_list	*find_smallest(t_list *stack);
 t_list	*find_biggest(t_list *stack);
 t_list	*find_second_biggest(t_list *stack);
 t_list	*find_third_biggest(t_list *stack);
-int		find_distance(t_list *stack, t_list *target);
 t_list  *find_best_target(t_list *stack, int min, int max, t_biggest *b);
 
 void	move_to_top_a(t_stacks *stacks, t_list *target);
@@ -102,7 +101,7 @@ void	sort_four(t_stacks *stacks);
 void	sort_five(t_stacks *stacks);
 
 void	simple_sort(t_stacks *stacks);
-void	chunk_presort(t_stacks *stacks, t_biggest *biggest);
+void	chunk_presort(t_stacks *stacks);
 void	chunk_sort(t_stacks *stacks);
 
 #endif

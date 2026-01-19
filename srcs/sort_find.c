@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:26:13 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/19 17:01:19 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/19 18:29:12 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ t_list	*find_third_biggest(t_list *stack)
 	return (third);
 }
 
-static int	istarget(t_list *node, int min, int max, t_biggest b)
+static int	istarget(t_list *node, int min, int max, t_biggest *b)
 {
 	if (node->index < min || node->index > max)
 		return (0);
@@ -118,7 +118,7 @@ static int	find_distance(t_list *stack, t_list *target)
 		return (size - position);
 }
 
-t_list	*find_best_target(t_list *stack, int min, int max, t_biggest b)
+t_list	*find_best_target(t_list *stack, int min, int max, t_biggest *b)
 {
 	t_list		*current;
 	t_list		*best;
