@@ -82,8 +82,8 @@ t_list	*find_third_biggest(t_list *stack)
 		return (NULL);
 	biggest = find_biggest(stack);
 	second = find_second_biggest(stack);
-	third = NULL;
-	current = stack;
+	third = stack;
+	current = stack->next;
 	while (current)
 	{
 		if (current != biggest && current != second)
