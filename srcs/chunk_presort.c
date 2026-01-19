@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:08:08 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/19 17:08:10 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/19 22:55:19 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,24 @@ static int	choose_chunk_size(int stack_size)
 	return (chunk_size);
 }
 
-static void	build_chunk(t_stacks *stacks, int chunk_min, int chunk_max)
+static void	build_chunk(t_stacks *stacks, t_chunk *chunk, t_biggest *b)
 {
-	t_list	*target;
-	t_biggest	b;
-	int		mid;
+	t_list		*target;
+	int			mid;
 
-	b.p1 = find_biggest(stacks->stack_a);
-	b.p2 = find_second_biggest(stacks->stack_a);
-	b.p3 = find_third_biggest(stacks->stack_a);
-	mid = chunk_min + (chunk_max - chunk_min) / 2;
+	mid = chunk->min + (chunk->max - chunk->min) / 2;
 	while (1)
 	{
-		target = find_best_target(stacks->stack_a, chunk_min, chunk_max, &b);
+		b->p1 = NULL;
+		b->p2 = NULL;
+		b->p3 = NULL;
+		if (ft_lstsize(stacks->stack_a) > 3)
+		{
+			b->p1 = find_biggest(stacks->stack_a);
+			b->p2 = find_second_biggest(stacks->stack_a);
+			b->p3 = find_third_biggest(stacks->stack_a);
+		}
+		target = find_best_target(stacks->stack_a, chunk, b);
 		if (!target)
 			break;
 		move_to_top_a(stacks, target);
@@ -48,17 +53,17 @@ static void	build_chunk(t_stacks *stacks, int chunk_min, int chunk_max)
 void	chunk_presort(t_stacks *stacks)
 {
 	t_chunk		chunk;
-	int			stack_size;
+	t_biggest	biggest;
 
-	stack_size = ft_lstsize(stacks->stack_a);
-	chunk.size = choose_chunk_size(stack_size);
+	chunk.stack_size = ft_lstsize(stacks->stack_a);
+	chunk.size = choose_chunk_size(chunk.stack_size);
 	chunk.min = 0;
 	chunk.max = chunk.size - 1;
-	while (stack_size > 3)
+	while (chunk.stack_size > 3)
 	{
-		build_chunk(stacks, chunk.min, chunk.max);
+		build_chunk(stacks, &chunk, &biggest);
 		chunk.min += chunk.size;
 		chunk.max += chunk.size;
-		stack_size = ft_lstsize(stacks->stack_a);
+		chunk.stack_size = ft_lstsize(stacks->stack_a);
 	}
 }

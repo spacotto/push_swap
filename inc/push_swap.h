@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/19 18:29:42 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/19 22:52:19 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_biggest
 
 typedef struct s_chunk
 {
+	int	stack_size;
 	int	size;
 	int	min;
 	int	max;
@@ -85,7 +86,7 @@ t_list	*find_second_biggest(t_list *stack);
 t_list	*find_third_biggest(t_list *stack);
 
 int		find_distance(t_list *stack, t_list *target);
-t_list  *find_best_target(t_list *stack, int min, int max, t_biggest *b);
+t_list  *find_best_target(t_list *stack, t_chunk *chunk, t_biggest *b);
 
 void	move_to_top_a(t_stacks *stacks, t_list *target);
 void	move_to_top_b(t_stacks *stacks, t_list *target);
