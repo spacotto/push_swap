@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int	calculate_disorder(t_list *stack, t_chunk *chunk)
+static void	calculate_disorder(t_list *stack, t_chunk *chunk)
 {
 	t_list	*current;
 
@@ -27,16 +27,26 @@ static int	calculate_disorder(t_list *stack, t_chunk *chunk)
 	return (chunk->stack_disorder);
 }
 
-static int	choose_chunk_size(t_list *stack, t_chunk *chunk)
+static void	choose_chunk_size(t_list *stack, t_chunk *chunk)
 {
-	stack_size = ft_lstsize(stack);
-	if (stack_size <= 5)
-		chunk_size = 1;
-	else if (stack_size <= 100)
-		chunk_size = 33;
+	chunk->stack_size = ft_lstsize(stack);
+	calculate_disorder(stack, chunk);
+	chunk->max_disorder = chunk->stack_size - 1;
+	if (chunk->stack_size <= 5)
+		chunk->size = 1;
+	else if (chunk->stack_size > 5 && chunk->stack_size <= 100)
+	{
+		chunk->size = 33;
+	}
 	else
-		chunk_size = 66;
-	return (chunk_size);
+	{
+		if (chunk->disorder < chunk->max_disorder * 0.33)
+			chunk->size = 75;  // Low disorder (0-33%)
+		else if (chunk->disorder < chunk->max_disorder * 0.66)
+			chunk->size = 68;  // Medium disorder (33-66%)
+		else
+			chunk->size = 60;  // High disorder (66-100%)
+	}
 }
 
 
@@ -69,7 +79,7 @@ void    chunk_presort(t_stacks *stacks)
     t_biggest	biggest;
 	int			strict_max;
 
-    chunk.size = choose_chunk_size(stacks->stack_a, &chunk);
+    choose_chunk_size(stacks->stack_a, &chunk);
     chunk.min = 0;
     chunk.max = chunk.size - 1;
     strict_max = ft_lstsize(stacks->stack_a) - 4;
