@@ -44,7 +44,7 @@ typedef struct s_biggest
 typedef struct s_chunk
 {
 	int	stack_size;
-	int	disorder;
+	int	stack_disorder;
 	int	size;
 	int	min;
 	int	max;
