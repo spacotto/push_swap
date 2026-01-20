@@ -12,19 +12,6 @@
 
 #include "push_swap.h"
 
-static int	choose_chunk_size(int stack_size)
-{
-	int	chunk_size;
-
-	if (stack_size <= 5)
-		chunk_size = 1;
-	else if (stack_size <= 100)
-		chunk_size = 33;
-	else
-		chunk_size = 66;
-	return (chunk_size);
-}
-
 static void    build_chunk(t_stacks *stacks, t_chunk *chunk, t_biggest *b)
 {
     t_list        *target;
