@@ -66,6 +66,11 @@ void	push_swap(t_stacks *stacks, int ac, char **av)
 			sort_three(stacks);
 			print_ops(stacks->operations);
 		}
+		else if (ft_lstsize(stacks->stack_a) <= 5)
+		{
+			chunk_sort(stacks);
+			print_ops(stacks->operations);
+		}
 		else
 			best_chunk_sort(stacks, ac, av);
 	}
