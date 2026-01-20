@@ -41,8 +41,7 @@ def run_permutation_test(num_count, ops_limit):
     total_tests = len(permutations)
     sorted_tuple = tuple(sorted(base_numbers))
     
-    print(f"\n--- Running Exhaustive Test: {num_count} numbers ({total_tests} combinations) ---")
-    print(f"Ops limit: {CYAN}<{ops_limit + 1}{RESET}")
+    print(f"\n--- Running {iterations} tests with {num_count} numbers (Ops limit: {CYAN}<{ops_limit + 1}{RESET}) ---")
 
     failures = []
     checker_linux_ok = 0
@@ -58,7 +57,8 @@ def run_permutation_test(num_count, ops_limit):
             my_checker_ok += 1
             min_ops = min(min_ops, 0)
             # We don't increment total_ops or max_ops for a skip
-            print(f"\rTest {i}/{total_tests} (Sorted - Skipped)", end="")
+            print(f"\rTest {i}/{total_tests}    run_test(num_count=100, ops_limit=699, iterations=100, log_errors=False)
+", end="")
             continue
         # ---------------------------------------
 
