@@ -16,7 +16,7 @@ static void	chunk_sizes_100(t_chunk *chunk, int counter)
 {
 	if (counter == 1)
 	{
-		chunk->size = 22;
+		chunk->size = 33;
 		counter++;
 	}
 	if (counter == 2)
