@@ -12,26 +12,24 @@
 
 #include "push_swap.h"
 
-static int	calculate_disorder(t_list *stack)
+static int	calculate_disorder(t_list *stack, t_chunk *chunk)
 {
 	t_list	*current;
-	int		inversions;
 
-	inversions = 0;
+	chunk->stack_disorder = 0;
 	current = stack;
 	while (current && current->next)
 	{
 		if (current->index > current->next->index)
-			inversions++;
+			chunk->stack_disorder++;
 		current = current->next;
 	}
-	return (inversions);
+	return (chunk->stack_disorder);
 }
 
-static int	choose_chunk_size(int stack_size)
+static int	choose_chunk_size(t_list *stack, t_chunk *chunk)
 {
-	int	chunk_size;
-
+	stack_size = ft_lstsize(stack);
 	if (stack_size <= 5)
 		chunk_size = 1;
 	else if (stack_size <= 100)
@@ -71,7 +69,7 @@ void    chunk_presort(t_stacks *stacks)
     t_biggest	biggest;
 	int			strict_max;
 
-    chunk.size = choose_chunk_size(ft_lstsize(stacks->stack_a));
+    chunk.size = choose_chunk_size(stacks->stack_a, &chunk);
     chunk.min = 0;
     chunk.max = chunk.size - 1;
     strict_max = ft_lstsize(stacks->stack_a) - 4;
