@@ -45,9 +45,9 @@ static void	best_chunk_sort(t_stacks *stacks, int ac, char **av)
 	l = ft_lstsize(stacks->ops_l);
 	if (s <= m && s <= l)
 		print_ops(stacks->ops_s);
-	if (m <= s && m <= l)
+	else if (m <= s && m <= l)
 		print_ops(stacks->ops_m);
-	if (l <= s && l <= m)
+	else if (l <= s && l <= m)
 		print_ops(stacks->ops_l);
 }
 
