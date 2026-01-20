@@ -129,5 +129,5 @@ if __name__ == "__main__":
         print("Error: ./push_swap not found. Compile it first!")
         sys.exit(1)
 
-    # Run 100 loops with 100 numbers (Limit <700)
-    run_test(num_count=100, ops_limit=699, iterations=100, log_errors=False)
+    # Run 100 loops with 500 numbers (Limit <5500)
+    run_test(num_count=500, ops_limit=5499, iterations=100, log_errors=True)
