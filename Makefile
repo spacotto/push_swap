@@ -56,7 +56,8 @@ OP			:=	op_swap.c \
 				op_rotate.c \
 				op_reverse_rotate.c 
 
-BEST		:=	best_move_to_top.c \
+BEST		:=	best_chunk_size.c \
+				best_move_to_top.c \
 				ops_merge.c \
 				ops_remove.c \
 				ops_optimise.c
