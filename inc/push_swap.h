@@ -45,6 +45,7 @@ typedef struct s_chunk
 {
 	int	stack_size;
 	int	stack_disorder;
+	int	max_disorder;
 	int	size;
 	int	min;
 	int	max;
