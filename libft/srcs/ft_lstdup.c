@@ -25,13 +25,13 @@ t_list	*ft_lstdup(t_list *lst)
 	current = lst;
 	while (current)
 	{
-		new_content = malloc(sizeof(int));
+		new_content = malloc(sizeof(char *));
 		if (!new_content)
 		{
 			ft_lstclear(&new_list, free);
 			return (NULL);
 		}
-		*new_content = *(int *)current->content;
+		*new_content = *(char *)current->content;
 		new_node = ft_lstnew(new_content);
 		if (!new_node)
 		{
