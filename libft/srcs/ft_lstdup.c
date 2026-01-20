@@ -17,7 +17,7 @@ t_list	*ft_lstdup(t_list *lst)
 	t_list	*new_list;
 	t_list	*new_node;
 	t_list	*current;
-	int		*new_content;
+	char	*new_content;
 
 	if (!lst)
 		return (NULL);
