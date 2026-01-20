@@ -3,6 +3,7 @@
 import subprocess
 import random
 import sys
+import itertools
 
 # --- CONFIGURATION ---
 PUSH_SWAP_PATH = "./push_swap"
@@ -28,6 +29,79 @@ def run_checker(checker_path, args_str, operations):
     except:
         return False
 
+def run_permutation_test(num_count, ops_limit):
+    """Exhaustively tests all permutations for small sets (like 3 or 5 numbers)."""
+    GREEN = "\033[92m"
+    RED = "\033[91m"
+    CYAN = "\033[0;96m"
+    RESET = "\033[0m"
+
+    base_numbers = list(range(num_count))
+    permutations = list(itertools.permutations(base_numbers))
+    total_tests = len(permutations)
+    
+    print(f"\n--- Running Exhaustive Test: {num_count} numbers ({total_tests} combinations) ---")
+    print(f"Ops limit: {CYAN}<{ops_limit + 1}{RESET}")
+
+    failures = []
+    checker_linux_ok = 0
+    my_checker_ok = 0
+    total_ops = 0
+    max_ops = 0
+    min_ops = float('inf')
+
+    for i, p in enumerate(permutations, 1):
+        args_str = ' '.join(map(str, p))
+        
+        try:
+            process = subprocess.run([PUSH_SWAP_PATH] + list(map(str, p)), capture_output=True, text=True)
+            output = process.stdout.strip()
+            ops_count = len(output.split('\n')) if output else 0
+            
+            total_ops += ops_count
+            max_ops = max(max_ops, ops_count)
+            min_ops = min(min_ops, ops_count)
+
+            # Check validity
+            linux_res = run_checker(CHECKER_LINUX_PATH, args_str, output)
+            if linux_res:
+                checker_linux_ok += 1
+            else:
+                failures.append(f"KO (Checker): {args_str}")
+
+            if run_checker(MY_CHECKER_PATH, args_str, output):
+                my_checker_ok += 1
+            
+            # Check efficiency
+            if ops_count > ops_limit:
+                failures.append(f"Limit Exceeded ({ops_count} ops): {args_str}")
+
+            print(f"\rTest {i}/{total_tests}", end="")
+            sys.stdout.flush()
+        except Exception as e:
+            print(f"\nError: {e}")
+
+    print("\n")
+    # Display Results
+    c_lin_color = GREEN if checker_linux_ok == total_tests else RED
+    c_my_color = GREEN if my_checker_ok == total_tests else RED
+    print(f"checker_linux {c_lin_color}{checker_linux_ok}/{total_tests}{RESET}")
+    print(f"my_checker    {c_my_color}{my_checker_ok}/{total_tests}{RESET}")
+    
+    avg = total_ops / total_tests
+    print(f"\nResults for {num_count} numbers:")
+    print(f"Min ops: {min_ops} ops")
+    print(f"Max ops: {max_ops} ops")
+    print(f"Average: {avg:.1f} ops")
+    print(f"Failures: {RED if failures else GREEN}{len(failures)}{RESET}/{total_tests}")
+
+    if failures:
+        with open(ERROR_LOG_FILE, "a") as f:
+            f.write(f"\n--- Failures for {num_count} numbers ---\n")
+            for fail in failures:
+                f.write(fail + "\n")
+        print(f"Detailed errors written to {ERROR_LOG_FILE}")
+
 def run_test(num_count, ops_limit, iterations, log_errors=False):
     # Color codes
     GREEN = "\033[92m"
@@ -40,14 +114,13 @@ def run_test(num_count, ops_limit, iterations, log_errors=False):
     failures = 0
     total_ops = 0
     max_ops_seen = 0
-    min_ops_seen = float('inf') # Initialize with infinity
+    min_ops_seen = float('inf') 
     checker_linux_ok = 0
     my_checker_ok = 0
 
-    # Clear log file if logging is enabled
     if log_errors:
-        with open(ERROR_LOG_FILE, "w") as f:
-            f.write(f"--- Error Log for {num_count} numbers ---\n")
+        with open(ERROR_LOG_FILE, "a") as f:
+            f.write(f"\n--- Error Log for {num_count} numbers ---\n")
 
     for i in range(1, iterations + 1):
         numbers = generate_random_numbers(num_count)
@@ -55,85 +128,60 @@ def run_test(num_count, ops_limit, iterations, log_errors=False):
         args_str = ' '.join(args)
 
         try:
-            # Run push_swap
             process = subprocess.run([PUSH_SWAP_PATH] + args, capture_output=True, text=True)
             output = process.stdout.strip()
-
-            # Count operations
-            if not output:
-                ops_count = 0
-            else:
-                ops_count = len(output.split('\n'))
+            ops_count = len(output.split('\n')) if output else 0
 
             total_ops += ops_count
             max_ops_seen = max(max_ops_seen, ops_count)
-            min_ops_seen = min(min_ops_seen, ops_count) # Update minimum
+            min_ops_seen = min(min_ops_seen, ops_count)
 
-            # Run checker_linux
             if run_checker(CHECKER_LINUX_PATH, args_str, output):
                 checker_linux_ok += 1
-
-            # Run my_checker
             if run_checker(MY_CHECKER_PATH, args_str, output):
                 my_checker_ok += 1
 
-            # Check if too many ops
             if ops_count > ops_limit:
                 failures += 1
                 if log_errors:
                     with open(ERROR_LOG_FILE, "a") as f:
                         f.write(f"Test {i}: {ops_count} moves. Numbers: {args_str}\n")
 
-            # Visual progress
             print(f"\rTest {i}/{iterations}", end="")
             sys.stdout.flush()
-
         except Exception as e:
-            print(f"\nError running test {i}: {e}")
+            print(f"\nError: {e}")
             return
 
-    # Final results
-    print() # New line after progress
-    
-    # checker_linux results
+    print()
     checker_linux_color = GREEN if checker_linux_ok == iterations else RED
     print(f"checker_linux {checker_linux_color}{checker_linux_ok}/{iterations}{RESET}")
-    
-    # my_checker results
     my_checker_color = GREEN if my_checker_ok == iterations else RED
     print(f"my_checker {my_checker_color}{my_checker_ok}/{iterations}{RESET}")
 
-    # Results section
     avg = total_ops / iterations
-    # --- Logic for colors
-    min_ops_color = GREEN if min_ops_seen <= ops_limit else RED
-    max_ops_color = GREEN if max_ops_seen <= ops_limit else RED
-    avg_color = GREEN if avg <= ops_limit else RED
-    failures_color = GREEN if failures == 0 else RED
-    
     print(f"\nResults for {num_count} numbers:")
-    print(f"Min ops: {min_ops_color}{min_ops_seen if min_ops_seen != float('inf') else 0}{RESET} ops")
-    print(f"Max ops: {max_ops_color}{max_ops_seen}{RESET} ops")
-    print(f"Average: {avg_color}{avg:.1f}{RESET} ops")
-    print(f"Failures: {failures_color}{failures}{RESET}/{iterations}")
-   
-    # Error log section
-    if log_errors and failures > 0:
-        print(f"\n--- Errors logged to {ERROR_LOG_FILE} ---")
+    print(f"Min ops: {min_ops_seen} ops")
+    print(f"Max ops: {max_ops_seen} ops")
+    print(f"Average: {avg:.1f} ops")
+    print(f"Failures: {RED if failures > 0 else GREEN}{failures}{RESET}/{iterations}")
 
 if __name__ == "__main__":
-    # Check if push_swap exists
+    # Clear log file at start
+    with open(ERROR_LOG_FILE, "w") as f:
+        f.write("--- PUSH_SWAP TESTER LOG ---\n")
+
     try:
         subprocess.run([PUSH_SWAP_PATH], capture_output=True)
     except FileNotFoundError:
-        print("Error: ./push_swap not found. Compile it first!")
+        print(f"Error: {PUSH_SWAP_PATH} not found.")
         sys.exit(1)
 
-    # 1. Run 100 loops with 5 numbers (Limit <=12)
-    run_test(num_count=5, ops_limit=12, iterations=100, log_errors=False)
-    
-    # 2. Run 100 loops with 100 numbers (Limit <700)
-    run_test(num_count=100, ops_limit=699, iterations=100, log_errors=False)
+    # 1. Exhaustive check for 5 numbers (All 120 combinations)
+    run_permutation_test(5, 11)
 
-    # 3. Run 100 loops with 500 numbers (Limit <5500)
-    run_test(num_count=500, ops_limit=5499, iterations=100, log_errors=True)
+    # 2. Random check for 100 numbers
+    run_test(100, 699, 100, log_errors=True)
+
+    # 3. Random check for 500 numbers
+    run_test(500, 5499, 100, log_errors=True)
