@@ -6,48 +6,56 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:08:08 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/20 11:12:20 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/20 17:33:33 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	calculate_disorder(t_list *stack, t_chunk *chunk)
+static void	chunk_sizes_100(t_chunk *chunk, int counter)
 {
-	t_list	*current;
-
-	chunk->stack_disorder = 0;
-	current = stack;
-	while (current && current->next)
+	if (counter == 1)
 	{
-		if (current->index > current->next->index)
-			chunk->stack_disorder++;
-		current = current->next;
+		chunk->size = 10;
+		counter++;
 	}
+	if (counter == 2)
+	{
+		chunk->size = 33;
+		counter++;
+	}
+	if (counter == 3)
+		chunk->size = 66;
+}
+
+static void	chunk_sizes_500(t_chunk *chunk, int counter)
+{
+	if (counter == 1)
+	{
+		chunk->size = 60;
+		counter++;
+	}
+	if (counter == 2)
+	{
+		chunk->size = 65;
+		counter++;
+	}
+	if (counter == 3)
+		chunk->size = 70;
 }
 
 static void	choose_chunk_size(t_list *stack, t_chunk *chunk)
 {
+	static int	counter = 1;
+
 	chunk->stack_size = ft_lstsize(stack);
-	calculate_disorder(stack, chunk);
-	chunk->max_disorder = chunk->stack_size - 1;
 	if (chunk->stack_size <= 5)
 		chunk->size = 1;
 	else if (chunk->stack_size > 5 && chunk->stack_size <= 100)
-	{
-		chunk->size = 33;
-	}
+		chunk_sizes_100(chunk, counter);
 	else
-	{
-		if (chunk->stack_disorder < chunk->max_disorder * 0.33)
-			chunk->size = 75;  // Low disorder (0-33%)
-		else if (chunk->stack_disorder < chunk->max_disorder * 0.66)
-			chunk->size = 68;  // Medium disorder (33-66%)
-		else
-			chunk->size = 60;  // High disorder (66-100%)
-	}
+		chunk_sizes_500(chunk, counter);
 }
-
 
 static void    build_chunk(t_stacks *stacks, t_chunk *chunk, t_biggest *b)
 {

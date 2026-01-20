@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/19 22:52:19 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/20 17:28:52 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ typedef struct s_stacks
 	t_list	*stack_a;
 	t_list	*stack_b;
 	t_list	*operations;
+	t_list	*ops_s;
+	t_list	*ops_m;
+	t_list	*ops_l;
 }	t_stacks;
 
 typedef struct s_biggest
@@ -56,12 +59,13 @@ typedef struct s_chunk
 // ============================================================================
 
 // Core functions
-void	push_swap(t_stacks *stacks);
+void	push_swap(t_stacks *stacks, int ac, char **av);	
 int		main(int ac, char **av);
 
 // Parsing
+
+void    build_stack(t_stacks *stacks, int ac, char **av);
 int		sort_check(t_stacks *stacks);
-void	get_tokens(t_stacks *stacks, char *s);
 
 // Operations
 void	ft_sa(t_stacks *stacks);
@@ -97,7 +101,7 @@ void	merge_rr(t_list  *ops);
 void	merge_rrr(t_list  *ops);
 void	rm_redundancy(t_list **ops);
 void	optimise_ops(t_stacks *stacks);
-void	print_ops(t_stacks *stacks);
+void	print_ops(t_list *ops);
 
 void	sort_two(t_stacks *stacks);
 void	sort_three(t_stacks *stacks);

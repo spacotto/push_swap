@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 20:04:16 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/19 11:29:31 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/20 17:28:20 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ void	optimise_ops(t_stacks *stacks)
 	rm_redundancy(&stacks->operations);
 }
 
-void	print_ops(t_stacks *stacks)
+void	print_ops(t_list *ops)
 {
 	t_list	*current;
 
-	current = stacks->operations;
+	current = ops;
 	while (current)
 	{
 		if (current->content)

@@ -40,6 +40,16 @@ The **Chunk Algorithm** (also known as the **Segmented Sorting approach**) is an
   
 5. **Final Push.** The largest elements are pushed back to stack A one by one, resulting in a fully sorted stack. 
 
+### Chunk Size Optimization and Disorder
+
+The chunk algorithm's efficiency depends heavily on the **chunk size**, which must be balanced between Phase 1 (pushing to stack B) and Phase 2 (pushing back to stack A). **Disorder** measures how unsorted the input is. High disorder (many inversions) indicates a highly unsorted or reverse-sorted input.
+
+**Smaller chunks** create more chunks with fewer elements each. This results in a **more sorted stack B** because elements are pushed in tighter groups, making Phase 2 efficient—finding the largest element requires fewer rotations. However, Phase 1 suffers because managing many chunks means more time searching through stack A to locate chunk members, increasing rotation operations.
+
+**Larger chunks** reduce the number of chunks, making Phase 1 faster since there's less overhead switching between chunks and searching for members. However, this causes elements in stack B to be **more scattered**, making Phase 2 slower as finding the largest element requires more rotations through a less organized stack.
+
+The optimal chunk size depends on the input's **initial disorder**. For **low-disorder inputs** (already somewhat sorted), larger chunks work best because Phase 1 is naturally easier and the extra Phase 2 cost is minimal. For **high-disorder inputs** (reverse sorted or very random), smaller chunks help by keeping stack B organized, which is critical when Phase 2 becomes the bottleneck.
+
 ## Resources
 - [Sorting Algorithms - GeeksforGeeks](https://www.geeksforgeeks.org/dsa/sorting-algorithms/)
 - [Stack (abstract data type)](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
