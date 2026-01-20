@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import subprocess
-import random
 import sys
 import itertools
 
@@ -9,7 +8,7 @@ import itertools
 PUSH_SWAP_PATH = "./push_swap"
 CHECKER_LINUX_PATH = "./checker_linux"
 MY_CHECKER_PATH = "./checker"
-ERROR_LOG_FILE = "error_log.txt"
+ERROR_LOG_FILE = "error_log_5.txt"
 
 def run_checker(checker_path, args_str, operations):
     """Runs a checker program and returns True if output is 'OK'."""
@@ -30,95 +29,108 @@ def run_checker(checker_path, args_str, operations):
         return False
 
 def run_permutation_test(num_count, ops_limit):
-    """Exhaustively tests all permutations. Skips logic for already-sorted cases."""
+    """Exhaustively tests all permutations of 5 numbers."""
     GREEN = "\033[92m"
     RED = "\033[91m"
     CYAN = "\033[0;96m"
     RESET = "\033[0m"
 
+    # Generate all 120 permutations
     base_numbers = list(range(num_count))
     permutations = list(itertools.permutations(base_numbers))
     total_tests = len(permutations)
     sorted_tuple = tuple(sorted(base_numbers))
     
-    print(f"\n--- Running {iterations} tests with {num_count} numbers (Ops limit: {CYAN}<{ops_limit + 1}{RESET}) ---")
+    print(f"\n--- Checking all possible 120 permutation of 5 (Ops limit: {CYAN}<{ops_limit + 1}{RESET}) ---")
 
     failures = []
     checker_linux_ok = 0
     my_checker_ok = 0
     total_ops = 0
     max_ops = 0
-    min_ops = float('inf')
+    min_ops = float('inf') 
 
     for i, p in enumerate(permutations, 1):
-        # --- NEW CONDITION: SKIP SORTED CASE ---
+        # Exclude 0 1 2 3 4 from statistics to avoid 0-op bias
         if p == sorted_tuple:
             checker_linux_ok += 1
             my_checker_ok += 1
-            min_ops = min(min_ops, 0)
-            # We don't increment total_ops or max_ops for a skip
-            print(f"\rTest {i}/{total_tests}    run_test(num_count=100, ops_limit=699, iterations=100, log_errors=False)
-", end="")
+            # Visual update for the skip
+            print(f"\rTest {i}/{total_tests}", end="")
             continue
-        # ---------------------------------------
-
+        
         args_list = [str(n) for n in p]
         args_str = ' '.join(args_list)
         
         try:
+            # Run push_swap
             process = subprocess.run([PUSH_SWAP_PATH] + args_list, capture_output=True, text=True)
             output = process.stdout.strip()
+            
+            # Count operations
             ops_count = len(output.split('\n')) if output else 0
             
+            # Update stats for non-sorted cases
             total_ops += ops_count
             max_ops = max(max_ops, ops_count)
             min_ops = min(min_ops, ops_count)
 
+            # Check validity with official checker
             if run_checker(CHECKER_LINUX_PATH, args_str, output):
                 checker_linux_ok += 1
             else:
                 failures.append(f"KO (Checker): {args_str}")
 
+            # Check validity with your own checker
             if run_checker(MY_CHECKER_PATH, args_str, output):
                 my_checker_ok += 1
             
+            # Check efficiency
             if ops_count > ops_limit:
                 failures.append(f"Limit Exceeded ({ops_count} ops): {args_str}")
 
+            # Visual progress
             print(f"\rTest {i}/{total_tests}", end="")
             sys.stdout.flush()
         except Exception as e:
-            print(f"\nError: {e}")
+            print(f"\nError on permutation {args_str}: {e}")
 
+    # Final Results Printout
     print("\n")
+    
     c_lin_color = GREEN if checker_linux_ok == total_tests else RED
     c_my_color = GREEN if my_checker_ok == total_tests else RED
+    
     print(f"checker_linux {c_lin_color}{checker_linux_ok}/{total_tests}{RESET}")
     print(f"my_checker    {c_my_color}{my_checker_ok}/{total_tests}{RESET}")
     
-    # Avg calculation (excluding the 1 skipped sorted case from the divisor for accuracy)
-    avg = total_ops / (total_tests - 1) if total_tests > 1 else 0
+    # Calculate average using 119 tests (excluding sorted case)
+    effective_count = total_tests - 1
+    avg = total_ops / effective_count if effective_count > 0 else 0
     
-    print(f"\nResults for {num_count} numbers:")
-    print(f"Min ops: {min_ops} ops")
+    print(f"\nResults for {num_count} numbers (Stats exclude sorted case):")
+    print(f"Min ops: {min_ops if min_ops != float('inf') else 0} ops")
     print(f"Max ops: {max_ops} ops")
     print(f"Average: {avg:.1f} ops")
-    print(f"Failures: {RED if failures else GREEN}{len(failures)}{RESET}/{total_tests}")
+    
+    failures_color = RED if failures else GREEN
+    print(f"Failures: {failures_color}{len(failures)}{RESET}/{total_tests}")
 
+    # Write errors to file if any found
     if failures:
-        with open(ERROR_LOG_FILE, "a") as f:
-            f.write(f"\n--- Failures for {num_count} numbers ---\n")
+        with open(ERROR_LOG_FILE, "w") as f:
+            f.write(f"--- Failures for {num_count} numbers ---\n")
             for fail in failures:
                 f.write(fail + "\n")
+        print(f"\n--- Errors logged to {ERROR_LOG_FILE} ---")
 
 if __name__ == "__main__":
-    with open(ERROR_LOG_FILE, "w") as f:
-        f.write("--- PUSH_SWAP TESTER LOG ---\n")
-
+    # Check for executable
     try:
         subprocess.run([PUSH_SWAP_PATH], capture_output=True)
     except FileNotFoundError:
-        print(f"Error: {PUSH_SWAP_PATH} not found.")
+        print(f"Error: {PUSH_SWAP_PATH} not found. Compile it first!")
         sys.exit(1)
 
+    # Run for 5 numbers, limit < 12 ops (11)
     run_permutation_test(5, 11)
