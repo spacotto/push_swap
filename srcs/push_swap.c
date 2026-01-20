@@ -88,11 +88,16 @@ int	main(int ac, char **av)
 	if (ac > 1)
 	{
 		push_swap(&stacks, ac, av);
-		ft_lstclear(&stacks.stack_a, del);
-		ft_lstclear(&stacks.operations, del);
-		ft_lstclear(&stacks.ops_s, del);
-		ft_lstclear(&stacks.ops_m, del);
-		ft_lstclear(&stacks.ops_l, del);
+		if (stacks.stack_a)
+			ft_lstclear(&stacks.stack_a, del);
+		if (stacks.operations)
+			ft_lstclear(&stacks.operations, del);
+		if (stacks.ops_s)
+			ft_lstclear(&stacks.ops_s, del);
+		if (stacks.ops_m)
+			ft_lstclear(&stacks.ops_m, del);
+		if (stacks.ops_l)
+			ft_lstclear(&stacks.ops_l, del);
 	}
 	return (0);
 }
