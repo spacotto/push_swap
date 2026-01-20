@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:08:08 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/19 23:54:12 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/20 11:12:20 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void	calculate_disorder(t_list *stack, t_chunk *chunk)
 			chunk->stack_disorder++;
 		current = current->next;
 	}
-	return (chunk->stack_disorder);
 }
 
 static void	choose_chunk_size(t_list *stack, t_chunk *chunk)
@@ -40,9 +39,9 @@ static void	choose_chunk_size(t_list *stack, t_chunk *chunk)
 	}
 	else
 	{
-		if (chunk->disorder < chunk->max_disorder * 0.33)
+		if (chunk->stack_disorder < chunk->max_disorder * 0.33)
 			chunk->size = 75;  // Low disorder (0-33%)
-		else if (chunk->disorder < chunk->max_disorder * 0.66)
+		else if (chunk->stack_disorder < chunk->max_disorder * 0.66)
 			chunk->size = 68;  // Medium disorder (33-66%)
 		else
 			chunk->size = 60;  // High disorder (66-100%)
