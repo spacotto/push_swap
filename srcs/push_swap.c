@@ -61,7 +61,7 @@ void	push_swap(t_stacks *stacks, int ac, char **av)
 			sort_two(stacks);
 			print_ops(stacks->operations);
 		}
-		if (ft_lstsize(stacks->stack_a) == 3)
+		else if (ft_lstsize(stacks->stack_a) == 3)
 		{
 			sort_three(stacks);
 			print_ops(stacks->operations);
