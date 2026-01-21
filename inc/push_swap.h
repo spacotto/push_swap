@@ -97,12 +97,12 @@ void	move_to_top_a(t_stacks *stacks, t_list *target);
 void	move_to_top_b(t_stacks *stacks, t_list *target);
 
 void	add_operation(t_stacks *stacks, char *op);
+t_list	*optimise_ops(t_list *ops);
 int		isrr(char *op1, char *op2);
 void	merge_rr(t_list  *ops);
 int		isrrr(char *op1, char *op2);
 void	merge_rrr(t_list  *ops);
 int		redundancy(t_list *op1, t_list *op2);
-void	optimise_ops(t_stacks *stacks);
 void	print_ops(t_list *ops);
 
 // Sorting
