@@ -56,10 +56,10 @@ t_list	*optimise_ops(t_list *ops)
 		else if (isrrr(current->content, current->next->content))
 			merge_rrr(new_list);
 		else if (redundancy(current, current->next))
-			current->next;
+			current = current->next;
 		else
 			just_copy(current, new_list);
-		current->next;
+		current = current->next;
 	}
 	just_copy(current, new_list);
 	return (new_list);
