@@ -28,7 +28,6 @@ t_list	*ft_lstdup(t_list *node)
 		free(content_copy);
 		return (NULL);
 	}
-	if (index != '\0')
-		node_copy->index = node->index;
+	node_copy->index = node->index;
 	return (node_copy);
 }
