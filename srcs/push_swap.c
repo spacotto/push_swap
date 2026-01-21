@@ -83,7 +83,7 @@ int	main(int ac, char **av)
 	ft_memset(&stacks, 0, sizeof(t_stacks));
 	if (ac > 1)
 	{
-		push_swap(&stacks, ac, av);/*
+		push_swap(&stacks, ac, av);
 		if (stacks.stack_a)
 			ft_lstclear(&stacks.stack_a, del);
 		if (stacks.operations)
@@ -93,7 +93,7 @@ int	main(int ac, char **av)
 		if (stacks.ops_m)
 			ft_lstclear(&stacks.ops_m, del);
 		if (stacks.ops_l)
-			ft_lstclear(&stacks.ops_l, del);*/
+			ft_lstclear(&stacks.ops_l, del);
 	}
 	return (0);
 }
