@@ -84,15 +84,15 @@ int	main(int ac, char **av)
 	if (ac > 1)
 	{
 		push_swap(&stacks, ac, av);
-		if (stacks.stack_a)
+		if (stacks.stack_a != NULL)
 			ft_lstclear(&stacks.stack_a, del);
-		if (stacks.operations)
+		if (stacks.operations != NULL)
 			ft_lstclear(&stacks.operations, del);
-		if (stacks.ops_s)
+		if (stacks.ops_s != NULL)
 			ft_lstclear(&stacks.ops_s, del);
-		if (stacks.ops_m)
+		if (stacks.ops_m != NULL)
 			ft_lstclear(&stacks.ops_m, del);
-		if (stacks.ops_l)
+		if (stacks.ops_l != NULL)
 			ft_lstclear(&stacks.ops_l, del);
 	}
 	return (0);
