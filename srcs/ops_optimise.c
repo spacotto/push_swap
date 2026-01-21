@@ -36,11 +36,11 @@ static void	just_copy(t_list *node_to_copy, t_list *target_list)
 
 	node_copy = ft_lstdup(node_to_copy);
 	if (!node_copy)
-		return (NULL);
+		return ;
 	ft_lstadd_back(&target_list, node_copy);
 }
 
-t_list	optimise_ops(t_list *ops)
+t_list	*optimise_ops(t_list *ops)
 {
 	t_list	*current;
 	t_list	*new_list;
@@ -59,7 +59,7 @@ t_list	optimise_ops(t_list *ops)
 			current->next;
 		else
 			just_copy(current, new_list);
-		current->next
+		current->next;
 	}
 	just_copy(current, new_list);
 	return (new_list);
