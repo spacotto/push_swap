@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 16:46:26 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/21 16:20:38 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/21 18:18:05 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,12 @@ static void	repeat_chunk_sort(t_stacks *stacks, int ac, char **av)
 		ft_memset(&stacks->stack_a, 0, sizeof(t_list));
 		build_stack(stacks, ac, av);
 		chunk_sort(stacks);
-		optimise_ops(stacks);
 		if (counter == 2)
-			stacks->ops_s = ft_lstdup(stacks->operations);
+			stacks->ops_s = optimise_ops(stacks->operations);
 		else if (counter == 1)
-			stacks->ops_m = ft_lstdup(stacks->operations);
+			stacks->ops_m = optimise_ops(stacks->operations);
 		else if (counter == 0)
-			stacks->ops_l = ft_lstdup(stacks->operations);
+			stacks->ops_l = optimise_ops(stacks->operations);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:35:14 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/20 17:08:06 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/21 18:39:06 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,9 +167,9 @@ void	ft_putnbr_base_fd(int n, char *base, int fd);
 
 // LISTS
 t_list	*ft_lstnew(void *content);
+t_list	*ft_lstdup(t_list *node);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-t_list	*ft_lstdup(t_list *lst);
 
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);

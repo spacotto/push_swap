@@ -6,60 +6,60 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 15:34:14 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/18 23:02:59 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/21 19:46:34 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	merge_rr(t_list  *ops)
+int	isrr(char *op1, char *op2)
 {
-	t_list	*cmp1;
-	t_list	*cmp2;
-
-	if (!ops || !ops->next)
-		return ;
-	cmp1 = ops;
-	while (cmp1 && cmp1->next)
-	{
-		cmp2 = cmp1->next;
-		if ((ft_strcmp(cmp1->content, "ra\n") == 0 && 
-			ft_strcmp(cmp2->content, "rb\n") == 0) ||
-			(ft_strcmp(cmp1->content, "rb\n") == 0 &&
-			ft_strcmp(cmp2->content, "ra\n") == 0))
-		{
-			free(cmp1->content);
-			cmp1->content = ft_strdup("rr\n");
-			cmp1->next = cmp2->next;
-			ft_lstdelone(cmp2, del);
-		}
-		else
-			cmp1 = cmp1->next;
-	}
+	if (ft_strcmp(op1, "ra\n") == 0 && ft_strcmp(op2, "rb\n") == 0)
+		return (1);
+	if (ft_strcmp(op1, "rb\n") == 0 && ft_strcmp(op2, "ra\n") == 0)
+		return (1);
+	return (0);
 }
 
-void	merge_rrr(t_list  *ops)
+void	merge_rr(t_list *target_list)
 {
-	t_list	*cmp1;
-	t_list	*cmp2;
+	t_list	*merged_node;
+	char	*new_op;
 
-	if (!ops || !ops->next)
-		return ;
-	cmp1 = ops;
-	while (cmp1 && cmp1->next)
+	new_op = ft_strdup("rr\n");
+	if (!new_op)
+		return (NULL);
+	merged_node = ft_lstnew(new_op);
+	if (!merged_node)
 	{
-		cmp2 = cmp1->next;
-		if ((ft_strcmp(cmp1->content, "rra\n") == 0 && 
-			ft_strcmp(cmp2->content, "rrb\n") == 0) ||
-			(ft_strcmp(cmp1->content, "rrb\n") == 0 &&
-			ft_strcmp(cmp2->content, "rra\n") == 0))
-		{
-			free(cmp1->content);
-			cmp1->content = ft_strdup("rrr\n");
-			cmp1->next = cmp2->next;
-			ft_lstdelone(cmp2, del);
-		}
-		else
-			cmp1 = cmp1->next;
+		free(new_op);
+		return (NULL);
 	}
+	ft_lstadd_back(&target_list, merged_node);
+}
+
+int	isrrr(char *op1, char *op2)
+{
+	if (ft_strcmp(op1, "rra\n") == 0 && ft_strcmp(op2, "rrb\n") == 0)
+		return (1);
+	if (ft_strcmp(op1, "rrb\n") == 0 && ft_strcmp(op2, "rra\n") == 0)
+		return (1);
+	return (0);
+}
+
+void	merge_rrr(t_list *target_list)
+{
+	t_list	*merged_node;
+	char	*new_op;
+
+	new_op = ft_strdup("rrr\n");
+	if (!new_op)
+		return (NULL);
+	merged_node = ft_lstnew(new_op);
+	if (!merged_node)
+	{
+		free(new_op);
+		return (NULL);
+	}
+	ft_lstadd_back(&target_list, merged_node);
 }
