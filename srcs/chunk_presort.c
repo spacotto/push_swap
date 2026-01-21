@@ -6,55 +6,57 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:08:08 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/20 17:33:33 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/21 16:35:40 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	chunk_sizes_100(t_chunk *chunk, int counter)
+static void	chunk_sizes_100(t_chunk *chunk)
 {
+	static int	counter = 1;
+
 	if (counter == 1)
 	{
-		chunk->size = 22;
+		chunk->size = 10;
 		counter++;
 	}
-	if (counter == 2)
+	else if (counter == 2)
 	{
-		chunk->size = 33;
+		chunk->size = 30;
 		counter++;
 	}
-	if (counter == 3)
-		chunk->size = 66;
+	else if (counter == 3)
+		chunk->size = 40;
 }
 
-static void	chunk_sizes_500(t_chunk *chunk, int counter)
+static void	chunk_sizes_500(t_chunk *chunk)
 {
+	static int	counter = 1;
+
 	if (counter == 1)
 	{
 		chunk->size = 60;
 		counter++;
 	}
-	if (counter == 2)
+	else if (counter == 2)
 	{
 		chunk->size = 65;
 		counter++;
 	}
-	if (counter == 3)
+	else if (counter == 3)
 		chunk->size = 70;
 }
 
 static void	choose_chunk_size(t_list *stack, t_chunk *chunk)
 {
-	static int	counter = 1;
-
 	chunk->stack_size = ft_lstsize(stack);
 	if (chunk->stack_size <= 5)
 		chunk->size = 1;
 	else if (chunk->stack_size > 5 && chunk->stack_size <= 100)
-		chunk_sizes_100(chunk, counter);
+		chunk_sizes_100(chunk);
 	else
-		chunk_sizes_500(chunk, counter);
+		chunk_sizes_500(chunk);
 }
 
 static void    build_chunk(t_stacks *stacks, t_chunk *chunk, t_biggest *b)

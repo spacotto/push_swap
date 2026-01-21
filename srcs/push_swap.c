@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 16:46:26 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/20 17:43:21 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/21 16:20:38 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	repeat_chunk_sort(t_stacks *stacks, int ac, char **av)
 	while (counter--)
 	{
 		ft_lstclear(&stacks->stack_a, del);
-		stacks->stack_a = NULL;
+		ft_memset(&stacks->stack_a, 0, sizeof(t_list));
 		build_stack(stacks, ac, av);
 		chunk_sort(stacks);
 		optimise_ops(stacks);
@@ -80,14 +80,10 @@ int	main(int ac, char **av)
 {
 	t_stacks	stacks;
 
-	stacks.stack_a = NULL;
-	stacks.stack_b = NULL;
-	stacks.ops_s = NULL;
-	stacks.ops_m = NULL;
-	stacks.ops_l = NULL;
+	ft_memset(&stacks, 0, sizeof(t_stacks));
 	if (ac > 1)
 	{
-		push_swap(&stacks, ac, av);
+		push_swap(&stacks, ac, av);/*
 		if (stacks.stack_a)
 			ft_lstclear(&stacks.stack_a, del);
 		if (stacks.operations)
@@ -97,7 +93,7 @@ int	main(int ac, char **av)
 		if (stacks.ops_m)
 			ft_lstclear(&stacks.ops_m, del);
 		if (stacks.ops_l)
-			ft_lstclear(&stacks.ops_l, del);
+			ft_lstclear(&stacks.ops_l, del);*/
 	}
 	return (0);
 }
