@@ -28,7 +28,8 @@ void	merge_rr(t_list  *ops)
 			(ft_strcmp(cmp1->content, "rb\n") == 0 &&
 			ft_strcmp(cmp2->content, "ra\n") == 0))
 		{
-			cmp1->content = "rr\n";
+			free(cmp1->content);
+			cmp1->content = ft_strdup("rr\n");
 			cmp1->next = cmp2->next;
 			ft_lstdelone(cmp2, del);
 		}
@@ -53,7 +54,8 @@ void	merge_rrr(t_list  *ops)
 			(ft_strcmp(cmp1->content, "rrb\n") == 0 &&
 			ft_strcmp(cmp2->content, "rra\n") == 0))
 		{
-			cmp1->content = "rrr\n";
+			free(cmp1->content);
+			cmp1->content = ft_strdup("rrr\n");
 			cmp1->next = cmp2->next;
 			ft_lstdelone(cmp2, del);
 		}
