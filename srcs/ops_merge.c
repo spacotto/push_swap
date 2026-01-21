@@ -28,12 +28,12 @@ void	merge_rr(t_list *target_list)
 
 	new_op = ft_strdup("rr\n");
 	if (!new_op)
-		return (NULL);
+		return ;
 	merged_node = ft_lstnew(new_op);
 	if (!merged_node)
 	{
 		free(new_op);
-		return (NULL);
+		return ;
 	}
 	ft_lstadd_back(&target_list, merged_node);
 }
@@ -54,12 +54,12 @@ void	merge_rrr(t_list *target_list)
 
 	new_op = ft_strdup("rrr\n");
 	if (!new_op)
-		return (NULL);
+		return ;
 	merged_node = ft_lstnew(new_op);
 	if (!merged_node)
 	{
 		free(new_op);
-		return (NULL);
+		return ;
 	}
 	ft_lstadd_back(&target_list, merged_node);
 }
