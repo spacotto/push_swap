@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 16:46:26 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/21 20:19:20 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/21 22:27:01 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ static void	repeat_chunk_sort(t_stacks *stacks, int ac, char **av)
 	{
 		ft_lstclear(&stacks->stack_a, del);
 		ft_lstclear(&stacks->operations, del);
-		ft_memset(&stacks->stack_a, 0, sizeof(t_list));
-		ft_memset(&stacks->operations, 0, sizeof(t_list));
 		build_stack(stacks, ac, av);
 		chunk_sort(stacks);
 		if (counter == 2)

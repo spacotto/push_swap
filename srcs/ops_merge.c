@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 15:34:14 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/21 19:46:34 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/21 22:14:34 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	isrr(char *op1, char *op2)
 	return (0);
 }
 
-void	merge_rr(t_list *target_list)
+void	merge_rr(t_list **target_list)
 {
 	t_list	*merged_node;
 	char	*new_op;
@@ -35,7 +35,7 @@ void	merge_rr(t_list *target_list)
 		free(new_op);
 		return ;
 	}
-	ft_lstadd_back(&target_list, merged_node);
+	ft_lstadd_back(target_list, merged_node);
 }
 
 int	isrrr(char *op1, char *op2)
@@ -47,7 +47,7 @@ int	isrrr(char *op1, char *op2)
 	return (0);
 }
 
-void	merge_rrr(t_list *target_list)
+void	merge_rrr(t_list **target_list)
 {
 	t_list	*merged_node;
 	char	*new_op;
@@ -61,5 +61,5 @@ void	merge_rrr(t_list *target_list)
 		free(new_op);
 		return ;
 	}
-	ft_lstadd_back(&target_list, merged_node);
+	ft_lstadd_back(target_list, merged_node);
 }
