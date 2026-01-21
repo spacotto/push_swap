@@ -30,7 +30,7 @@ void	add_operation(t_stacks *stacks, char *op)
 	ft_lstadd_back(&stacks->operations, node);
 }
 
-static void	just_copy(t_list node_to_copy, t_list target_list)
+static void	just_copy(t_list *node_to_copy, t_list *target_list)
 {
 	t_list	*node_copy;
 
