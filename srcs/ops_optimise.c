@@ -14,19 +14,20 @@
 
 void	add_operation(t_stacks *stacks, char *op)
 {
-	t_list	*new_node;
+	t_list	*node;
+	char	*content;
 
-	new_node = malloc(sizeof(t_list));
-	if (!new_node)
+	content = ft_strdup(op);
+	if (!content)
+		return ;
+	node = ft_lstnew(content);
+	if (!node)
+	{
+		free(content);
 		return;
-	new_node->content = ft_strdup(op);
-	if (!new_node->content)
-		{
-			free(new_node);
-			return ;
-		}
-	new_node->next = NULL;
-	ft_lstadd_back(&stacks->operations, new_node);
+	}
+	node->next = NULL;
+	ft_lstadd_back(&stacks->operations, node);
 }
 
 void	optimise_ops(t_stacks *stacks)
