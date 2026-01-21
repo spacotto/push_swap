@@ -83,7 +83,7 @@ void	ft_rra(t_stacks *stacks);
 void	ft_rrb(t_stacks *stacks);
 void	ft_rrr(t_stacks *stacks);
 
-// Sorting
+// Optimisation
 void	assign_index(t_list *stack);
 
 t_list	*find_biggest(t_list *stack);
@@ -97,12 +97,15 @@ void	move_to_top_a(t_stacks *stacks, t_list *target);
 void	move_to_top_b(t_stacks *stacks, t_list *target);
 
 void	add_operation(t_stacks *stacks, char *op);
+int		isrr(char *op1, char *op2);
 void	merge_rr(t_list  *ops);
+int		isrrr(char *op1, char *op2);
 void	merge_rrr(t_list  *ops);
-void	rm_redundancy(t_list **ops);
+int		redundancy(t_list *op1, t_list *op2);
 void	optimise_ops(t_stacks *stacks);
 void	print_ops(t_list *ops);
 
+// Sorting
 void	sort_two(t_stacks *stacks);
 void	sort_three(t_stacks *stacks);
 void	chunk_presort(t_stacks *stacks);
