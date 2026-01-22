@@ -36,7 +36,7 @@ static void	chunk_sizes_500(t_chunk *chunk)
 
 	if (counter == 1)
 	{
-		chunk->size = 60;
+		chunk->size = 30;
 		counter++;
 	}
 	else if (counter == 2)
