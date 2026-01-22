@@ -6,7 +6,7 @@
 #    By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/01 13:30:48 by spacotto          #+#    #+#              #
-#    Updated: 2026/01/20 17:08:41 by spacotto         ###   ########.fr        #
+#    Updated: 2026/01/22 18:01:19 by spacotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,6 +99,7 @@ SRC_CNV		:=	ft_toupper.c \
 				ft_tolower.c \
 				ft_atoi.c \
 				ft_atoi_base.c \
+				ft_atol.c \
 				ft_itoa.c \
 				ft_itoa_base.c \
 				ft_itoa_base_buffer.c \
@@ -126,7 +127,8 @@ SRC_LST		:=	ft_lstnew.c \
 				ft_lstmap.c \
 				ft_lstcat.c \
 				ft_lstpos.c \
-				ft_lstdup.c
+				ft_lstdup.c \
+				ft_lst_disorder.c
 
 SRC_PRINTF	:=	ft_printf.c \
 				ft_printchar.c \

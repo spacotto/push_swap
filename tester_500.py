@@ -8,7 +8,7 @@ import sys
 PUSH_SWAP_PATH = "./push_swap"
 CHECKER_LINUX_PATH = "./checker_linux"
 MY_CHECKER_PATH = "./checker"
-ERROR_LOG_FILE = "error_log.txt"
+ERROR_LOG_FILE = "error_log500.txt"
 
 def generate_random_numbers(count):
     """Generates a list of unique random integers."""

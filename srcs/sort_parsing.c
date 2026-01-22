@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:32:55 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/20 16:42:45 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/22 17:10:17 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	get_tokens(t_stacks *stacks, char *s)
 		number = malloc(1 * sizeof(int));
 		if (!number)
 			return ;
-		*number = ft_atoi(token);
+		*number = ft_atol(token);
 		node = ft_lstnew(number);
 		if (!node)
 		{

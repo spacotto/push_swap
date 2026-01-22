@@ -8,7 +8,7 @@ import sys
 PUSH_SWAP_PATH = "./push_swap"
 CHECKER_LINUX_PATH = "./checker_linux"
 MY_CHECKER_PATH = "./checker"
-ERROR_LOG_FILE = "error_log.txt"
+ERROR_LOG_FILE = "error_log100.txt"
 
 def generate_random_numbers(count):
     """Generates a list of unique random integers."""
@@ -130,4 +130,4 @@ if __name__ == "__main__":
         sys.exit(1)
 
     # Run 100 loops with 100 numbers (Limit <700)
-    run_test(num_count=100, ops_limit=699, iterations=100, log_errors=False)
+    run_test(num_count=100, ops_limit=699, iterations=100, log_errors=True)

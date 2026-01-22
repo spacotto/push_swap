@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/21 22:13:42 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/22 19:07:00 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ typedef struct s_stacks
 	t_list	*stack_a;
 	t_list	*stack_b;
 	t_list	*operations;
-	t_list	*ops_s;
-	t_list	*ops_m;
-	t_list	*ops_l;
+	t_list	*optimisation;
+	double	disorder;
 }	t_stacks;
 
 typedef struct s_biggest
@@ -47,8 +46,6 @@ typedef struct s_biggest
 typedef struct s_chunk
 {
 	int	stack_size;
-	int	stack_disorder;
-	int	max_disorder;
 	int	size;
 	int	min;
 	int	max;

@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:35:14 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/21 18:39:06 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/22 18:00:36 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,8 @@ int		ft_tolower(int c);
 int		ft_atoi(const char *nptr);
 int		ft_atoi_base(const char *nptr, int base);
 
+long	ft_atol(const char *nptr);
+
 char	*ft_itoa(ssize_t n);
 char	*ft_utoa(size_t n);
 char	*ft_itoa_base(ssize_t n, char *base);
@@ -181,6 +183,8 @@ void	ft_lstcat(t_list **lst1, t_list *lst2);
 
 int		ft_lstsize(t_list *lst);
 int		ft_lstpos(t_list *haystack, t_list *needle);
+
+double  ft_lst_disorder(t_list *lst);
 
 // ============================================================================
 // COLORS

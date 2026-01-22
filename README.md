@@ -4,6 +4,16 @@ A sorting algorithm implementation that sorts data on a stack using a limited se
 ## Objective
 Given 2 stacks A and B, implement a sorting algorithm that sorts the numbers in stack A in ascending order using the least amount of operations.
 
+### Invalid Inputs
+>[!IMPORTANT]
+>In case of error, it must display "Error" followed by an ’\n’ on the standard error.
+
+Invalid input cases:
+1. Non numeric parameters (only `int` are considered valid arguments).
+2. Duplicate numeric parameters.
+3. Numeric parameters exceeding the `int` limits (INT_MIN, INT_MAX).
+
+
 ### Available Operations
 | Operation                | Description                                                          |
 | :----------------------- | :------------------------------------------------------------------- |
