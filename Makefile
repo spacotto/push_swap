@@ -6,7 +6,7 @@
 #    By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/08 15:55:57 by spacotto          #+#    #+#              #
-#    Updated: 2026/01/16 18:33:57 by spacotto         ###   ########.fr        #
+#    Updated: 2026/01/23 11:28:41 by spacotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,8 +61,7 @@ BEST		:=	best_move_to_top.c \
 				ops_remove.c \
 				ops_optimise.c
 
-FIND		:=	find_biggest.c \
-				find_target.c
+FIND		:=	find_biggest.c 
 
 SORT		:=	sort_parsing.c \
 				sort_check.c \

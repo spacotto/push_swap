@@ -6,42 +6,23 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 17:46:50 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/22 14:18:43 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/23 11:34:56 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	move_one(t_stacks *stacks, t_biggest *biggest)
-{
-	move_to_top_b(stacks, biggest->p1);
-	ft_pa(stacks);
-}
-/*
-static void	move_two(t_stacks *stacks, t_biggest *biggest)
-{
-	move_to_top_b(stacks, biggest->p2);
-	ft_pa(stacks);
-	move_one(stacks, biggest);
-	sort_two(stacks);
-}
-*/
 void	chunk_sort(t_stacks *stacks)
 {
-	t_biggest	b;
+	t_list	*biggest;
 
 	assign_index(stacks->stack_a);
 	chunk_presort(stacks);
 	sort_three(stacks);
+	biggest = NULL;
 	while (stacks->stack_b)
 	{
-		b.p1 = find_biggest(stacks->stack_b);
-//		b.p2 = find_second_biggest(stacks->stack_b);
-//		b.d1 = find_distance(stacks->stack_b, b.p1);
-//		b.d2 = find_distance(stacks->stack_b, b.p2);
-//		if (b.p2 && (b.d2 < b.d1))
-//			move_two(stacks, &b);
-//		else
-		move_one(stacks, &b);
+		move_to_top_b(stacks, biggest);
+		ft_pa(stacks);
 	}
 }

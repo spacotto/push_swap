@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/22 19:07:00 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/23 11:27:53 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,17 @@ typedef struct s_stacks
 	t_list	*stack_b;
 	t_list	*operations;
 	t_list	*optimisation;
-	double	disorder;
 }	t_stacks;
 
 typedef struct s_biggest
 {
-	t_list  *p1;
-	t_list  *p2;
-	t_list  *p3;
+	t_list  *first;
+	t_list  *second;
+	t_list  *third;
 	int		d1;
 	int		d2;
 	int		d3;
 }	t_biggest;
-
-typedef struct s_chunk
-{
-	int	stack_size;
-	int	size;
-	int	min;
-	int	max;
-}	t_chunk;
 
 // ============================================================================
 // PROTOTYPES
@@ -86,9 +77,6 @@ void	assign_index(t_list *stack);
 t_list	*find_biggest(t_list *stack);
 t_list	*find_second_biggest(t_list *stack);
 t_list	*find_third_biggest(t_list *stack);
-
-int		find_distance(t_list *stack, t_list *target);
-t_list  *find_best_target(t_list *stack, t_chunk *chunk, t_biggest *b);
 
 void	move_to_top_a(t_stacks *stacks, t_list *target);
 void	move_to_top_b(t_stacks *stacks, t_list *target);
