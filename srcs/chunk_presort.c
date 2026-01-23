@@ -43,7 +43,6 @@ void    chunk_presort(t_stacks *stacks)
 	int			stack_size;
 	int			range;
 	int			pushed;
-	t_list		*current;
 	t_biggest	b;
 
 	stack_size = ft_lstsize(stacks->stack_a);
