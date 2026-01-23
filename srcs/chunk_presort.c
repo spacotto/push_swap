@@ -27,7 +27,7 @@ static int	choose_range(int stack_size)
 
 static int	is_target(t_list *current, int range, t_biggest *b)
 {
-	if (current->index <= range)
+	if (current->index >= range)
 		return (0);
 	else if (b->first && current == b->first)
 		return (0);
