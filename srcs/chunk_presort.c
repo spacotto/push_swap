@@ -29,11 +29,11 @@ static int	is_target(t_list *current, int range, t_biggest *b)
 {
 	if (current->index <= range)
 		return (0);
-	if (b->first && current == b->first)
+	else if (b->first && current == b->first)
 		return (0);
-	if (b->second && current == b->second)
+	else if (b->second && current == b->second)
 		return (0);
-	if (b->third && current == b->third)
+	else if (b->third && current == b->third)
 		return (0);
 	return (1);
 }
