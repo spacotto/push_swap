@@ -49,13 +49,12 @@ void    chunk_presort(t_stacks *stacks)
 	stack_size = ft_lstsize(stacks->stack_a);
 	range = choose_range(stack_size);
 	pushed = 0;
-	current = stacks->stack_a;
 	b.first = find_biggest(stacks->stack_a);
 	b.second = find_second_biggest(stacks->stack_a);
 	b.third = find_third_biggest(stacks->stack_a);
 	while (stack_size > 3)
 	{
-		if (is_target(current, range, &b) == 1)
+		if (is_target(stacks->stack_a, range, &b) == 1)
 		{
 			ft_pb(stacks);
 			if (stacks->stack_b->index < pushed)
