@@ -1,10 +1,10 @@
 # push_swap
 A sorting algorithm implementation that sorts data on a stack using a limited set of instructions, with the goal of using the minimum number of operations possible. The project challenges you to choose and implement the most efficient algorithm for the task while dealing with algorithmic complexity.
 
-## Objective
+### Objective
 Given 2 stacks A and B, implement a sorting algorithm that sorts the numbers in stack A in ascending order using the least amount of operations.
 
-### Invalid Inputs
+## Invalid Inputs
 >[!IMPORTANT]
 >In case of error, it must display "Error" followed by an ’\n’ on the standard error.
 
@@ -13,8 +13,7 @@ Invalid input cases:
 2. Duplicate numeric parameters.
 3. Numeric parameters exceeding the `int` limits (INT_MIN, INT_MAX).
 
-
-### Available Operations
+## Available Operations
 | Operation                | Description                                                          |
 | :----------------------- | :------------------------------------------------------------------- |
 | `sa` (swap a)            | Swap the first 2 elements at the top of stack A                      |
@@ -29,14 +28,14 @@ Invalid input cases:
 | `rrb` (reverse rotate b) | Shift all elements of stack B down by 1 (last element becomes first) |
 | `rrr`                    | Execute rra and rrb simultaneously                                   |
 
-### Benchmark
+## Benchmark
 | Set | Max operations |
 | :-- | :------------- |
 | 5   | 12             |
 | 100 | < 700          |
 | 500 | < 5500         |
 
-## Chunk Algorithm
+## The Algorithm
 The **Chunk Algorithm** (also known as the **Segmented Sorting approach**) is an efficient method for sorting larger datasets by dividing the problem into manageable segments.
 
 ### How It Works
@@ -59,6 +58,8 @@ The chunk algorithm's efficiency depends heavily on the **chunk size**, which mu
 **Larger chunks** reduce the number of chunks, making Phase 1 faster since there's less overhead switching between chunks and searching for members. However, this causes elements in stack B to be **more scattered**, making Phase 2 slower as finding the largest element requires more rotations through a less organized stack.
 
 The optimal chunk size depends on the input's **initial disorder**. For **low-disorder inputs** (already somewhat sorted), larger chunks work best because Phase 1 is naturally easier and the extra Phase 2 cost is minimal. For **high-disorder inputs** (reverse sorted or very random), smaller chunks help by keeping stack B organized, which is critical when Phase 2 becomes the bottleneck.
+
+## The Checker (Bonus)
 
 ## Resources
 - [Sorting Algorithms - GeeksforGeeks](https://www.geeksforgeeks.org/dsa/sorting-algorithms/)
