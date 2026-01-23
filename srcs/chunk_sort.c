@@ -22,6 +22,7 @@ void	chunk_sort(t_stacks *stacks)
 	biggest = NULL;
 	while (stacks->stack_b)
 	{
+		biggest = find_biggest(stacks->stack_b);
 		move_to_top_b(stacks, biggest);
 		ft_pa(stacks);
 	}

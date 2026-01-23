@@ -130,4 +130,4 @@ if __name__ == "__main__":
         sys.exit(1)
 
     # Run 100 loops with 100 numbers (Limit <700)
-    run_test(num_count=100, ops_limit=699, iterations=100, log_errors=True)
+    run_test(num_count=100, ops_limit=699, iterations=100, log_errors=False)

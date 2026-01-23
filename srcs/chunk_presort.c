@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:08:08 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/23 11:34:29 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/23 18:25:27 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,35 +25,29 @@ static int	choose_range(int stack_size)
 	return (range);
 }
 
-static int	is_target(t_list *current, int range, t_biggest *b)
+static int	is_target(t_list *current, int range, int max_range)
 {
 	if (current->index >= range)
 		return (0);
-	if (b->first && current == b->first)
-		return (0);
-	if (b->second && current == b->second)
-		return (0);
-	if (b->third && current == b->third)
+	if (current->index > max_range)
 		return (0);
 	return (1);
 }
 
 void    chunk_presort(t_stacks *stacks)
 {
-	int			stack_size;
-	int			range;
-	int			pushed;
-	t_biggest	b;
+	int	stack_size;
+	int	max_range;
+	int	range;
+	int	pushed;
 
 	stack_size = ft_lstsize(stacks->stack_a);
+	max_range = stack_size - 4;
 	range = choose_range(stack_size);
 	pushed = 0;
-	b.first = find_biggest(stacks->stack_a);
-	b.second = find_second_biggest(stacks->stack_a);
-	b.third = find_third_biggest(stacks->stack_a);
 	while (stack_size > 3)
 	{
-		if (is_target(stacks->stack_a, range, &b) == 1)
+		if (is_target(stacks->stack_a, range, max_range) == 1)
 		{
 			ft_pb(stacks);
 			if (stacks->stack_b->index < pushed)
