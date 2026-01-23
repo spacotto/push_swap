@@ -19,7 +19,7 @@ void	push_swap(t_stacks *stacks, int ac, char **av)
 	{
 		if (ft_lstsize(stacks->stack_a) == 2)
 		{
-			sort_two(stacks);
+			ft_sa(stacks);
 			print_ops(stacks->operations);
 		}
 		else if (ft_lstsize(stacks->stack_a) == 3)
