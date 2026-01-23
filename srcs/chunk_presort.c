@@ -42,25 +42,26 @@ void    chunk_presort(t_stacks *stacks)
 {
 	int			stack_size;
 	int			range;
+	int			pushed;
 	t_list		*current;
 	t_biggest	b;
-	int			i;
 
 	stack_size = ft_lstsize(stacks->stack_a);
+	range = choose_range(stack_size);
+	pushed = 0;
 	current = stacks->stack_a;
 	b.first = find_biggest(stacks->stack_a);
 	b.second = find_second_biggest(stacks->stack_a);
 	b.third = find_third_biggest(stacks->stack_a);
-	range = choose_range(stack_size);
-	i = 0;
 	while (stack_size > 3)
 	{
 		if (is_target(current, range, &b) == 1)
 		{
 			ft_pb(stacks);
-			if (stacks->stack_b->index < i)
+			if (stacks->stack_b->index < pushed)
                 ft_rb(stacks);
-            i++;
+            pushed++;
+			range++;
 		}
 		else
 			ft_ra(stacks);
