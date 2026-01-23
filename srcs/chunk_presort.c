@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:08:08 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/23 18:25:27 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/24 00:17:13 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	choose_range(int stack_size)
 	int	range;
 		
 	if (stack_size <= 5)
-		range = 1;
+		range = 3;
 	else if (stack_size <= 100)
 		range = 20;
 	else
