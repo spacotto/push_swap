@@ -24,7 +24,7 @@ static void	get_tokens(t_stacks *stacks, char *s)
 		number = malloc(1 * sizeof(int));
 		if (!number)
 			return ;
-		*number = ft_atoi(token);
+		*number = ft_atol(token);
 		node = ft_lstnew(number);
 		if (!node)
 		{
