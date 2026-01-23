@@ -32,16 +32,6 @@ typedef struct s_stacks
 	t_list	*optimisation;
 }	t_stacks;
 
-typedef struct s_biggest
-{
-	t_list  *first;
-	t_list  *second;
-	t_list  *third;
-	int		d1;
-	int		d2;
-	int		d3;
-}	t_biggest;
-
 // ============================================================================
 // PROTOTYPES
 // ============================================================================
@@ -51,7 +41,6 @@ void	push_swap(t_stacks *stacks, int ac, char **av);
 int		main(int ac, char **av);
 
 // Parsing
-
 void    build_stack(t_stacks *stacks, int ac, char **av);
 int		sort_check(t_stacks *stacks);
 
@@ -74,10 +63,6 @@ void	ft_rrr(t_stacks *stacks);
 // Optimisation
 void	assign_index(t_list *stack);
 
-t_list	*find_biggest(t_list *stack);
-t_list	*find_second_biggest(t_list *stack);
-t_list	*find_third_biggest(t_list *stack);
-
 void	move_to_top_a(t_stacks *stacks, t_list *target);
 void	move_to_top_b(t_stacks *stacks, t_list *target);
 
@@ -91,7 +76,6 @@ int		redundancy(t_list *op1, t_list *op2);
 void	print_ops(t_list *ops);
 
 // Sorting
-void	sort_two(t_stacks *stacks);
 void	sort_three(t_stacks *stacks);
 void	chunk_presort(t_stacks *stacks);
 void	chunk_sort(t_stacks *stacks);
