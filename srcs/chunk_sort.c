@@ -12,6 +12,24 @@
 
 #include "push_swap.h"
 
+t_list	*find_biggest(t_list *stack)
+{
+	t_list	*biggest;
+	t_list	*current;
+
+	if (!stack || !stack->next)
+		return (NULL);
+	biggest = stack;
+	current = stack->next;
+	while (current)
+	{
+		if (current->index > biggest->index)
+			biggest = current;
+		current = current->next;
+	}
+	return (biggest);
+}
+
 void	chunk_sort(t_stacks *stacks)
 {
 	t_list	*biggest;
