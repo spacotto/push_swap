@@ -57,12 +57,12 @@ static t_list	*find_biggest(t_list *stack)
 	return (biggest);
 }
 
-void	chunk_sort(t_stacks *stacks)
+void	range_sort(t_stacks *stacks)
 {
 	t_list	*biggest;
 
 	assign_index(stacks->stack_a);
-	chunk_presort(stacks);
+	range_presort(stacks);
 	sort_three(stacks);
 	biggest = NULL;
 	while (stacks->stack_b)
