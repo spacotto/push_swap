@@ -11,10 +11,10 @@ CHECKER_LINUX_PATH = "./checker_linux"
 MY_CHECKER_PATH = "./checker"
 
 # Color codes
-GREEN = "\033[92m"
-RED = "\033[91m"
-CYAN = "\033[0;96m"
-YELLOW = "\033[93m"
+GREEN = "\033[0;92m"
+RED = "\033[0;91m"
+CYAN = "\033[1;96m"
+YELLOW = "\033[0;93m"
 RESET = "\033[0m"
 
 def get_ops_limit(num_count):
@@ -48,8 +48,11 @@ def run_test(num_count, iterations):
     ops_limit = get_ops_limit(num_count)
     
     print(f"\n ============================================================================")
-    print(f" Running {iterations} tests with {num_count} numbers (Ops limit: {CYAN}<{ops_limit + 1}{RESET})")
+    print(f" Running {CYAN}{iterations}{RESET} tests with {CYAN}{num_count}{RESET} numbers (Ops limit: {CYAN}<{ops_limit + 1}{RESET})")
     print(f" ============================================================================\n") 
+    print(f" Progress status (%)")
+    print(f" ----------------------------------------------------------------------------")
+    
     # Stats tracking
     total_ops = 0
     min_ops = float('inf')
@@ -99,7 +102,7 @@ def run_test(num_count, iterations):
             progress = (i / iterations) * 100
             
             # Print live updates (overwrite same line)
-            print(f"\r{progress:.1f}%", end="", flush=True)
+            print(f"\r {CYAN}{progress:.1f}%{RESET}", end="", flush=True)
         
         except subprocess.TimeoutExpired:
             print(f"\n{RED}Timeout on test {i}{RESET}")
@@ -120,12 +123,10 @@ def run_test(num_count, iterations):
     checker_linux_color = GREEN if checker_linux_ok == iterations else RED
     my_checker_color = GREEN if my_checker_ok == iterations else RED
    
-    print(f"\n ============================================================================")
-    print(f" CHECKERS RESULTS")
-    print(f" ============================================================================")
-    print(f" checker_linux  {checker_linux_color}{checker_linux_rate:.1f}%{RESET}")
-    print(f" my_checker     {my_checker_color}{my_checker_rate:.1f}%{RESET}")
-    print(f" ============================================================================")
+    print(f"\n Checker            Result")
+    print(f" ----------------------------------------------------------------------------")
+    print(f" checker_linux      {checker_linux_color}{checker_linux_rate:.1f}%{RESET}")
+    print(f" my_checker         {my_checker_color}{my_checker_rate:.1f}%{RESET}")
     
     # Print results
     print()
@@ -134,14 +135,13 @@ def run_test(num_count, iterations):
     avg_color = GREEN if avg <= ops_limit else RED
     success_color = GREEN if success_rate == 100.0 else RED
 
-    print(f" ============================================================================")
-    print(f" PERFORMANCE RESULTS")
-    print(f" ============================================================================")
-    print(f" Min ops        {min_color}{min_ops}{RESET} ops")
-    print(f" Max ops        {max_color}{max_ops}{RESET} ops")
-    print(f" Average        {avg_color}{avg:.1f}{RESET} ops")
-    print(f" Success rate   {success_color}{success_rate:.1f}%{RESET}")
-    print(f" ============================================================================")
+    print(f" Parameter          Result")
+    print(f" ----------------------------------------------------------------------------")
+    print(f" Min ops            {min_color}{min_ops}{RESET}")
+    print(f" Max ops            {max_color}{max_ops}{RESET}")
+    print(f" Average            {avg_color}{avg:.1f}{RESET}")
+    print(f" Success rate       {success_color}{success_rate:.1f}%{RESET}")
+    print(f" ")
 
 def main():
     if len(sys.argv) != 3:

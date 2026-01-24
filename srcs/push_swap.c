@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 16:46:26 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/24 18:13:35 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/24 22:06:31 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error_msg()
 {
-	ft_putstr_fd(BOLD_RED "Error!\n" RESET, 1);
+	ft_putstr_fd(BOLD_RED "Error\n" RESET, 2);
 }
 
 int	push_swap(t_stacks *stacks, int ac, char **av)
