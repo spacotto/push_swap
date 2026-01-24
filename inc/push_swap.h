@@ -44,6 +44,10 @@ int		push_swap(t_stacks *stacks, int ac, char **av);
 int		main(int ac, char **av);
 
 // Parsing
+int		is_number(char *token);
+int		is_int(char *token);
+void	has_dup(t_list **stack);
+
 void    make_stack(t_stacks *stacks, int ac, char **av);
 int		sort_check(t_stacks *stacks);
 
