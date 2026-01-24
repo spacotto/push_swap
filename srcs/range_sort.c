@@ -6,13 +6,13 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 17:46:50 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/23 11:34:56 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/24 18:29:19 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_three(t_stacks *stacks)
+static void	sort_three(t_stacks *stacks)
 {
 	int	n1;
 	int	n2;
@@ -39,6 +39,14 @@ void	sort_three(t_stacks *stacks)
 		ft_rra(stacks);
 }
 
+void	simple_sort(t_stacks *stacks, int stack_size)
+{
+	if (stack_size == 2)
+		ft_sa(stacks);
+	if (stack_size == 3)
+		sort_three(stacks);
+}
+
 static t_list	*find_biggest(t_list *stack)
 {
 	t_list	*biggest;
@@ -63,7 +71,7 @@ void	range_sort(t_stacks *stacks)
 
 	assign_index(stacks->stack_a);
 	range_presort(stacks);
-	sort_three(stacks);
+	simple_sort(stacks, ft_lstsize(stacks->stack_a));
 	biggest = NULL;
 	while (stacks->stack_b)
 	{

@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/23 11:27:53 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/24 18:13:03 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 
 # include "../libft/inc/libft.h"
 # include "../libft/inc/printf.h"
+
+# include <limits.h>
 
 // ============================================================================
 // STRUCTURES
@@ -37,11 +39,12 @@ typedef struct s_stacks
 // ============================================================================
 
 // Core functions
-void	push_swap(t_stacks *stacks, int ac, char **av);	
+void    error_msg();
+int		push_swap(t_stacks *stacks, int ac, char **av);	
 int		main(int ac, char **av);
 
 // Parsing
-void    build_stack(t_stacks *stacks, int ac, char **av);
+void    make_stack(t_stacks *stacks, int ac, char **av);
 int		sort_check(t_stacks *stacks);
 
 // Operations
@@ -76,7 +79,7 @@ int		redundancy(t_list *op1, t_list *op2);
 void	print_ops(t_list *ops);
 
 // Sorting
-void	sort_three(t_stacks *stacks);
+void	simple_sort(t_stacks *stacks, int stack_size);
 void	range_presort(t_stacks *stacks);
 void	range_sort(t_stacks *stacks);
 
