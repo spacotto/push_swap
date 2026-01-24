@@ -45,7 +45,7 @@ Given 2 stacks A and B, implement a sorting algorithm that sorts the numbers in 
 | 100 | < 700     |
 | 500 | < 5500    |
 
-## The Algorithm: The Range Sort
+## The Algorithm: Range Sort
 The **Range Sort** (also known as **Sliding Window**) algorithm is a two-phase sorting approach designed to minimise the number of operations required to sort a stack. The algorithm works by dividing the input into **dynamic ranges** (or "windows") based on indexed values, pushing elements from stack A to stack B, and then pushing them back in sorted order.
 
 ### Phase 1: Pre-Sort
