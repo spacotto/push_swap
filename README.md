@@ -111,9 +111,32 @@ Average: 7.5 ops
 ```
 
 ### push_swap Performance
-`performance.py`, given a set of numbers (x) and the number of random combinations you want to test (y) as arguments, will randomly generate x numbers y times.
+`performance.py`, given a set of numbers (x) and the number of random combinations you want to test (y) as arguments, will randomly generate x numbers y times:
 ```
 python3 performance.py 500 100
+```
+
+Output example:
+```
+ ============================================================================
+ Running 100 tests with 500 numbers (Ops limit: <5500)
+ ============================================================================
+
+ Progress status (%)
+ ----------------------------------------------------------------------------
+ 100.0%
+
+ Checker            Result
+ ----------------------------------------------------------------------------
+ checker_linux      100.0%
+ my_checker         100.0%
+
+ Parameter          Result
+ ----------------------------------------------------------------------------
+ Min ops            4632
+ Max ops            5042
+ Average            4876.5
+ Success rate       100.0%
 ```
 ---
 
