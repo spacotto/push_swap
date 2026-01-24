@@ -82,7 +82,8 @@ Once only 3 elements are left in stack A (the biggest values in the stack), the 
 ### Phase 2: Sort
 In the second phase, elements are pushed back from stack B to stack A in descending order (largest first). The algorithm finds the largest remaining element in stack B, calculates the most efficient rotation path according to the target position (`rb` vs `rrb`), brings it to the top, and pushes it to stack A with `pa`. This process repeats until stack B is empty, leaving stack A sorted in ascending order.
 
-![flowchart](https://github.com/spacotto/push_swap/blob/main/flowchart.png)
+>[!IMPORTANT]
+>Check the **[flowchart](https://github.com/spacotto/push_swap/blob/main/flowchart.png)** to see a graphical representation of the algoritm.
 
 ## The Checker (Bonus)
 
