@@ -4,6 +4,14 @@ A sorting algorithm implementation that sorts data on a stack using a limited se
 ### Objective
 Given 2 stacks A and B, implement a sorting algorithm that sorts the numbers in stack A in ascending order using the least amount of operations.
 
+## Instructions
+```
+git clone https://github.com/spacotto/push_swap.git
+cd push_swap
+make
+./push_swap [set of numbers separated by only spaces]
+```
+
 ## Invalid Inputs
 1. Non-numeric parameters (only `int` are considered valid arguments).
 ```
