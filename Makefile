@@ -64,8 +64,8 @@ BEST		:=	best_move_to_top.c \
 SORT		:=	sort_parsing.c \
 				sort_check.c \
 				sort_index.c \
-				chunk_presort.c \
-				chunk_sort.c
+				range_presort.c \
+				range_sort.c
 
 PUSH_SWAP	:=	push_swap.c
 
