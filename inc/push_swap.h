@@ -77,7 +77,7 @@ void	print_ops(t_list *ops);
 
 // Sorting
 void	sort_three(t_stacks *stacks);
-void	chunk_presort(t_stacks *stacks);
-void	chunk_sort(t_stacks *stacks);
+void	range_presort(t_stacks *stacks);
+void	range_sort(t_stacks *stacks);
 
 #endif
