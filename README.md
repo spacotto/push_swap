@@ -38,7 +38,11 @@ Given 2 stacks A and B, implement a sorting algorithm that sorts the numbers in 
 | `rrb` (reverse rotate b) | Shift all elements of stack B down by 1 (last element becomes first) |
 | `rrr`                    | Execute rra and rrb simultaneously                                   |
 
-## Benchmark
+## Benchmark Requirements
+The `push_swap` project is evaluated based on its ability to sort datasets of varying sizes within strict operational limits. The benchmarks are designed to test both the algorithm's efficiency and its scalability across varying input sizes:
+
+The algorithm's performance is measured by running multiple iterations with randomly generated numbers and calculating the average, minimum, and maximum operation counts. A successful implementation consistently stays well below these limits across all test cases.
+
 | Set | Benchmark |
 | :-- | :-------- |
 | 5   | < 13      |
