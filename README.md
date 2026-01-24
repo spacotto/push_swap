@@ -35,8 +35,9 @@ Invalid input cases:
 | 100 | < 700          |
 | 500 | < 5500         |
 
-## The Algorithm: The Sliding Window Sort
+## The Algorithm: The Sliding Window
 
+[!flowchart](https://github.com/spacotto/push_swap/blob/main/flowchart.png)
 
 ## The Checker (Bonus)
 
