@@ -5,13 +5,23 @@ A sorting algorithm implementation that sorts data on a stack using a limited se
 Given 2 stacks A and B, implement a sorting algorithm that sorts the numbers in stack A in ascending order using the least amount of operations.
 
 ## Invalid Inputs
-Invalid input cases:
 1. Non-numeric parameters (only `int` are considered valid arguments).
-2. Duplicate numeric parameters.
-3. Numeric parameters exceeding the `int` limits (INT_MIN, INT_MAX).
+```
+./push_swap 0 one 2 3
+```
 
->[!IMPORTANT]
->In case of error, it must display "Error" followed by an ’\n’ on the standard error.
+2. Duplicate numeric parameters.
+```
+./push_swap 11 22 33 44 33 55
+```
+
+3. Numeric parameters exceeding the `int` limits (INT_MIN, INT_MAX).
+```
+./push_swap 1 2 3 3333333333 4 5
+```
+
+>[!CAUTION]
+>In case of error, it must display `Error` followed by an `\n` on the **standard error**.
 
 ## Available Operations
 | Operation                | Description                                                          |
@@ -29,11 +39,11 @@ Invalid input cases:
 | `rrr`                    | Execute rra and rrb simultaneously                                   |
 
 ## Benchmark
-| Set | Max operations |
-| :-- | :------------- |
-| 5   | 12             |
-| 100 | < 700          |
-| 500 | < 5500         |
+| Set | Benchmark |
+| :-- | :-------- |
+| 5   | < 13      |
+| 100 | < 700     |
+| 500 | < 5500    |
 
 ## The Algorithm: The Range Sort
 The **Range Sort** (also known as **Sliding Window**) algorithm is a two-phase sorting approach designed to minimise the number of operations required to sort a stack. The algorithm works by dividing the input into **dynamic ranges** (or "windows") based on indexed values, pushing elements from stack A to stack B, and then pushing them back in sorted order.
