@@ -34,7 +34,7 @@ static int	is_target(t_list *current, int range, int max_range)
 	return (1);
 }
 
-void    chunk_presort(t_stacks *stacks)
+void    range_presort(t_stacks *stacks)
 {
 	int	stack_size;
 	int	max_range;
