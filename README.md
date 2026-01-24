@@ -90,15 +90,32 @@ In the second phase, elements are pushed back from stack B to stack A in descend
 ## push_swap Tools
 This `push_swap` repository includes 2 side tools not required by the subject: `permutation5.py` and `performance.py`.
 
+### Permutations of 5
 `permutation5.py` tests all the possible permutations (combinations) of 5 values in 5 positions (aka !5 = 120). No arguments needed. Just launch the program:
 ```
 python3 permutation5.py
 ```
 
+Output example:
+```
+--- Checking all possible 120 permutations of 5 (Ops limit: <12) ---
+Test 120/120
+
+checker_linux 120/120
+my_checker    120/120
+
+Results for 5 numbers (Stats exclude sorted case):
+Min ops: 3 ops
+Max ops: 10 ops
+Average: 7.5 ops
+```
+
+### push_swap Performance
 `performance.py`, given a set of numbers (x) and the number of random combinations you want to test (y) as arguments, will randomly generate x numbers y times.
 ```
 python3 performance.py 500 100
 ```
+---
 
 ### [push_swap Visualizer](https://github.com/o-reo/push_swap_visualizer)
 A clean visualizer for your Push Swap Algorithm, you can't fix what you can't see! This is one of the oldest and most popular push_swap tools. 
