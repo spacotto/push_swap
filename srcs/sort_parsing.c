@@ -6,11 +6,59 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:32:55 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/24 18:19:32 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/24 19:43:07 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int	is_number(char *token)
+{
+	int	i;
+
+	i = 0;
+	if (token[i] == '-')
+		i++;
+	while (token[i])
+	{
+		if (ft_isdigit(token[i]) == 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static int	is_int(char *token)
+{
+	if (ft_atol(token) < INT_MAX) 
+		return (0);
+	if (ft_atol(token) > INT_MAX)
+		return (0);
+	return (1);
+}
+
+void	has_dup(t_list **stack)
+{
+	t_list	*current;
+	t_list	*cmp;
+
+	current = *stack;
+	while (current)
+	{
+		cmp = current->next;
+		while (cmp)
+		{
+			if (current->content == cmp->content)
+			{	
+				error_msg();
+				if (stack != NULL)
+					ft_lstclear(stack, del);
+			}
+			cmp = cmp->next;
+		}
+		current = current->next;
+	}
+}
 
 static t_list	*make_token(char *token)
 {
@@ -30,24 +78,6 @@ static t_list	*make_token(char *token)
 	return (new_node);
 }
 
-static int	is_valid_number(char *token)
-{
-	int	i;
-
-	i = 0;
-	while (token[i])
-	{
-		if (ft_isdigit(token[i]) == 0)
-			return (0);
-		i++;
-	}
-	if (ft_atol(token) < INT_MIN)
-		return (0);
-	if (ft_atol(token) > INT_MAX)
-		return (0);
-	return (1);	
-}
-
 static void	add_token(t_list **stack, char *s)
 {
 	char	*token;
@@ -56,7 +86,7 @@ static void	add_token(t_list **stack, char *s)
 	token = ft_strtok(s, " ");
 	while (token != NULL)
 	{	
-		if (is_valid_number(token))
+		if (is_number(token) == 1 && is_int(token) == 1)
 		{
 			node = make_token(token);
 			ft_lstadd_back(stack, node);
@@ -72,30 +102,6 @@ static void	add_token(t_list **stack, char *s)
 	}
 }
 
-int	has_dup(t_list *stack)
-{
-	t_list	*current;
-	t_list	*cmp;
-	int		current_val;
-	int		cmp_val;
-
-	current = stack;
-	while (current)
-	{
-		current_val = *(int *)current->content;
-		cmp = current->next;
-		while (cmp)
-		{
-			cmp_val = *(int *)cmp->content;
-			if (current_val == cmp_val)
-				return (1);
-			cmp = cmp->next;
-		}
-		current = current->next;
-	}
-	return (0);
-}
-
 void	make_stack(t_stacks *stacks, int ac, char **av)
 {
 	int		i;
@@ -104,12 +110,9 @@ void	make_stack(t_stacks *stacks, int ac, char **av)
 	while (i < ac)
 	{  
 		add_token(&stacks->stack_a, av[i]);
+		if (!stacks->stack_a)
+			return ;
 		i++;
     }
-	if (has_dup(stacks->stack_a) == 1)
-	{
-		error_msg();
-		if (stacks->stack_a != NULL)
-			ft_lstclear(&stacks->stack_a, del);
-	}
+	has_dup(&stacks->stack_a);
 }
