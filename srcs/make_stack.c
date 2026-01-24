@@ -10,4 +10,61 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 
+static t_list	*make_token(char *token)
+{
+	int		*number;
+	t_list	*new_node;
+	
+	number = malloc(1 * sizeof(int));
+	if (!number)
+		return (NULL);
+	*number = ft_atol(token);
+	new_node = ft_lstnew(number);
+	if (!new_node)
+	{
+		free(number);
+		return (NULL);
+	}
+	return (new_node);
+}
+
+static void	add_token(t_list **stack, char *s)
+{
+	char	*token;
+	t_list	*node;
+
+	token = ft_strtok(s, " ");
+	while (token != NULL)
+	{	
+		if (is_number(token) == 1 && is_int(token) == 1)
+		{
+			node = make_token(token);
+			ft_lstadd_back(stack, node);
+			token = ft_strtok(NULL, " ");
+		}
+		else
+		{
+			error_msg();
+			if (stack != NULL)
+				ft_lstclear(stack, del);
+			return ;
+		}
+	}
+}
+
+void	make_stack(t_stacks *stacks, int ac, char **av)
+{
+	int		i;
+
+	i = 1;
+	while (i < ac)
+	{  
+		add_token(&stacks->stack_a, av[i]);
+		if (!stacks->stack_a)
+			return ;
+		i++;
+    }
+	has_dup(&stacks->stack_a);
+}
