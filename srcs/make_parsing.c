@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:32:55 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/24 19:43:07 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/24 21:34:10 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,23 @@ void	has_dup(t_list **stack)
 {
 	t_list	*current;
 	t_list	*cmp;
+	int		current_content;
+	int		cmp_content;
 
 	current = *stack;
 	while (current)
 	{
+		current_content = *(int *)current->content;
 		cmp = current->next;
 		while (cmp)
 		{
-			if (current->content == cmp->content)
+			cmp_content = *(int *)cmp->content;
+			if (current_content == cmp_content)
 			{	
 				error_msg();
 				if (stack != NULL)
 					ft_lstclear(stack, del);
+				return ;
 			}
 			cmp = cmp->next;
 		}
