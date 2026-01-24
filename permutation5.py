@@ -41,7 +41,7 @@ def run_permutation_test(num_count, ops_limit):
     total_tests = len(permutations)
     sorted_tuple = tuple(sorted(base_numbers))
     
-    print(f"\n--- Checking all possible 120 permutation of 5 (Ops limit: {CYAN}<{ops_limit + 1}{RESET}) ---")
+    print(f"\n--- Checking all possible 120 permutations of 5 (Ops limit: {CYAN}<{ops_limit + 1}{RESET}) ---")
 
     failures = []
     checker_linux_ok = 0
