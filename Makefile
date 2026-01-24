@@ -61,15 +61,17 @@ BEST		:=	best_move_to_top.c \
 				ops_remove.c \
 				ops_optimise.c
 
-SORT		:=	sort_parsing.c \
-				sort_check.c \
-				sort_index.c \
-				range_presort.c \
+PREP		:=	make_parsing.c \
+				make_stack.c \
+				make_check.c \
+				make_index.c 
+
+SORT		:=	range_presort.c \
 				range_sort.c
 
 PUSH_SWAP	:=	push_swap.c
 
-SRCS		:=	$(OPS) $(BEST) $(SORT) $(PUSH_SWAP)
+SRCS		:=	$(OPS) $(BEST) $(PREP) $(SORT) $(PUSH_SWAP)
 
 # ============================================================================
 # OBJECTS
