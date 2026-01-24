@@ -98,7 +98,7 @@ def run_test(num_count, iterations):
             progress = (i / iterations) * 100
             
             # Print live updates (overwrite same line)
-            print(f"\r{progress:.1f}%", end="", flush=True)
+            print(f"\rTesting status: {progress:.1f}%\n", end="", flush=True)
         
         except subprocess.TimeoutExpired:
             print(f"\n{RED}Timeout on test {i}{RESET}")
