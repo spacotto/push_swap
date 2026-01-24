@@ -86,6 +86,13 @@ In the second phase, elements are pushed back from stack B to stack A in descend
 >Check the **[flowchart](https://github.com/spacotto/push_swap/blob/main/flowchart.png)** to see a graphical representation of the algoritm.
 
 ## The Checker (Bonus)
+The Checker shall take as an **argument** the **stack A**, formatted as a list of integers. If **no argument** is given, it stops and **displays nothing**. Just like push_swap.
+
+If the arguments are given, it will then wait and **read instructions** from the standard input, with each instruction followed by `\n`. Once all the instructions have been **read**, the program has to **execute** them **on the stack** received as an argument.
+
+The program must display: 
+- `OK` followed by a `\n` on the standard output, if the instructions **sort** the stack correctly;
+- `KO` followed by a `\n` on the standard output, if the instructions **DO NOT sort** the stack correctly.
 
 ## push_swap Tools
 This `push_swap` repository includes 2 side tools not required by the subject: `permutation5.py` and `performance.py`.
