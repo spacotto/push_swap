@@ -30,7 +30,7 @@ int	is_number(char *token)
 
 int	is_int(char *token)
 {
-	if (ft_atol(token) < INT_MAX) 
+	if (ft_atol(token) < INT_MIN) 
 		return (0);
 	if (ft_atol(token) > INT_MAX)
 		return (0);
