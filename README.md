@@ -35,7 +35,20 @@ Invalid input cases:
 | 100 | < 700          |
 | 500 | < 5500         |
 
-## The Algorithm: The Sliding Window
+## The Algorithm: The Range Sort
+The **Range Sort** (also known as **Sliding Window**) algorithm is a two-phase sorting approach designed to minimise the number of operations required to sort a stack. The algorithm works by dividing the input into **dynamic ranges** (or "windows") based on indexed values, pushing elements from stack A to stack B, and then pushing them back in sorted order.
+
+### Phase 1: Pre-Sort
+The first phase begins by indexing all numbers according to their relative position in the sorted sequence (smallest = 0, largest = n-1). Elements are then pushed to stack B whenever they fit the range requirement. Unlike static chunking (see **chunk sort**), the range algorithm uses a **sliding window approach**, continuously expanding the acceptable range as elements are pushed. 
+
+For example, given a range of 30, our first target is any index between 0 and 29. After the first push, the range increases by 1. Now, our target is any index between 0 and 31.
+
+Moreover, as elements are pushed to stack B, smaller values (those in the lower half of the current range) are rotated down using `rb` to maintain a roughly sorted order in stack B, which optimises the second phase.
+
+Once only 3 elements are left in stack A (the biggest values in the stack), the presorting stops. The 3 elements are sorted on the spot. Then, phase 2 starts.
+
+### Phase 2: Sort
+In the second phase, elements are pushed back from stack B to stack A in descending order (largest first). The algorithm finds the largest remaining element in stack B, calculates the most efficient rotation path according to the target position (`rb` vs `rrb`), brings it to the top, and pushes it to stack A with `pa`. This process repeats until stack B is empty, leaving stack A sorted in ascending order.
 
 ![flowchart](https://github.com/spacotto/push_swap/blob/main/flowchart.png)
 
