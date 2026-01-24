@@ -94,6 +94,26 @@ The program must display:
 - `OK` followed by a `\n` on the standard output, if the instructions **sort** the stack correctly;
 - `KO` followed by a `\n` on the standard output, if the instructions **DO NOT sort** the stack correctly.
 
+It can be run alongside push_swap to check its correct functioning. For example:
+```
+./push_swap 3 2 1 | ./checker 3 2 1
+```
+
+In this case, it will read the instructions output by push_swap. For example:
+```
+...
+```
+
+However, it has to be able to run correctly also by itself:
+```
+./checker 3 2 1
+```
+
+In this second case, the **interactive mode** will be activated to allow the user to provide the instructions. Once the instructions are given, press `CTRL+D` to close the interactive mode. For example:  
+```
+...
+```
+
 ## push_swap Tools
 This `push_swap` repository includes 2 side tools not required by the subject: `permutation5.py` and `performance.py`.
 
