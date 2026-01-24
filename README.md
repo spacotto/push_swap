@@ -37,7 +37,7 @@ Invalid input cases:
 
 ## The Algorithm: The Sliding Window
 
-[!flowchart](https://github.com/spacotto/push_swap/blob/main/flowchart.png)
+![flowchart](https://github.com/spacotto/push_swap/blob/main/flowchart.png)
 
 ## The Checker (Bonus)
 
