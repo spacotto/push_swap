@@ -5,10 +5,20 @@ A sorting algorithm implementation that sorts data on a stack using a limited se
 Given 2 stacks A and B, implement a sorting algorithm that sorts the numbers in stack A in ascending order using the least amount of operations.
 
 ## Instructions
+Git clone this repository:
 ```
 git clone https://github.com/spacotto/push_swap.git
+```
+Enter the directory:
+```
 cd push_swap
+```
+Compile through the Makefile located at the root:
+```
 make
+```
+Run the program as follows:
+```
 ./push_swap [set of numbers separated by only spaces]
 ```
 
