@@ -85,7 +85,7 @@ In the second phase, elements are pushed back from stack B to stack A in descend
 >[!IMPORTANT]
 >Check the **[flowchart](https://github.com/spacotto/push_swap/blob/main/flowchart.png)** to see a graphical representation of the algoritm.
 
-## The Checker (Bonus)
+# The Checker (Bonus)
 The Checker shall take as an **argument** the **stack A**, formatted as a list of integers. If **no argument** is given, it stops and **displays nothing**. Just like push_swap.
 
 If the arguments are given, it will then wait and **read instructions** from the standard input, with each instruction followed by `\n`. Once all the instructions have been **read**, the program has to **execute** them **on the stack** received as an argument.
@@ -114,7 +114,9 @@ In this second case, the **interactive mode** will be activated to allow the use
 ...
 ```
 
-## push_swap Tools
+# push_swap Tools
+
+## Included Tools
 This `push_swap` repository includes 2 side tools not required by the subject: `permutation5.py` and `performance.py`.
 
 ### Permutations of 5
@@ -136,6 +138,7 @@ Min ops: 3 ops
 Max ops: 10 ops
 Average: 7.5 ops
 ```
+---
 
 ### push_swap Performance
 `performance.py`, given a set of numbers (x) and the number of random combinations you want to test (y) as arguments, will randomly generate x numbers y times:
@@ -165,10 +168,11 @@ Output example:
  Average            4876.5
  Success rate       100.0%
 ```
----
 
+## Included Tools
 ### [push_swap Visualizer](https://github.com/o-reo/push_swap_visualizer)
 A clean visualizer for your Push Swap Algorithm, you can't fix what you can't see! This is one of the oldest and most popular push_swap tools. 
+---
 
 ### [push_swap Complexity](https://github.com/SimonCROS/push_swap_tester)
 With this tool, you can test the complexity and the performance of your `push_swap`'
