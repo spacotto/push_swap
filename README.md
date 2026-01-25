@@ -28,14 +28,19 @@ Run the program as follows:
 ./push_swap 0 one 2 3
 ```
 
-2. Duplicate numeric parameters.
+2. Numeric parameters exceeding the `int` limits (INT_MIN, INT_MAX).
+```
+./push_swap 1 2 3 3333333333 4 5
+```
+
+3. Duplicate numeric parameters.
 ```
 ./push_swap 11 22 33 44 33 55
 ```
 
-3. Numeric parameters exceeding the `int` limits (INT_MIN, INT_MAX).
+4. Empty string argument:
 ```
-./push_swap 1 2 3 3333333333 4 5
+./push_swap "" 1
 ```
 
 >[!CAUTION]
@@ -97,13 +102,51 @@ Several tools can help you test your `push_swap`. In this README.md I am going t
 >The first three are included in this repository. The last two are external resources made by other 42 students.
 
 ## The Checker
-The Checker shall take as an **argument** the **stack A**, formatted as a list of integers. If **no argument** is given, it stops and **displays nothing**. Just like push_swap.
+The **checker** is a validation tool that verifies whether a sequence of operations correctly sorts a given stack. The official version (`checher_linux`) is provided by 42 as project material. However, the bonus part of the project asks the student to produce their own version of the checker.
 
-If the arguments are given, it will then wait and **read instructions** from the standard input, with each instruction followed by `\n`. Once all the instructions have been **read**, the program has to **execute** them **on the stack** received as an argument.
+### How it works
+1. **Initialization.** Accepts stack A as command-line arguments (first argument = top of stack)
+2. **Read Instructions.** Waits for operations from standard input, one per line (e.g., `sa`, `pb`, `rra`)
+3. **Execute Operations.** Applies each instruction to the stacks in sequence
+4. **Validate Result.** Checks if stack A is sorted in ascending order and stack B is empty
+5. **Output Result.**
+   - **`OK`** if the stack is correctly sorted
+   - **`KO`** if the stack is not sorted or stack B is not empty
+   - **`Error`** (to `stderr`) for invalid input (non-integers, duplicates, out-of-range values, invalid instructions)
 
-The program must display: 
-- `OK` followed by a `\n` on the standard output, if the instructions **sort** the stack correctly;
-- `KO` followed by a `\n` on the standard output, if the instructions **DO NOT sort** the stack correctly.
+### Invalid Inputs 
+1. Non-numeric arguments:
+```
+./checker 4 67 one 87
+Error
+```
+
+2. Numeric parameters exceeding the `int` limits (INT_MIN, INT_MAX):
+```
+./checker 2147483648
+Error
+```
+
+3. Duplicate values:
+```
+./checker 3 2 1 3
+Error
+```
+
+4. Empty string argument:
+```
+./checker "" 1
+Error
+```
+
+4. Invalid instruction:
+```
+./checker 3 2 1
+sa
+pb
+lol
+Error
+```
 
 ### How to use the checker
 Just like push_swap, the checker takes a list of `int` as arguments.
