@@ -204,9 +204,15 @@ Output example:
 ```
 
 ## Performance
-`performance.py`is a custom Python program not required by the subject. Given a set of numbers (x) and the number of random combinations you want to test (y) as arguments, it will randomly generate x numbers y times:
+`performance.py`is a custom Python program not required by the subject. It takes up to 3 arguments:
 ```
-python3 performance.py 500 100
+python3 performance.py [number_count] [iterations] [optional_limit]
+```
+
+For example:
+```
+python3 performance.py 500 100         # Tests 100 combinations of 500 random values
+python3 performance.py 500 100 5500    # Tests 100 combinations of 500 random values where the maximum amount of ops accepted is 5500
 ```
 
 Output example:
