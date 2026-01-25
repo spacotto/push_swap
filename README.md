@@ -183,12 +183,12 @@ python3 permutation5.py
 Output example:
 ```
  ============================================================================
- Checking all possible 120 permutations of 5 (Ops limit: <12)
+ Checking all possible 120 permutations of 5 (Ops limit: <=12)
  ============================================================================
 
- Progress status
+ Progress status (%)
  ----------------------------------------------------------------------------
- 120/120
+ 100%
 
  Checker            Result
  ----------------------------------------------------------------------------
@@ -200,7 +200,7 @@ Output example:
  Min ops            3
  Max ops            10
  Average            7.5
- Failures           0/120
+ Success            120/120
 ```
 
 ## Performance
