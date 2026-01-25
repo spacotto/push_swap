@@ -9,7 +9,7 @@ import os
 PUSH_SWAP_PATH = "./push_swap"
 CHECKER_LINUX_PATH = "./checker_linux"
 MY_CHECKER_PATH = "./checker"
-LOG_FILE = "error_log"
+LOG_FILE = "error_log.txt"
 
 # Color codes
 GREEN = "\033[0;92m"
@@ -21,10 +21,10 @@ RESET = "\033[0m"
 def log_error(ops_count, numbers):
     """Logs failing sequences to error_log in the specified format"""
     with open(LOG_FILE, "a") as f:
-        f.write(f"Total operations: {ops_count}\n\n")
-        f.write("Tested Values:\n")
-        f.write(" ".join(map(str, numbers)) + "\n")
-        f.write("----------------------------------------------------------------------------\n")
+        f.write(f"\nTotal operations: {ops_count}")
+        f.write(f"\nSet of numbers tested:\n\n")
+        f.write(" ".join(map(str, numbers)) + "\n\n")
+        f.write(f"----------------------------------------------------------------------------\n")
 
 def generate_random_numbers(count):
     """Generates a list of unique random integers"""
