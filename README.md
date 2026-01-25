@@ -204,15 +204,15 @@ Output example:
 ```
 
 ## Performance
-`performance.py`is a custom Python program not required by the subject. It takes up to 3 arguments:
+`performance.py`is a custom Python program not required by the subject. It takes up to 4 arguments:
 ```
-python3 performance.py [number_count] [iterations] [optional_limit]
+python3 performance.py [colorblind mode on/off] [number_count] [iterations] [optional_limit]
 ```
 
 For example:
 ```
-python3 performance.py 500 100         # Tests 100 combinations of 500 random values
-python3 performance.py 500 100 5500    # Tests 100 combinations of 500 random values where the maximum amount of ops accepted is 5500
+python3 performance.py off 500 100         # Tests 100 combinations of 500 random values
+python3 performance.py off 500 100 5500    # Tests 100 combinations of 500 random values where the maximum amount of ops accepted is 5500
 ```
 
 Output example:
