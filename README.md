@@ -182,16 +182,25 @@ python3 permutation5.py
 
 Output example:
 ```
---- Checking all possible 120 permutations of 5 (Ops limit: <12) ---
-Test 120/120
+ ============================================================================
+ Checking all possible 120 permutations of 5 (Ops limit: <12)
+ ============================================================================
 
-checker_linux 120/120
-my_checker    120/120
+ Progress status
+ ----------------------------------------------------------------------------
+ 120/120
 
-Results for 5 numbers (Stats exclude sorted case):
-Min ops: 3 ops
-Max ops: 10 ops
-Average: 7.5 ops
+ Checker            Result
+ ----------------------------------------------------------------------------
+ checker_linux      120/120
+ my_checker         120/120
+
+ Parameter          Result
+ ----------------------------------------------------------------------------
+ Min ops            3
+ Max ops            10
+ Average            7.5
+ Failures           0/120
 ```
 
 ## push_swap Performance
