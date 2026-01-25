@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/24 18:13:03 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/25 20:59:16 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef struct s_stacks
 
 // Core functions
 void    error_msg();
+void    make_stack(t_stacks *stacks, int ac, char **av);
+
 int		push_swap(t_stacks *stacks, int ac, char **av);	
 int		main(int ac, char **av);
 
@@ -47,9 +49,6 @@ int		main(int ac, char **av);
 int		is_number(char *token);
 int		is_int(char *token);
 void	has_dup(t_list **stack);
-
-void    make_stack(t_stacks *stacks, int ac, char **av);
-int		sort_check(t_stacks *stacks);
 
 // Operations
 void	ft_sa(t_stacks *stacks);
@@ -68,19 +67,20 @@ void	ft_rrb(t_stacks *stacks);
 void	ft_rrr(t_stacks *stacks);
 
 // Optimisation
-void	assign_index(t_list *stack);
-
 void	move_to_top_a(t_stacks *stacks, t_list *target);
 void	move_to_top_b(t_stacks *stacks, t_list *target);
 
 void	add_operation(t_stacks *stacks, char *op);
 t_list	*optimise_ops(t_list *ops);
+void	print_ops(t_list *ops);
+
 int		isrr(char *op1, char *op2);
 void	merge_rr(t_list  **ops);
+
 int		isrrr(char *op1, char *op2);
 void	merge_rrr(t_list  **ops);
+
 int		redundancy(t_list *op1, t_list *op2);
-void	print_ops(t_list *ops);
 
 // Sorting
 void	simple_sort(t_stacks *stacks, int stack_size);

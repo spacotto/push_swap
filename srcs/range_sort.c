@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 17:46:50 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/24 18:29:19 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/25 22:08:58 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	range_sort(t_stacks *stacks)
 {
 	t_list	*biggest;
 
-	assign_index(stacks->stack_a);
+	ft_lstadd_index(stacks->stack_a);
 	range_presort(stacks);
 	simple_sort(stacks, ft_lstsize(stacks->stack_a));
 	biggest = NULL;

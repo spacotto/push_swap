@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:49:49 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/25 18:16:14 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/25 20:57:51 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_stacks
 	t_list	*stack_a;
 	t_list	*stack_b;
 	t_list	*operations;
-	t_list	*optimisation;
 }	t_stacks;
 
 // ============================================================================
@@ -39,7 +38,15 @@ typedef struct s_stacks
 // ============================================================================
 
 // Core functions
+int		checker(t_stacks *stacks, int ac, char **av);
 int		main(int ac, char **av);
+
+// Parsing
+int		is_number(char *token);
+int		is_int(char *token);
+void	has_dup(t_list **stack);
+
+void    make_stack(t_stacks *stacks, int ac, char **av);
 
 // Operations
 void	ft_sa(t_stacks *stacks);

@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_check.c                                       :+:      :+:    :+:   */
+/*   ft_lstsort_check.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/13 15:52:55 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/13 17:07:13 by spacotto         ###   ########.fr       */
+/*   Created: 2026/01/25 20:40:15 by spacotto          #+#    #+#             */
+/*   Updated: 2026/01/25 20:45:51 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	sort_check(t_stacks *stacks)
+int	ft_lstsort_check(t_list *lst)
 {
 	t_list	*current;
 	int		current_value;
 	int		next_value;
 
-	if (!stacks->stack_a || !stacks->stack_a->next)
+	if (!lst || !lst->next)
 		return (1);
-	current = stacks->stack_a;
+	current = lst;
 	while (current->next)
 	{
 		current_value = *(int *)current->content;
