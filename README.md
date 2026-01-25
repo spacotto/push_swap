@@ -39,7 +39,7 @@ Run the program as follows:
 
 4. Empty string argument:
 ```
-./push_swap "" 1
+./push_swap 3 "" 1
 ```
 
 >[!CAUTION]
