@@ -6,11 +6,12 @@
 #    By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/08 15:55:57 by spacotto          #+#    #+#              #
-#    Updated: 2026/01/23 23:42:46 by spacotto         ###   ########.fr        #
+#    Updated: 2026/01/25 18:13:07 by spacotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	push_swap 
+NAME_BONUS	:=	checker
 LIBFT		:=	libft/libft.a
 FLAGS		:=	-c -Wall -Wextra -Werror -g
 
@@ -73,6 +74,15 @@ PUSH_SWAP	:=	push_swap.c
 
 SRCS		:=	$(OPS) $(BEST) $(PREP) $(SORT) $(PUSH_SWAP)
 
+CHECKER_OPS	:=	checker_ss_bonus.c \
+				checker_pp_bonus.c \
+				checker_rr_bonus.c \
+				checker_rrr_bonus.c
+
+CHECKER		:=	checker_bonus.c
+
+SRCS_BONUS	:= $(CHECKER_OPS) $(CHECKER)
+
 # ============================================================================
 # OBJECTS
 # ============================================================================
@@ -80,6 +90,8 @@ SRCS		:=	$(OPS) $(BEST) $(PREP) $(SORT) $(PUSH_SWAP)
 OBJS_DIR	:=	objs/
 
 OBJS		:=	$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
+
+OBJ_BONUS	:=	$(addprefix $(OBJS_DIR), $(SRCS_BONUS:.c=.o))
 
 # ============================================================================
 # RULES
@@ -105,10 +117,19 @@ $(NAME):		$(OBJS)
 				$(CC) $(OBJS) ./libft/libft.a -o $(NAME)
 				$(ECHO) "$(GREEN)✨ push_swap is ready ✨$(RESET)"
 
+bonus:			banner $(NAME_BONUS)
+
+$(NAME_BONUS):	$(OBJS_BONUS)
+				$(MAKE) 
+				$(CP) $(LIBFT) $(NAME_BONUS)
+				$(CC) $(OBJS_BONUS) ./libft/libft.a -o $(NAME_BONUS)
+				$(ECHO) "$(GREEN)✨ checker is ready ✨$(RESET)"
+
 $(OBJS_DIR)%.o:	$(SRCS_DIR)%.c
 				$(MKDIR) -p $(dir $@)
 				$(ECHO) "$(YELLOW)🪄Compiling $< $(RESET)"
 				$(CC) $(FLAGS) $(INC) $< -o $@
+
 clean:
 				$(RM) $(OBJS_DIR)
 				make clean -C libft
@@ -116,6 +137,7 @@ clean:
 
 fclean: 		clean
 				$(RM) $(NAME)
+				$(RM) $(NAME_BONUS)
 				$(RM) $(LIBFT)
 				$(ECHO) "$(RED)🧹Everything removed!$(RESET)"
 
