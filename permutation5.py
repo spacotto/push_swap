@@ -30,9 +30,9 @@ def run_checker(checker_path, args_str, operations):
 
 def run_permutation_test(num_count, ops_limit):
     """Exhaustively tests all permutations of 5 numbers."""
-    GREEN = "\033[92m"
-    RED = "\033[91m"
-    CYAN = "\033[0;96m"
+    GREEN = "\033[0;92m"
+    RED = "\033[0;91m"
+    CYAN = "\033[1;96m"
     RESET = "\033[0m"
 
     # Generate all 120 permutations
@@ -40,9 +40,13 @@ def run_permutation_test(num_count, ops_limit):
     permutations = list(itertools.permutations(base_numbers))
     total_tests = len(permutations)
     sorted_tuple = tuple(sorted(base_numbers))
-    
-    print(f"\n--- Checking all possible 120 permutations of 5 (Ops limit: {CYAN}<{ops_limit + 1}{RESET}) ---")
 
+    print(f"\n ============================================================================")
+    print(f"\n Checking all possible {CYAN}120 permutations of 5{RESET} (Ops limit: {CYAN}<{ops_limit + 1}{RESET})")
+    print(f"\n ============================================================================")
+    print(f" Progress status")
+    print(f" ----------------------------------------------------------------------------")
+    
     failures = []
     checker_linux_ok = 0
     my_checker_ok = 0
@@ -90,7 +94,7 @@ def run_permutation_test(num_count, ops_limit):
                 failures.append(f"Limit Exceeded ({ops_count} ops): {args_str}")
 
             # Visual progress
-            print(f"\rTest {i}/{total_tests}", end="")
+            print(f"\r {i}/{total_tests}", end="")
             sys.stdout.flush()
         except Exception as e:
             print(f"\nError on permutation {args_str}: {e}")
@@ -100,18 +104,21 @@ def run_permutation_test(num_count, ops_limit):
     
     c_lin_color = GREEN if checker_linux_ok == total_tests else RED
     c_my_color = GREEN if my_checker_ok == total_tests else RED
-    
-    print(f"checker_linux {c_lin_color}{checker_linux_ok}/{total_tests}{RESET}")
-    print(f"my_checker    {c_my_color}{my_checker_ok}/{total_tests}{RESET}")
+
+    print(f"\n Checker            Result")
+    print(f" ----------------------------------------------------------------------------")
+    print(f"checker_linux        {c_lin_color}{checker_linux_ok}/{total_tests}{RESET}")
+    print(f"my_checker           {c_my_color}{my_checker_ok}/{total_tests}{RESET}")
     
     # Calculate average using 119 tests (excluding sorted case)
     effective_count = total_tests - 1
     avg = total_ops / effective_count if effective_count > 0 else 0
     
-    print(f"\nResults for {num_count} numbers (Stats exclude sorted case):")
-    print(f"Min ops: {min_ops if min_ops != float('inf') else 0} ops")
-    print(f"Max ops: {max_ops} ops")
-    print(f"Average: {avg:.1f} ops")
+    print(f" Parameter          Result")
+    print(f" ----------------------------------------------------------------------------")
+    print(f"Min ops            {min_ops if min_ops != float('inf') else 0}")
+    print(f"Max ops            {max_ops}")
+    print(f"Average            {avg:.1f}")
     
     failures_color = RED if failures else GREEN
     print(f"Failures: {failures_color}{len(failures)}{RESET}/{total_tests}")
