@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/25 20:59:16 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/25 23:42:27 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_stacks
 
 // Core functions
 void    error_msg();
-void    make_stack(t_stacks *stacks, int ac, char **av);
+void    make_stack(t_list **stack, int ac, char **av);
 
 int		push_swap(t_stacks *stacks, int ac, char **av);	
 int		main(int ac, char **av);

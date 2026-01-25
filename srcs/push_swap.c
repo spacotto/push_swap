@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 16:46:26 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/25 22:09:42 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/25 23:41:49 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	error_msg()
 
 int	push_swap(t_stacks *stacks, int ac, char **av)
 {
-	make_stack(stacks, ac, av);
+	make_stack(&stacks->stack_a, ac, av);
 	if (stacks->stack_a)
 	{
 		if (ft_lstsort_check(stacks->stack_a) == 0)

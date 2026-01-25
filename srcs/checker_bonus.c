@@ -6,15 +6,29 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:54:18 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/25 20:48:07 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 00:03:10 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
+void	error_msg()
+{
+	ft_putstr_fd(BOLD_RED "Error\n" RESET, 2);
+}
+
 int	checker(t_stacks *stacks, int ac, char **av)
 {
-	make_stack(stacks, ac, av);
+	make_stack(stacks->stack_a, ac, av);
+	read_ops(stacks->ops);
+	if (stacks->stack_a && stacks->ops)
+	{
+		execute_ops(stacks);
+		ft_lstsort_check(stacks->stack_a);
+		return (1);
+	}
+	else
+		return (0);
 }
 
 int	main(int ac, char **av)
@@ -29,7 +43,7 @@ int	main(int ac, char **av)
 			if (stacks.stack_a != NULL)
 				ft_lstclear(&stacks.stack_a, del);
 			if (stacks.operations != NULL)
-				ft_lstclear(&stacks.operations, del);
+				ft_lstclear(&stacks.ops, del);
 			return (0);
 		}
 		else

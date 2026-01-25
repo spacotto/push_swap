@@ -6,7 +6,7 @@
 #    By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/08 15:55:57 by spacotto          #+#    #+#              #
-#    Updated: 2026/01/25 21:00:20 by spacotto         ###   ########.fr        #
+#    Updated: 2026/01/25 23:22:34 by spacotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ BEST		:=	move_to_top.c \
 				ops_remove.c \
 				ops_optimise.c
 
-PREP		:=	make_parsing.c \
+PARSING		:=	make_parsing.c \
 				make_stack.c
 
 SORT		:=	range_presort.c \
@@ -70,19 +70,16 @@ SORT		:=	range_presort.c \
 
 PUSH_SWAP	:=	push_swap.c
 
-SRCS		:=	$(OPS) $(BEST) $(PREP) $(SORT) $(PUSH_SWAP)
+SRCS		:=	$(OPS) $(BEST) $(PARSING) $(SORT) $(PUSH_SWAP)
 
 CHECKER_OPS	:=	checker_ss_bonus.c \
 				checker_pp_bonus.c \
 				checker_rr_bonus.c \
 				checker_rrr_bonus.c
 
-PARSING		:=	make_parsing.c \
-				make_stack.c
-
 CHECKER		:=	checker_bonus.c
 
-SRCS_BONUS	:= #$(CHECKER_OPS) $(CHECKER)
+SRCS_BONUS	:= $(CHECKER_OPS) $(PARSING) $(CHECKER)
 
 # ============================================================================
 # OBJECTS
