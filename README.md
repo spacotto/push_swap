@@ -176,7 +176,7 @@ OK
 ```
 
 ## Permutations of 5
-`permutation5.py` tests all the possible permutations (combinations) of 5 values in 5 positions (aka !5 = 120). No arguments needed. Just launch the program:
+`permutation5.py` is a custom Python program not required by the subject. It tests all the possible permutations (combinations) of 5 values in 5 positions (aka !5 = 120). No arguments needed. Just launch the program:
 ```
 python3 permutation5.py
 ```
@@ -194,10 +194,9 @@ Min ops: 3 ops
 Max ops: 10 ops
 Average: 7.5 ops
 ```
----
 
 ## push_swap Performance
-`performance.py`, given a set of numbers (x) and the number of random combinations you want to test (y) as arguments, will randomly generate x numbers y times:
+`performance.py`is a custom Python program not required by the subject. Given a set of numbers (x) and the number of random combinations you want to test (y) as arguments, it will randomly generate x numbers y times:
 ```
 python3 performance.py 500 100
 ```
@@ -225,11 +224,10 @@ Output example:
  Success rate       100.0%
 ```
 
-## [push_swap Visualizer](https://github.com/o-reo/push_swap_visualizer)
+## [push_swap Visualizer](https://github.com/o-reo/push_swap_visualizer) (external)
 A clean visualizer for your Push Swap Algorithm, you can't fix what you can't see! This is one of the oldest and most popular push_swap tools. 
----
 
-## [push_swap Complexity](https://github.com/SimonCROS/push_swap_tester)
+## [push_swap Complexity](https://github.com/SimonCROS/push_swap_tester) (external)
 With this tool, you can test the complexity and the performance of your `push_swap`'
 
 # Resources
