@@ -19,7 +19,7 @@ make
 ```
 Run the program as follows:
 ```
-./push_swap [set of numbers separated by only spaces]
+./push_swap 89 55 34 21 13 8 5 3 2 1 0  # The numbers can be whatever as long as they fit the validity criteria
 ```
 
 ## Invalid Inputs
