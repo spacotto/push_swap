@@ -86,8 +86,17 @@ In the second phase, elements are pushed back from stack B to stack A in descend
 >Check the **[flowchart](https://github.com/spacotto/push_swap/blob/main/flowchart.png)** to see a graphical representation of the algorithm.
 
 # push_swap Tools
+Several tools can help you test your `push_swap`. In this README.md I am going to present some options you might find useful:
+1. The Checker
+2. Premutations of 5
+3. Performance
+4. Visualizer
+5. Complexity
 
-## The Checker (Bonus)
+>[!NOTE]
+>The first three are included in this repository. The last two are external resources made by other 42 students.
+
+## The Checker
 The Checker shall take as an **argument** the **stack A**, formatted as a list of integers. If **no argument** is given, it stops and **displays nothing**. Just like push_swap.
 
 If the arguments are given, it will then wait and **read instructions** from the standard input, with each instruction followed by `\n`. Once all the instructions have been **read**, the program has to **execute** them **on the stack** received as an argument.
@@ -137,7 +146,7 @@ Average: 7.5 ops
 ```
 ---
 
-### push_swap Performance
+## push_swap Performance
 `performance.py`, given a set of numbers (x) and the number of random combinations you want to test (y) as arguments, will randomly generate x numbers y times:
 ```
 python3 performance.py 500 100
