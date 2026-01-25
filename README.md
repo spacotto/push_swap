@@ -97,6 +97,7 @@ Several tools can help you test your `push_swap`. In this README.md I am going t
 >The first three are included in this repository. The last two are external resources made by other 42 students.
 
 ## The Checker
+The 
 The Checker shall take as an **argument** the **stack A**, formatted as a list of integers. If **no argument** is given, it stops and **displays nothing**. Just like push_swap.
 
 If the arguments are given, it will then wait and **read instructions** from the standard input, with each instruction followed by `\n`. Once all the instructions have been **read**, the program has to **execute** them **on the stack** received as an argument.
@@ -112,7 +113,8 @@ It can be run alongside push_swap to check its correct functioning. For example:
 
 In this case, it will read the instructions output by push_swap. For example:
 ```
-...
+./push_swap 2 1 3 | ./checker_linux 2 1 3
+OK
 ```
 
 However, it has to be able to run correctly also by itself:
@@ -122,7 +124,9 @@ However, it has to be able to run correctly also by itself:
 
 In this second case, the **interactive mode** will be activated to allow the user to provide the instructions. Once the instructions are given, press `CTRL+D` to close the interactive mode. For example:  
 ```
-...
+./checker 2 1 3
+sa               # Write the instruction, ENTER, CTRL+D
+OK               # The Checker is going to display the result
 ```
 
 ## Permutations of 5
