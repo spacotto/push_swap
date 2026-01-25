@@ -73,6 +73,7 @@ def run_test(num_count, iterations, limit=None):
             min_ops = min(min_ops, ops_count)
             max_ops = max(max_ops, ops_count)
             
+            # Check correctness
             is_sorted = run_checker(CHECKER_LINUX_PATH, args_str, output)
             if is_sorted:
                 checker_linux_ok += 1
@@ -93,11 +94,14 @@ def run_test(num_count, iterations, limit=None):
     avg = total_ops / iterations if iterations > 0 else 0
     success_rate = (success_count / iterations) * 100 if iterations > 0 else 0
     
-    # Checker Table
+    # Checker Table - Green if 100%, else Red
+    linux_color = GREEN if (checker_linux_ok / iterations) == 1.0 else RED
+    my_color = GREEN if (my_checker_ok / iterations) == 1.0 else RED
+
     print(f" Checker            Result")
     print(f" ----------------------------------------------------------------------------")
-    print(f" checker_linux      {(checker_linux_ok/iterations)*100:.1f}%")
-    print(f" my_checker         {(my_checker_ok/iterations)*100:.1f}%")
+    print(f" checker_linux      {linux_color}{(checker_linux_ok/iterations)*100:.1f}%{RESET}")
+    print(f" my_checker         {my_color}{(my_checker_ok/iterations)*100:.1f}%{RESET}")
     
     # Parameter Table
     def get_val_color(val):
@@ -110,6 +114,7 @@ def run_test(num_count, iterations, limit=None):
     print(f" Max ops            {get_val_color(max_ops)}{max_ops}{RESET}")
     print(f" Average            {get_val_color(avg)}{avg:.1f}{RESET}")
     
+    # Success rate - Green if 100%, else Red
     success_color = GREEN if success_rate == 100.0 else RED
     print(f" Success rate       {success_color}{success_rate:.1f}%{RESET}\n")
 
