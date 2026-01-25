@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 19:45:34 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/24 19:45:35 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/25 16:52:52 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,14 @@ void	make_stack(t_stacks *stacks, int ac, char **av)
 
 	i = 1;
 	while (i < ac)
-	{  
+	{
+		if (!av[i][0])
+		{
+			error_msg();
+			if (stacks->stack_a != NULL)
+				ft_lstclear(&stacks->stack_a, del);
+			return ;
+		}	
 		add_token(&stacks->stack_a, av[i]);
 		if (!stacks->stack_a)
 			return ;
