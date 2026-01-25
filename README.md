@@ -83,9 +83,11 @@ Once only 3 elements are left in stack A (the biggest values in the stack), the 
 In the second phase, elements are pushed back from stack B to stack A in descending order (largest first). The algorithm finds the largest remaining element in stack B, calculates the most efficient rotation path according to the target position (`rb` vs `rrb`), brings it to the top, and pushes it to stack A with `pa`. This process repeats until stack B is empty, leaving stack A sorted in ascending order.
 
 >[!IMPORTANT]
->Check the **[flowchart](https://github.com/spacotto/push_swap/blob/main/flowchart.png)** to see a graphical representation of the algoritm.
+>Check the **[flowchart](https://github.com/spacotto/push_swap/blob/main/flowchart.png)** to see a graphical representation of the algorithm.
 
-# The Checker (Bonus)
+# push_swap Tools
+
+## The Checker (Bonus)
 The Checker shall take as an **argument** the **stack A**, formatted as a list of integers. If **no argument** is given, it stops and **displays nothing**. Just like push_swap.
 
 If the arguments are given, it will then wait and **read instructions** from the standard input, with each instruction followed by `\n`. Once all the instructions have been **read**, the program has to **execute** them **on the stack** received as an argument.
@@ -114,12 +116,7 @@ In this second case, the **interactive mode** will be activated to allow the use
 ...
 ```
 
-# push_swap Tools
-
-## Included Tools
-This `push_swap` repository includes 2 side tools not required by the subject: `permutation5.py` and `performance.py`.
-
-### Permutations of 5
+## Permutations of 5
 `permutation5.py` tests all the possible permutations (combinations) of 5 values in 5 positions (aka !5 = 120). No arguments needed. Just launch the program:
 ```
 python3 permutation5.py
@@ -169,15 +166,14 @@ Output example:
  Success rate       100.0%
 ```
 
-## Included Tools
-### [push_swap Visualizer](https://github.com/o-reo/push_swap_visualizer)
+## [push_swap Visualizer](https://github.com/o-reo/push_swap_visualizer)
 A clean visualizer for your Push Swap Algorithm, you can't fix what you can't see! This is one of the oldest and most popular push_swap tools. 
 ---
 
-### [push_swap Complexity](https://github.com/SimonCROS/push_swap_tester)
+## [push_swap Complexity](https://github.com/SimonCROS/push_swap_tester)
 With this tool, you can test the complexity and the performance of your `push_swap`'
 
-## Resources
+# Resources
 - [Sorting Algorithms - GeeksforGeeks](https://www.geeksforgeeks.org/dsa/sorting-algorithms/)
 - [Stack (abstract data type)](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
 - [Push_Swap: The least amount of moves with two stacks](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a)
