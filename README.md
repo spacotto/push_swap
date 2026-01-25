@@ -203,7 +203,7 @@ Output example:
  Failures           0/120
 ```
 
-## push_swap Performance
+## Performance
 `performance.py`is a custom Python program not required by the subject. Given a set of numbers (x) and the number of random combinations you want to test (y) as arguments, it will randomly generate x numbers y times:
 ```
 python3 performance.py 500 100
@@ -232,10 +232,10 @@ Output example:
  Success rate       100.0%
 ```
 
-## [push_swap Visualizer](https://github.com/o-reo/push_swap_visualizer) (external)
+## [Visualizer](https://github.com/o-reo/push_swap_visualizer) (external)
 A clean visualizer for your Push Swap Algorithm, you can't fix what you can't see! This is one of the oldest and most popular push_swap tools. 
 
-## [push_swap Complexity](https://github.com/SimonCROS/push_swap_tester) (external)
+## [Complexity](https://github.com/SimonCROS/push_swap_tester) (external)
 With this tool, you can test the complexity and the performance of your `push_swap`'
 
 # Resources
