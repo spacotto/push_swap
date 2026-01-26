@@ -20,6 +20,8 @@ int	ft_lstsort_check(t_list *lst)
 
 	if (!lst || !lst->next)
 		return (1);
+	if (ft_lstsize(lst) == 1)
+		return (1);
 	current = lst;
 	while (current->next)
 	{
