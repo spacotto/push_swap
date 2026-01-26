@@ -17,14 +17,29 @@ void	error_msg()
 	ft_putstr_fd(BOLD_RED "Error\n" RESET, 2);
 }
 
+static int	is_op(char *s)
+{}
+
+static void	get_ops(t_stacks *stacks)
+{}
+
+static void	choose_op(t_list *op)
+{}
+
+static void	execute_ops(t_stacks *stacks)
+{}
+
 int	checker(t_stacks *stacks, int ac, char **av)
 {
 	make_stack(stacks->stack_a, ac, av);
-	read_ops(stacks->ops);
+	get_ops(stacks);
 	if (stacks->stack_a && stacks->ops)
 	{
 		execute_ops(stacks);
-		ft_lstsort_check(stacks->stack_a);
+		if (ft_lstsort_check(stacks->stack_a) == 1)
+			ft_putstr_fd(BOLD_GREEN "OK\n" RESET, );
+		else			
+			ft_putstr_fd(BOLD_RED "KO\n" RESET, );
 		return (1);
 	}
 	else
