@@ -6,13 +6,13 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:54:18 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/26 17:05:39 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 18:45:54 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static int	check_ops(char *token)
+static int	valid_ops(char *token)
 {
 	if (ft_strcmp(token, "sa\n") == 0)
 		return (1);
@@ -39,24 +39,22 @@ static int	check_ops(char *token)
 	return (0);
 }
 
-static void	add_op(t_list **ops, char *token)
+static void	add_op(t_list **ops, char *op)
 {
-	size_t	len;
+	t_list	*node;
 	char	*content;
-	t_list	*new_node;
 
-	len = ft_strlen(token);
-	content = ft_calloc(len, sizeof(char));
+	content = ft_strdup(op);
 	if (!content)
 		return ;
-	*content = *token;
-	new_node = ft_lstnew(content);
-	if (!new_node)
+	node = ft_lstnew(content);
+	if (!node)
 	{
 		free(content);
 		return ;
 	}
-	ft_lstadd_back(ops, new_node);
+	node->next = NULL;
+	ft_lstadd_back(ops, node);
 }
 
 static void	make_ops(t_list **ops)
@@ -69,42 +67,43 @@ static void	make_ops(t_list **ops)
 		token = get_next_line(0);
 		if (!token)
 			return ;
-		if (check_ops(token) == 0)
+		if (valid_ops(token) == 0)
 		{
-			error_msg();
 			if (ops != NULL)
 				ft_lstclear(ops, del);
-			return ;
+			error_msg();
+			break ;
 		}
 		else
 			add_op(ops, token);
 		free(token);
 	}
+	free(token);
 }
 
 static void	execute_op(t_stacks *stacks, char *op)
 {
-	if (check_ops(op) == 1)
+	if (valid_ops(op) == 1)
 		ft_sa_bonus(stacks);
-	else if (check_ops(op) == 2)
+	else if (valid_ops(op) == 2)
 		ft_sb_bonus(stacks);
-	else if (check_ops(op) == 3)
+	else if (valid_ops(op) == 3)
 		ft_ss_bonus(stacks);
-	else if (check_ops(op) == 4)
+	else if (valid_ops(op) == 4)
 		ft_pa_bonus(stacks);
-	else if (check_ops(op) == 5)
+	else if (valid_ops(op) == 5)
 		ft_pa_bonus(stacks);
-	else if (check_ops(op) == 6)
+	else if (valid_ops(op) == 6)
 		ft_ra_bonus(stacks);
-	else if (check_ops(op) == 7)
+	else if (valid_ops(op) == 7)
 		ft_rb_bonus(stacks);
-	else if (check_ops(op) == 8)
+	else if (valid_ops(op) == 8)
 		ft_rr_bonus(stacks);
-	else if (check_ops(op) == 9)
+	else if (valid_ops(op) == 9)
 		ft_rra_bonus(stacks);
-	else if (check_ops(op) == 10)
+	else if (valid_ops(op) == 10)
 		ft_rrb_bonus(stacks);
-	else if (check_ops(op) == 11)
+	else if (valid_ops(op) == 11)
 		ft_rrr_bonus(stacks);
 }
 
