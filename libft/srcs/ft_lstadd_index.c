@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 20:48:53 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/25 22:10:47 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:37:50 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_lstadd_index(t_list *lst)
 {
 	int		i;
 	t_list	*smallest;
-	
+
 	i = 0;
 	index_init(lst);
 	while (i < ft_lstsize(lst))

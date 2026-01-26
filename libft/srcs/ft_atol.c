@@ -6,13 +6,13 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 16:36:36 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/22 16:39:51 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:37:15 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long ft_atol(const char *nptr)
+long	ft_atol(const char *nptr)
 {
 	long	i;
 	long	sign;

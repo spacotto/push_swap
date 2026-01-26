@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:54:18 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/26 16:16:23 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:05:39 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,11 @@ static void	make_ops(t_list **ops)
 			if (ops != NULL)
 				ft_lstclear(ops, del);
 			return ;
-		}	
+		}
 		else
 			add_op(ops, token);
 		free(token);
-    }
+	}
 }
 
 static void	execute_op(t_stacks *stacks, char *op)
@@ -126,7 +126,7 @@ int	checker(t_stacks *stacks, int ac, char **av)
 		}
 		if (ft_lstsort_check(stacks->stack_a) == 1)
 			ft_putstr_fd(BOLD_CYAN "OK\n" RESET, 1);
-		else			
+		else
 			ft_putstr_fd(BOLD_MAGENTA "KO\n" RESET, 1);
 		return (1);
 	}

@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:08:08 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/24 00:17:13 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:06:23 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	choose_range(int stack_size)
 {
 	int	range;
-		
+
 	if (stack_size <= 5)
 		range = 3;
 	else if (stack_size <= 100)
@@ -34,7 +34,7 @@ static int	is_target(t_list *current, int range, int max_range)
 	return (1);
 }
 
-void    range_presort(t_stacks *stacks)
+void	range_presort(t_stacks *stacks)
 {
 	int	stack_size;
 	int	max_range;
@@ -51,8 +51,8 @@ void    range_presort(t_stacks *stacks)
 		{
 			ft_pb(stacks);
 			if (stacks->stack_b->index < pushed)
-                ft_rb(stacks);
-            pushed++;
+				ft_rb(stacks);
+			pushed++;
 			range++;
 		}
 		else

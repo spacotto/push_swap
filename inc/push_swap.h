@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/26 12:34:45 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:40:44 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ typedef struct s_stacks
 // ============================================================================
 
 // Core functions
-void    error_msg();
-void    make_stack(t_list **stack, int ac, char **av);
+void	error_msg(void);
+void	make_stack(t_list **stack, int ac, char **av);
 
 int		push_swap(t_stacks *stacks, int ac, char **av);	
 int		main(int ac, char **av);
@@ -76,10 +76,10 @@ t_list	*optimise_ops(t_list *ops);
 void	print_ops(t_list *ops);
 
 int		isrr(char *op1, char *op2);
-void	merge_rr(t_list  **ops);
+void	merge_rr(t_list **ops);
 
 int		isrrr(char *op1, char *op2);
-void	merge_rrr(t_list  **ops);
+void	merge_rrr(t_list **ops);
 
 int		redundancy(t_list *op1, t_list *op2);
 

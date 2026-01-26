@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 19:54:56 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/22 14:23:16 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:02:17 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ static int	is_pa_pb(char *op1, char *op2)
 int	redundancy(t_list *op1, t_list *op2)
 {
 	if (is_ra_rra(op1->content, op2->content))
-		return (1);	
+		return (1);
 	if (is_rb_rrb(op1->content, op2->content))
 		return (1);
 	if (is_pa_pb(op1->content, op2->content))
 		return (1);
 	return (0);
-}	
+}

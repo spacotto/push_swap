@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 09:35:14 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/25 22:07:54 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:36:20 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,13 +180,11 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 void	ft_lstcat(t_list **lst1, t_list *lst2);
-void    ft_lstadd_index(t_list *lst);
+void	ft_lstadd_index(t_list *lst);
 
 int		ft_lstsize(t_list *lst);
 int		ft_lstpos(t_list *haystack, t_list *needle);
 int		ft_lstsort_check(t_list *lst);
-
-double  ft_lst_disorder(t_list *lst);
 
 // ============================================================================
 // COLORS

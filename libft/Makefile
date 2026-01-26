@@ -6,7 +6,7 @@
 #    By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/01 13:30:48 by spacotto          #+#    #+#              #
-#    Updated: 2026/01/25 20:57:10 by spacotto         ###   ########.fr        #
+#    Updated: 2026/01/26 16:36:41 by spacotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -129,8 +129,7 @@ SRC_LST		:=	ft_lstnew.c \
 				ft_lstpos.c \
 				ft_lstdup.c \
 				ft_lstsort_check.c \
-				ft_lstadd_index.c \
-				ft_lst_disorder.c
+				ft_lstadd_index.c 
 
 SRC_PRINTF	:=	ft_printf.c \
 				ft_printchar.c \

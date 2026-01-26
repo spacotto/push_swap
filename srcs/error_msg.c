@@ -6,13 +6,13 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 12:29:47 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/26 12:51:42 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:06:52 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	error_msg()
+void	error_msg(void)
 {
 	ft_putstr_fd(BOLD_MAGENTA "Error\n" RESET, 2);
 }

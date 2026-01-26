@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 18:32:55 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/24 21:34:10 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:03:04 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	is_number(char *token)
 
 int	is_int(char *token)
 {
-	if (ft_atol(token) < INT_MIN) 
+	if (ft_atol(token) < INT_MIN)
 		return (0);
 	if (ft_atol(token) > INT_MAX)
 		return (0);
@@ -53,7 +53,7 @@ void	has_dup(t_list **stack)
 		{
 			cmp_content = *(int *)cmp->content;
 			if (current_content == cmp_content)
-			{	
+			{
 				error_msg();
 				if (stack != NULL)
 					ft_lstclear(stack, del);
