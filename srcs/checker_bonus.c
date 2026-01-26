@@ -114,6 +114,11 @@ int	checker(t_stacks *stacks, int ac, char **av)
 	make_stack(&stacks->stack_a, ac, av);
 	if (!stacks->stack_a)
 		return (0);
+	if (ft_lstsort_check(stacks->stack_a) == 1)
+	{
+		ft_putstr_fd(BOLD_CYAN "OK\n" RESET, 1);
+		return (1);
+	}
 	make_ops(&stacks->operations);
 	if (stacks->operations)
 	{
