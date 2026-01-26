@@ -75,12 +75,7 @@ void	add_operation(t_stacks *stacks, char *op);
 t_list	*optimise_ops(t_list *ops);
 void	print_ops(t_list *ops);
 
-int		isrr(char *op1, char *op2);
-void	merge_rr(t_list **ops);
-
-int		isrrr(char *op1, char *op2);
-void	merge_rrr(t_list **ops);
-
+int		merge(t_list **target_list, t_list *op1, t_list *op2);
 int		redundancy(t_list *op1, t_list *op2);
 
 // Sorting
