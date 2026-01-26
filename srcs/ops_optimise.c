@@ -51,16 +51,8 @@ t_list	*optimise_ops(t_list *ops)
 	current = ops;
 	while (current && current->next)
 	{
-		if (isrr(current->content, current->next->content))
-		{
-			merge_rr(&new_list);
+		if (merge(&new_list, current->content, current->next->content))
 			current = current->next;
-		}
-		else if (isrrr(current->content, current->next->content))
-		{
-			merge_rrr(&new_list);
-			current = current->next;
-		}
 		else if (redundancy(current, current->next))
 			current = current->next;
 		else
