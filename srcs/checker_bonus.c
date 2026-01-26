@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:54:18 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/26 18:45:54 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 18:49:34 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,8 @@ int	checker(t_stacks *stacks, int ac, char **av)
 			execute_op(stacks, current->content);
 			current = current->next;
 		}
-		if (ft_lstsort_check(stacks->stack_a) == 1)
+		if (ft_lstsize(stacks->stack_a) == 1 
+			|| ft_lstsort_check(stacks->stack_a) == 1)
 			ft_putstr_fd(BOLD_CYAN "OK\n" RESET, 1);
 		else
 			ft_putstr_fd(BOLD_MAGENTA "KO\n" RESET, 1);
