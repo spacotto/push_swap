@@ -17,13 +17,34 @@ void	error_msg()
 	ft_putstr_fd(BOLD_RED "Error\n" RESET, 2);
 }
 
-static int	is_op(char *s)
-{}
+static int	check_ops(char *token)
+{
+	if (ft_strcmp(token, "sa\n") == 0)
+		return (1);
+	else if (ft_strcmp(token, "sb\n") == 0)
+		return (2);
+	else if (ft_strcmp(token, "ss\n") == 0)
+		return (3);
+	else if (ft_strcmp(token, "pa\n") == 0)
+		return (4);
+	else if (ft_strcmp(token, "pb\n") == 0)
+		return (5);
+	else if (ft_strcmp(token, "ra\n") == 0)
+		return (6);
+	else if (ft_strcmp(token, "rb\n") == 0)
+		return (7);
+	else if (ft_strcmp(token, "rr\n") == 0)
+		return (8);
+	else if (ft_strcmp(token, "rra\n") == 0)
+		return (9);
+	else if (ft_strcmp(token, "rrb\n") == 0)
+		return (10);
+	else if (ft_strcmp(token, "rrr\n") == 0)
+		return (11);
+	return (0);
+}
 
 static void	get_ops(t_stacks *stacks)
-{}
-
-static void	choose_op(t_list *op)
 {}
 
 static void	execute_ops(t_stacks *stacks)
