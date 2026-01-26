@@ -92,7 +92,7 @@ static void	execute_op(t_stacks *stacks, char *op)
 	else if (valid_ops(op) == 4)
 		ft_pa_bonus(stacks);
 	else if (valid_ops(op) == 5)
-		ft_pa_bonus(stacks);
+		ft_pb_bonus(stacks);
 	else if (valid_ops(op) == 6)
 		ft_ra_bonus(stacks);
 	else if (valid_ops(op) == 7)
