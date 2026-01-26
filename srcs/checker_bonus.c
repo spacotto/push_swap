@@ -97,9 +97,9 @@ int	checker(t_stacks *stacks, int ac, char **av)
 	{
 		execute_ops(stacks);
 		if (ft_lstsort_check(stacks->stack_a) == 1)
-			ft_putstr_fd(BOLD_GREEN "OK\n" RESET, );
+			ft_putstr_fd(BOLD_CYAN "OK\n" RESET, );
 		else			
-			ft_putstr_fd(BOLD_RED "KO\n" RESET, );
+			ft_putstr_fd(BOLD_MAGENTA "KO\n" RESET, );
 		return (1);
 	}
 	else
