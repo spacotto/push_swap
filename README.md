@@ -116,26 +116,22 @@ The **checker** is a validation tool that verifies whether a sequence of operati
 ### Invalid Inputs 
 1. Non-numeric arguments:
 ```
-./checker 4 67 one 87
-Error
+./checker 3 2 one 0 o 10
 ```
 
 2. Numeric parameters exceeding the `int` limits (INT_MIN, INT_MAX):
 ```
-./checker 2147483648
-Error
+./checker 3 3333333333 -3 -3333333333 0
 ```
 
 3. Duplicate values:
 ```
-./checker 3 2 1 3
-Error
+./checker 3 2 1 3 6 1 8
 ```
 
 4. Empty string argument:
 ```
-./checker "" 1
-Error
+./checker 3 "" 1
 ```
 
 4. Invalid instruction:
