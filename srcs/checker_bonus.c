@@ -86,8 +86,31 @@ static void	make_ops(t_list **ops)
     }
 }
 
-static void	execute_ops(t_stacks *stacks)
-{}
+static void	execute_ops(t_stacks *stacks, char *op)
+{
+	if (check_ops(op) == 1)
+		ft_sa(stacks);
+	else if (check_ops(op) == 2)
+		ft_sb(stacks);
+	else if (check_ops(op) == 3)
+		ft_ss(stacks);
+	else if (check_ops(op) == 4)
+		ft_pa(stacks);
+	else if (check_ops(op) == 5)
+		ft_pa(stacks);
+	else if (check_ops(op) == 6)
+		ft_ra(stacks);
+	else if (check_ops(op) == 7)
+		ft_rb(stacks);
+	else if (check_ops(op) == 8)
+		ft_rr(stacks);
+	else if (check_ops(op) == 9)
+		ft_rra(stacks);
+	else if (check_ops(op) == 10)
+		ft_rrb(stacks);
+	else if (check_ops(op) == 11)
+		ft_rrr(stacks);
+}
 
 int	checker(t_stacks *stacks, int ac, char **av)
 {
