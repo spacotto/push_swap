@@ -6,7 +6,7 @@
 #    By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/08 15:55:57 by spacotto          #+#    #+#              #
-#    Updated: 2026/01/25 23:22:34 by spacotto         ###   ########.fr        #
+#    Updated: 2026/01/26 11:40:13 by spacotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,7 @@ OBJS_DIR	:=	objs/
 
 OBJS		:=	$(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 
-OBJ_BONUS	:=	$(addprefix $(OBJS_DIR), $(SRCS_BONUS:.c=.o))
+OBJS_BONUS	:=	$(addprefix $(OBJS_DIR), $(SRCS_BONUS:.c=.o))
 
 # ============================================================================
 # RULES
@@ -142,4 +142,4 @@ fclean: 		clean
 re: 			fclean all
 				$(ECHO) "$(BLUE)💫 Cleaned and rebuilt everything 💫$(RESET)"
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re
