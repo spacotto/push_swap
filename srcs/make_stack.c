@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 19:45:34 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/26 17:07:21 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 22:33:26 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	make_stack(t_list **stack, int ac, char **av)
 			return ;
 		}
 		add_token(stack, av[i]);
-		if (!stack)
+		if (!*stack)
 			return ;
 		i++;
 	}

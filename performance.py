@@ -36,14 +36,20 @@ def generate_random_numbers(count):
     return random.sample(range(-2147483648, 2147483647), count)
 
 def run_checker(checker_path, args_str, operations):
-    """Runs a checker program and returns True if output is 'OK'"""
+    """Runs a checker program using direct piping to avoid shell issues"""
     try:
+        input_data = operations.strip() + '\n' if operations else ""
+
         process = subprocess.run(
-            f'echo "{operations}" | {checker_path} {args_str}',
-            shell=True, capture_output=True, text=True, timeout=5
+            [checker_path] + args_str.split(),
+            input=input_data,
+            capture_output=True,
+            text=True,
+            timeout=5
         )
-        return process.stdout.strip() == "OK"
-    except:
+        
+        return "OK" in process.stdout
+    except Exception:
         return False
 
 def run_test(num_count, iterations, limit=None, cb_mode=False):
