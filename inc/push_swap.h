@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/26 16:40:44 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:35:28 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	add_operation(t_stacks *stacks, char *op);
 t_list	*optimise_ops(t_list *ops);
 void	print_ops(t_list *ops);
 
-int		merge(t_list **target_list, t_list *op1, t_list *op2);
+int		merge(t_list **target_list, char *op1, char *op2);
 int		redundancy(t_list *op1, t_list *op2);
 
 // Sorting

@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 15:34:14 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/21 22:14:34 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:36:04 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,16 @@ static void	merge_rrr(t_list **target_list)
 	ft_lstadd_back(target_list, merged_node);
 }
 
-int	merge(t_list **target_list, t_list *op1, t_list *op2)
+int	merge(t_list **target_list, char *op1, char *op2)
 {
-	if (isrr(current->content, current->next->content))
+	if (isrr(op1, op2))
 	{
-		merge_rr(&new_list);
+		merge_rr(target_list);
 		return (1);
 	}
-	else if (isrrr(current->content, current->next->content))
+	else if (isrrr(op1, op2))
 	{
-		merge_rrr(&new_list);
+		merge_rrr(target_list);
 		return (1);
 	}
 	return (0);
