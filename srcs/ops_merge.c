@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	isrr(char *op1, char *op2)
+static int	isrr(char *op1, char *op2)
 {
 	if (ft_strcmp(op1, "ra\n") == 0 && ft_strcmp(op2, "rb\n") == 0)
 		return (1);
@@ -21,7 +21,7 @@ int	isrr(char *op1, char *op2)
 	return (0);
 }
 
-void	merge_rr(t_list **target_list)
+static void	merge_rr(t_list **target_list)
 {
 	t_list	*merged_node;
 	char	*new_op;
@@ -38,7 +38,7 @@ void	merge_rr(t_list **target_list)
 	ft_lstadd_back(target_list, merged_node);
 }
 
-int	isrrr(char *op1, char *op2)
+static int	isrrr(char *op1, char *op2)
 {
 	if (ft_strcmp(op1, "rra\n") == 0 && ft_strcmp(op2, "rrb\n") == 0)
 		return (1);
@@ -47,7 +47,7 @@ int	isrrr(char *op1, char *op2)
 	return (0);
 }
 
-void	merge_rrr(t_list **target_list)
+static void	merge_rrr(t_list **target_list)
 {
 	t_list	*merged_node;
 	char	*new_op;
@@ -62,4 +62,19 @@ void	merge_rrr(t_list **target_list)
 		return ;
 	}
 	ft_lstadd_back(target_list, merged_node);
+}
+
+int	merge(t_list **target_list, t_list *op1, t_list *op2)
+{
+	if (isrr(current->content, current->next->content))
+	{
+		merge_rr(&new_list);
+		return (1);
+	}
+	else if (isrrr(current->content, current->next->content))
+	{
+		merge_rrr(&new_list);
+		return (1);
+	}
+	return (0);
 }
