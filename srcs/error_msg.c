@@ -1,35 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_pp_bonus.c                                 :+:      :+:    :+:   */
+/*   error_msg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/25 18:11:08 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/26 14:17:16 by spacotto         ###   ########.fr       */
+/*   Created: 2026/01/26 12:29:47 by spacotto          #+#    #+#             */
+/*   Updated: 2026/01/26 12:51:42 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 #include "checker.h"
 
-static void	push(t_list **dst, t_list **src)
+void	error_msg()
 {
-	t_list	*node_to_push;
-
-	if (!src || !*src)
-		return ;
-	node_to_push = *src;
-	*src = (*src)->next;
-	node_to_push->next = *dst;
-	*dst = node_to_push;
-}
-
-void	ft_pa_bonus(t_stacks *stacks)
-{
-	push(&stacks->stack_a, &stacks->stack_b);
-}
-
-void	ft_pb_bonus(t_stacks *stacks)
-{
-	push(&stacks->stack_b, &stacks->stack_a);
+	ft_putstr_fd(BOLD_MAGENTA "Error\n" RESET, 2);
 }

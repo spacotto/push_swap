@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/25 23:42:27 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 12:34:45 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # include "../libft/inc/libft.h"
 # include "../libft/inc/printf.h"
+# include "../libft/inc/get_next_line.h"
 
 # include <limits.h>
 

@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 19:45:34 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/25 23:41:40 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 14:23:49 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_list	*make_token(char *token)
 	int		*number;
 	t_list	*new_node;
 	
-	number = malloc(1 * sizeof(int));
+	number = ft_calloc(1, sizeof(int));
 	if (!number)
 		return (NULL);
 	*number = ft_atol(token);

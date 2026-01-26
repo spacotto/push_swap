@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:49:49 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/26 00:00:42 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:28:51 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,7 @@
 // INCLUDES
 // ============================================================================
 
-# include "../libft/inc/libft.h"
-# include "../libft/inc/printf.h"
-# include "../libft/inc/get_next_line.h"
-
-# include <limits.h>
-
-// ============================================================================
-// STRUCTURES
-// ============================================================================
-
-typedef struct s_stacks
-{
-	t_list	*stack_a;
-	t_list	*stack_b;
-	t_list	*ops;
-}	t_stacks;
+# include "push_swap.h"
 
 // ============================================================================
 // PROTOTYPES
@@ -40,29 +25,21 @@ typedef struct s_stacks
 
 // Core functions
 int		checker(t_stacks *stacks, int ac, char **av);
-int		main(int ac, char **av);
-
-// Parsing
-int		is_number(char *token);
-int		is_int(char *token);
-void	has_dup(t_list **stack);
-
-void    make_stack(t_list **stack, int ac, char **av);
 
 // Operations
-void	ft_sa(t_stacks *stacks);
-void	ft_sb(t_stacks *stacks);
-void	ft_ss(t_stacks *stacks);
+void	ft_sa_bonus(t_stacks *stacks);
+void	ft_sb_bonus(t_stacks *stacks);
+void	ft_ss_bonus(t_stacks *stacks);
 
-void	ft_pa(t_stacks *stacks);
-void	ft_pb(t_stacks *stacks);
+void	ft_pa_bonus(t_stacks *stacks);
+void	ft_pb_bonus(t_stacks *stacks);
 
-void	ft_ra(t_stacks *stacks);
-void	ft_rb(t_stacks *stacks);
-void	ft_rr(t_stacks *stacks);
+void	ft_ra_bonus(t_stacks *stacks);
+void	ft_rb_bonus(t_stacks *stacks);
+void	ft_rr_bonus(t_stacks *stacks);
 
-void	ft_rra(t_stacks *stacks);
-void	ft_rrb(t_stacks *stacks);
-void	ft_rrr(t_stacks *stacks);
+void	ft_rra_bonus(t_stacks *stacks);
+void	ft_rrb_bonus(t_stacks *stacks);
+void	ft_rrr_bonus(t_stacks *stacks);
 
 #endif

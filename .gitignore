@@ -5,4 +5,5 @@ libft/libft.a
 libft/objs/*
 objs/*
 push_swap
+checker
 visualizer/*

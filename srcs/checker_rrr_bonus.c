@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 18:18:01 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/25 18:18:42 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 14:17:51 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,17 @@ static void	reverse_rotate(t_list **stack)
 	*stack = last_node;
 }
 
-void	ft_rra(t_stacks *stacks)
+void	ft_rra_bonus(t_stacks *stacks)
 {
 	reverse_rotate(&stacks->stack_a);
 }
 
-void	ft_rrb(t_stacks *stacks)
+void	ft_rrb_bonus(t_stacks *stacks)
 {
 	reverse_rotate(&stacks->stack_b);
 }
 
-void	ft_rrr(t_stacks *stacks)
+void	ft_rrr_bonus(t_stacks *stacks)
 {
 	reverse_rotate(&stacks->stack_a);
 	reverse_rotate(&stacks->stack_b);

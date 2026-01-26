@@ -6,16 +6,11 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:54:18 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/26 00:03:10 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:16:23 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-void	error_msg()
-{
-	ft_putstr_fd(BOLD_RED "Error\n" RESET, 2);
-}
 
 static int	check_ops(char *token)
 {
@@ -47,19 +42,20 @@ static int	check_ops(char *token)
 static void	add_op(t_list **ops, char *token)
 {
 	size_t	len;
+	char	*content;
 	t_list	*new_node;
 
 	len = ft_strlen(token);
 	content = ft_calloc(len, sizeof(char));
 	if (!content)
 		return ;
-	*content = token;
+	*content = *token;
 	new_node = ft_lstnew(content);
 	if (!new_node)
 	{
 		free(content);
 		return ;
-	}			
+	}
 	ft_lstadd_back(ops, new_node);
 }
 
@@ -72,7 +68,7 @@ static void	make_ops(t_list **ops)
 	{
 		token = get_next_line(0);
 		if (!token)
-			break;
+			return ;
 		if (check_ops(token) == 0)
 		{
 			error_msg();
@@ -82,47 +78,56 @@ static void	make_ops(t_list **ops)
 		}	
 		else
 			add_op(ops, token);
-		free(line);
+		free(token);
     }
 }
 
-static void	execute_ops(t_stacks *stacks, char *op)
+static void	execute_op(t_stacks *stacks, char *op)
 {
 	if (check_ops(op) == 1)
-		ft_sa(stacks);
+		ft_sa_bonus(stacks);
 	else if (check_ops(op) == 2)
-		ft_sb(stacks);
+		ft_sb_bonus(stacks);
 	else if (check_ops(op) == 3)
-		ft_ss(stacks);
+		ft_ss_bonus(stacks);
 	else if (check_ops(op) == 4)
-		ft_pa(stacks);
+		ft_pa_bonus(stacks);
 	else if (check_ops(op) == 5)
-		ft_pa(stacks);
+		ft_pa_bonus(stacks);
 	else if (check_ops(op) == 6)
-		ft_ra(stacks);
+		ft_ra_bonus(stacks);
 	else if (check_ops(op) == 7)
-		ft_rb(stacks);
+		ft_rb_bonus(stacks);
 	else if (check_ops(op) == 8)
-		ft_rr(stacks);
+		ft_rr_bonus(stacks);
 	else if (check_ops(op) == 9)
-		ft_rra(stacks);
+		ft_rra_bonus(stacks);
 	else if (check_ops(op) == 10)
-		ft_rrb(stacks);
+		ft_rrb_bonus(stacks);
 	else if (check_ops(op) == 11)
-		ft_rrr(stacks);
+		ft_rrr_bonus(stacks);
 }
 
 int	checker(t_stacks *stacks, int ac, char **av)
 {
-	make_stack(stacks->stack_a, ac, av);
-	make_ops(stacks->ops);
-	if (stacks->stack_a && stacks->ops)
+	t_list	*current;
+
+	make_stack(&stacks->stack_a, ac, av);
+	if (!stacks->stack_a)
+		return (0);
+	make_ops(&stacks->operations);
+	if (stacks->operations)
 	{
-		execute_ops(stacks);
+		current = stacks->operations;
+		while (current)
+		{
+			execute_op(stacks, current->content);
+			current = current->next;
+		}
 		if (ft_lstsort_check(stacks->stack_a) == 1)
-			ft_putstr_fd(BOLD_CYAN "OK\n" RESET, );
+			ft_putstr_fd(BOLD_CYAN "OK\n" RESET, 1);
 		else			
-			ft_putstr_fd(BOLD_MAGENTA "KO\n" RESET, );
+			ft_putstr_fd(BOLD_MAGENTA "KO\n" RESET, 1);
 		return (1);
 	}
 	else
@@ -141,8 +146,7 @@ int	main(int ac, char **av)
 			if (stacks.stack_a != NULL)
 				ft_lstclear(&stacks.stack_a, del);
 			if (stacks.operations != NULL)
-				ft_lstclear(&stacks.ops, del);
-			return (0);
+				ft_lstclear(&stacks.operations, del);
 		}
 		else
 			return (-1);

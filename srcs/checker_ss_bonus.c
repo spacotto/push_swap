@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 18:16:28 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/25 18:17:02 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 14:16:57 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ static void	swap(t_list **stack)
 	ft_swap((int *)first_node->content, (int *)second_node->content);
 }
 
-void	ft_sa(t_stacks *stacks)
+void	ft_sa_bonus(t_stacks *stacks)
 {
 	swap(&stacks->stack_a);
 }
 
-void	ft_sb(t_stacks *stacks)
+void	ft_sb_bonus(t_stacks *stacks)
 {
 	swap(&stacks->stack_b);
 }
 
-void	ft_ss(t_stacks *stacks)
+void	ft_ss_bonus(t_stacks *stacks)
 {
 	swap(&stacks->stack_a);
 	swap(&stacks->stack_b);

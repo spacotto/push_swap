@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 18:17:08 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/25 18:17:49 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 14:17:34 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ static void	rotate(t_list **stack)
 	last_node->next = first_node;
 }
 
-void	ft_ra(t_stacks *stacks)
+void	ft_ra_bonus(t_stacks *stacks)
 {
 	rotate(&stacks->stack_a);
 }
 
-void	ft_rb(t_stacks *stacks)
+void	ft_rb_bonus(t_stacks *stacks)
 {
 	rotate(&stacks->stack_b);
 }
 
-void	ft_rr(t_stacks *stacks)
+void	ft_rr_bonus(t_stacks *stacks)
 {
 	rotate(&stacks->stack_a);
 	rotate(&stacks->stack_b);

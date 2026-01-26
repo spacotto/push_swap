@@ -6,16 +6,11 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 16:46:26 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/25 23:41:49 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/26 12:32:10 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	error_msg()
-{
-	ft_putstr_fd(BOLD_RED "Error\n" RESET, 2);
-}
 
 int	push_swap(t_stacks *stacks, int ac, char **av)
 {
