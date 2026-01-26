@@ -19,6 +19,7 @@
 
 # include "../libft/inc/libft.h"
 # include "../libft/inc/printf.h"
+# include "../libft/inc/get_next_line.h"
 
 # include <limits.h>
 
