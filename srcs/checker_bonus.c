@@ -44,8 +44,47 @@ static int	check_ops(char *token)
 	return (0);
 }
 
-static void	get_ops(t_stacks *stacks)
-{}
+static void	add_op(t_list **ops, char *token)
+{
+	size_t	len;
+	t_list	*new_node;
+
+	len = ft_strlen(token);
+	content = ft_calloc(len, sizeof(char));
+	if (!content)
+		return ;
+	*content = token;
+	new_node = ft_lstnew(content);
+	if (!new_node)
+	{
+		free(content);
+		return ;
+	}			
+	ft_lstadd_back(ops, new_node);
+}
+
+static void	make_ops(t_list **ops)
+{
+	char	*token;
+
+	token = NULL;
+	while (1)
+	{
+		token = get_next_line(0);
+		if (!token)
+			break;
+		if (check_ops(token) == 0)
+		{
+			error_msg();
+			if (ops != NULL)
+				ft_lstclear(ops, del);
+			return ;
+		}	
+		else
+			add_op(ops, token);
+		free(line);
+    }
+}
 
 static void	execute_ops(t_stacks *stacks)
 {}
@@ -53,7 +92,7 @@ static void	execute_ops(t_stacks *stacks)
 int	checker(t_stacks *stacks, int ac, char **av)
 {
 	make_stack(stacks->stack_a, ac, av);
-	get_ops(stacks);
+	make_ops(stacks->ops);
 	if (stacks->stack_a && stacks->ops)
 	{
 		execute_ops(stacks);
