@@ -107,18 +107,8 @@ static void	execute_op(t_stacks *stacks, char *op)
 		ft_rrr_bonus(stacks);
 }
 
-int	checker(t_stacks *stacks, int ac, char **av)
+static int	check_ops(t_stacks *stacks)
 {
-	t_list	*current;
-
-	make_stack(&stacks->stack_a, ac, av);
-	if (!stacks->stack_a)
-		return (0);
-	if (ft_lstsort_check(stacks->stack_a) == 1)
-	{
-		ft_putstr_fd(BOLD_CYAN "OK\n" RESET, 1);
-		return (1);
-	}
 	make_ops(&stacks->operations);
 	if (stacks->operations)
 	{
@@ -136,6 +126,27 @@ int	checker(t_stacks *stacks, int ac, char **av)
 	}
 	else
 		return (0);
+}
+
+int	checker(t_stacks *stacks, int ac, char **av)
+{
+	t_list	*current;
+
+	make_stack(&stacks->stack_a, ac, av);
+	if (!stacks->stack_a)
+		return (0);
+	if (ft_lstsort_check(stacks->stack_a) == 1)
+	{
+		ft_putstr_fd(BOLD_CYAN "OK\n" RESET, 1);
+		return (1);
+	}
+	if (ft_lstsort_check(stacks->stack_a) > 1)
+	{
+		if (check_ops(stacks) == 1)
+			return (1);
+		else
+			return (0);
+	}
 }
 
 int	main(int ac, char **av)
