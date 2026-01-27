@@ -34,18 +34,18 @@ static void	reverse_rotate(t_list **stack)
 void	ft_rra(t_stacks *stacks)
 {
 	reverse_rotate(&stacks->stack_a);
-	add_operation(stacks, "rra\n");
+	add_operation(&stacks->operations, "rra\n");
 }
 
 void	ft_rrb(t_stacks *stacks)
 {
 	reverse_rotate(&stacks->stack_b);
-	add_operation(stacks, "rrb\n");
+	add_operation(&stacks->operations, "rrb\n");
 }
 
 void	ft_rrr(t_stacks *stacks)
 {
 	reverse_rotate(&stacks->stack_a);
 	reverse_rotate(&stacks->stack_b);
-	add_operation(stacks, "rrr\n");
+	add_operation(&stacks->operations, "rrr\n");
 }
