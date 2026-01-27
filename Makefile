@@ -80,7 +80,7 @@ CHECKER_OPS	:=	checker_ss_bonus.c \
 
 CHECKER		:=	checker_bonus.c
 
-SRCS_BONUS	:= $(PARSING) $(CHECKER_OPS) $(CHECKER)
+SRCS_BONUS	:= $(PARSING) $(CHECKER_OPS) $(BEST) $(CHECKER)
 
 # ============================================================================
 # OBJECTS
