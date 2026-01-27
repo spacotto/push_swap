@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:54:18 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/27 13:58:45 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/27 14:01:51 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ static int	check_ops(t_stacks *stacks)
 			execute_op(stacks, current->content);
 			current = current->next;
 		}
-		if (ft_lstsort_check(stacks->stack_a) == 1 
+		if (ft_lstsort_check(stacks->stack_a) == 1
 			&& !stacks->stack_b)
 			ft_putstr_fd(BOLD_CYAN "OK\n" RESET, 1);
 		else
