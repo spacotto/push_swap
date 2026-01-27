@@ -50,6 +50,7 @@ int		main(int ac, char **av);
 int		is_number(char *token);
 int		is_int(char *token);
 void	has_dup(t_list **stack);
+int		valid_ops(char *token);
 
 // Operations
 void	ft_sa(t_stacks *stacks);
