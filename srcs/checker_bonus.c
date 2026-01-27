@@ -108,17 +108,20 @@ int	checker(t_stacks *stacks, int ac, char **av)
 int	main(int ac, char **av)
 {
 	t_stacks	stacks;
+	int			flag;
 
 	ft_memset(&stacks, 0, sizeof(t_stacks));
 	if (ac > 1)
 	{
-		if (checker(&stacks, ac, av) == 1)
-		{
-			if (stacks.stack_a != NULL)
-				ft_lstclear(&stacks.stack_a, del);
-			if (stacks.operations != NULL)
-				ft_lstclear(&stacks.operations, del);
-		}
+		flag = checker(&stacks, ac, av);
+		if (stacks.stack_a != NULL)
+			ft_lstclear(&stacks.stack_a, del);
+		if (stacks.stack_b != NULL)
+			ft_lstclear(&stacks.stack_b, del);
+		if (stacks.operations != NULL)
+			ft_lstclear(&stacks.operations, del);
+		if (flag == 1)
+			return (0);
 		else
 			return (-1);
 	}
