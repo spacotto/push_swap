@@ -12,24 +12,6 @@
 
 #include "checker.h"
 
-static void	add_op(t_list **ops, char *op)
-{
-	t_list	*node;
-	char	*content;
-
-	content = ft_strdup(op);
-	if (!content)
-		return ;
-	node = ft_lstnew(content);
-	if (!node)
-	{
-		free(content);
-		return ;
-	}
-	node->next = NULL;
-	ft_lstadd_back(ops, node);
-}
-
 static void	make_ops(t_list **ops)
 {
 	char	*token;
@@ -48,7 +30,7 @@ static void	make_ops(t_list **ops)
 			break ;
 		}
 		else
-			add_op(ops, token);
+			add_operation(ops, token);
 		free(token);
 	}
 	free(token);
