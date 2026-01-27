@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	add_operation(t_stacks *stacks, char *op)
+void	add_operation(t_list **ops, char *op)
 {
 	t_list	*node;
 	char	*content;
@@ -27,7 +27,7 @@ void	add_operation(t_stacks *stacks, char *op)
 		return ;
 	}
 	node->next = NULL;
-	ft_lstadd_back(&stacks->operations, node);
+	ft_lstadd_back(ops, node);
 }
 
 static void	just_copy(t_list *node_to_copy, t_list **target_list)
