@@ -6,11 +6,11 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/18 20:04:16 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/26 16:57:19 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/27 14:39:39 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	add_operation(t_list **ops, char *op)
 {
