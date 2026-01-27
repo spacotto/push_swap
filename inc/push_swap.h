@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 13:44:54 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/26 17:35:28 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/27 14:27:51 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	ft_rrr(t_stacks *stacks);
 void	move_to_top_a(t_stacks *stacks, t_list *target);
 void	move_to_top_b(t_stacks *stacks, t_list *target);
 
-void	add_operation(t_stacks *stacks, char *op);
+void	add_operation(t_list **ops, char *op);
 t_list	*optimise_ops(t_list *ops);
 void	print_ops(t_list *ops);
 
