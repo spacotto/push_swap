@@ -6,7 +6,7 @@
 /*   By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:54:18 by spacotto          #+#    #+#             */
-/*   Updated: 2026/01/26 18:53:00 by spacotto         ###   ########.fr       */
+/*   Updated: 2026/01/27 13:58:45 by spacotto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ static void	execute_op(t_stacks *stacks, char *op)
 
 static int	check_ops(t_stacks *stacks)
 {
+	t_list	*current;
+
 	make_ops(&stacks->operations);
 	if (stacks->operations)
 	{
@@ -118,7 +120,8 @@ static int	check_ops(t_stacks *stacks)
 			execute_op(stacks, current->content);
 			current = current->next;
 		}
-		if (ft_lstsort_check(stacks->stack_a) == 1)
+		if (ft_lstsort_check(stacks->stack_a) == 1 
+			&& !stacks->stack_b)
 			ft_putstr_fd(BOLD_CYAN "OK\n" RESET, 1);
 		else
 			ft_putstr_fd(BOLD_MAGENTA "KO\n" RESET, 1);
@@ -130,8 +133,6 @@ static int	check_ops(t_stacks *stacks)
 
 int	checker(t_stacks *stacks, int ac, char **av)
 {
-	t_list	*current;
-
 	make_stack(&stacks->stack_a, ac, av);
 	if (!stacks->stack_a)
 		return (0);
@@ -140,7 +141,7 @@ int	checker(t_stacks *stacks, int ac, char **av)
 		ft_putstr_fd(BOLD_CYAN "OK\n" RESET, 1);
 		return (1);
 	}
-	if (ft_lstsort_check(stacks->stack_a) > 1)
+	else
 	{
 		if (check_ops(stacks) == 1)
 			return (1);
