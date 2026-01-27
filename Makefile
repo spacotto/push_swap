@@ -6,7 +6,7 @@
 #    By: spacotto <spacotto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/08 15:55:57 by spacotto          #+#    #+#              #
-#    Updated: 2026/01/26 12:33:37 by spacotto         ###   ########.fr        #
+#    Updated: 2026/01/27 14:47:56 by spacotto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ CHECKER_OPS	:=	checker_ss_bonus.c \
 
 CHECKER		:=	checker_bonus.c
 
-SRCS_BONUS	:= $(PARSING) $(CHECKER_OPS) $(CHECKER)
+SRCS_BONUS	:= $(PARSING) $(CHECKER_OPS) $(BEST) $(CHECKER)
 
 # ============================================================================
 # OBJECTS
