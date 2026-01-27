@@ -61,12 +61,12 @@ OPS			:=	op_swap.c \
 				op_rotate.c \
 				op_reverse_rotate.c 
 
-BEST		:=	move_to_top.c \
-				ops_merge.c \
+BEST		:=	ops_merge.c \
 				ops_remove.c \
 				ops_optimise.c
 
-SORT		:=	range_presort.c \
+SORT		:=	move_to_top.c \
+				range_presort.c \
 				range_sort.c
 
 PUSH_SWAP	:=	push_swap.c
@@ -80,7 +80,7 @@ CHECKER_OPS	:=	checker_ss_bonus.c \
 
 CHECKER		:=	checker_bonus.c
 
-SRCS_BONUS	:= $(PARSING) $(CHECKER_OPS) $(BEST) $(CHECKER)
+SRCS_BONUS	:= $(PARSING) $(CHECKER_OPS) $(CHECKER)
 
 # ============================================================================
 # OBJECTS
