@@ -166,7 +166,7 @@ OK
 ./checker 3 "" 1
 ```
 
-4. Invalid instruction:
+5. Invalid instruction:
 ```
 ./checker 3 2 1
 sa
