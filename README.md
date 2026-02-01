@@ -103,15 +103,47 @@ Several tools can help you test your `push_swap`. In this README.md I am going t
 ## The Checker
 The **checker** is a validation tool that verifies whether a sequence of operations correctly sorts a given stack. The official version (`checher_linux`) is provided by 42 as project material. However, the bonus part of the project asks the student to produce their own version of the checker.
 
-### How it works
-1. **Initialization.** Accepts stack A as command-line arguments (first argument = top of stack)
-2. **Read Instructions.** Waits for operations from standard input, one per line (e.g., `sa`, `pb`, `rra`)
-3. **Execute Operations.** Applies each instruction to the stacks in sequence
-4. **Validate Result.** Checks if stack A is sorted in ascending order and stack B is empty
-5. **Output Result.**
-   - **`OK`** if the stack is correctly sorted
-   - **`KO`** if the stack is not sorted or stack B is not empty
-   - **`Error`** (to `stderr`) for invalid input (non-integers, duplicates, out-of-range values, invalid instructions)
+Valid arguments will trigger the **interactive mode**, allowing you to provide the instructions. Once the instructions are given, press `CTRL+D` to close the interactive mode. Once the interactive mode is closed, the checker will receive the provided instructions and apply them to the list of `int`. If the provided instructions are valid, the checker will display either `OK` or `KO`. 
+
+### Instructions
+Compile the program (push_swap and the checker are two separate and independent programs):
+```
+make bonus
+```
+
+The program takes as arguments a set of numbers (same logic as push_swap), and, provided a set of operations, it will determine if the operations sort the list of numbers (`OK`) or not (`KO`):
+```
+./checker 9 8 7 6 5 4 3 2 1 0
+```
+
+If used with push_swap, the checker will read the instructions output by push_swap:
+```
+ARG="1 5 2 4 3"; ./push_swap $ARG | ./checker $ARG
+OK
+```
+
+If used by itself, it will wait for operations from `stdin` (0), one per line (e.g., `sa`, `pb`, `rra`):
+```
+./checker 0 9 1 8 2
+pb
+ra
+pb
+ra
+sa
+ra
+pa
+pa
+OK
+```
+
+>[!NOTE]
+>In this case, you will have to use `CTRL+D` to close the interactive mode.
+
+>[!IMPORTANT]
+>Just like push_swap, the checker has 3 possible outcomes:
+>- **`OK`** if the stack is correctly sorted
+>- **`KO`** if the stack is not sorted or stack B is not empty
+>- **`Error`** (to `stderr`) for invalid input (non-integers, duplicates, out-of-range values, invalid instructions)
 
 ### Invalid Inputs 
 1. Non-numeric arguments:
@@ -141,33 +173,6 @@ sa
 pb
 lol
 Error
-```
-
-### How to use the checker
-Just like push_swap, the checker takes a list of `int` as arguments.
-```
-./checker 3 2 1
-```
-
-Valid arguments will trigger the **interactive mode**. Now, you will have to provide the instructions. Once the instructions are given, press `CTRL+D` to close the interactive mode. Once the interactive mode is closed, the checker will receive the provided instructions and apply them to the list of `int`. If the provided instructions are valid, the checker will display either `OK` or `KO`. For example:  
-```
-./checker 2 1 3
-sa               # Write the instruction, ENTER, CTRL+D
-OK               # The Checker is going to display the result
-```
-
-### How to use the checker to test push_swap
-Of course, the main purpose of the checker is to test the correct functioning of push_swap. 
-
-In this case, you need to run push_swap and the checker with the same arguments. For example:
-```
-./push_swap 3 2 1 | ./checker 3 2 1
-```
-
-This way, the checker will read the instructions output by push_swap **without displaying them**. Thus, assuming that the arguments are valid, the output is going to be either `OK` or `KO`. For example:
-```
-./push_swap 2 1 3 | ./checker_linux 2 1 3
-OK
 ```
 
 ## Permutations of 5
